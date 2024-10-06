@@ -39,7 +39,7 @@ class BackButtonGlobal extends StatelessWidget {
         minWidth: 35,
         padding: EdgeInsets.zero,
         child: Container(
-          padding: const EdgeInsets.all(10),
+          padding: EdgeInsets.all(SizeSpacing().doubleSpacing10),
           decoration: BoxDecoration(
             shape: BoxShape.circle,
             color: Theme.of(context)
