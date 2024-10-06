@@ -4,13 +4,14 @@ import '../constant/index.dart';
 
 class AppBarShared extends AppBar {
   final String stringTitle;
-
   Widget? title;
   Widget? leading;
   final Color? backgroundColor;
   final Color? foregroundColor;
+  final Color? titleColor;
   final bool? centerTitle;
   final double? elevation;
+  final Widget? action;
 
   AppBarShared({
     super.key,
@@ -19,13 +20,15 @@ class AppBarShared extends AppBar {
     this.foregroundColor = CleanUpColor.black,
     this.centerTitle = true,
     this.title,
+    this.titleColor,
     this.elevation = 0.4,
     this.leading,
+    this.action,
   }) {
     title = Text(
       stringTitle,
-      style: const TextStyle(
-        color: CleanUpColor.black,
+      style: TextStyle(
+        color: titleColor ?? CleanUpColor.black,
         fontWeight: FontWeight.w600,
       ),
     );
