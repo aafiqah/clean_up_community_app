@@ -8,6 +8,11 @@ class CleanUpColor {
   static const Color icognitoBg = Color(0xff556080);
   static const Color disabledText = Color(0xFF8B8B8B);
   static const Color transparent = Color(0x00000000);
+
+  static const Color primary = Color(0xFF125872);
+  static const Color buttonColor = Color(0xFF157EA5);
+  static const Color searchBarColor = Color(0xFFDADADA);
+
   static const Color white = Color(0xFFFFFFFF);
   static const Color black = Color(0xFF000000);
 
