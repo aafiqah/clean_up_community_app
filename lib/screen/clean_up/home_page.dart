@@ -25,7 +25,7 @@ class _HomePageState extends State<HomePage> {
             padding: EdgeInsets.only(right: SizeSpacing().doubleSpacing10),
             child: InkWell(
               onTap: () {
-                context.canPop();
+                context.goNamed("/login_page");
               },
               child: Icon(
                 Icons.exit_to_app,
