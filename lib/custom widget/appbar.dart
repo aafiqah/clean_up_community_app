@@ -11,7 +11,7 @@ class AppBarShared extends AppBar {
   final Color? titleColor;
   final bool? centerTitle;
   final double? elevation;
-  final Widget? action;
+  final List<Widget>? actions;
 
   AppBarShared({
     super.key,
@@ -23,7 +23,7 @@ class AppBarShared extends AppBar {
     this.titleColor,
     this.elevation = 0.4,
     this.leading,
-    this.action,
+    this.actions,
   }) {
     title = Text(
       stringTitle,
