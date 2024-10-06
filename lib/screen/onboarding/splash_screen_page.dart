@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../constant/index.dart';
+import '../../constant/index.dart';
 
 class SplashScreenPage extends StatefulWidget {
   const SplashScreenPage({super.key});

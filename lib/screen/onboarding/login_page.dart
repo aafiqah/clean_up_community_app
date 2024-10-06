@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../constant/index.dart';
-import '../custom widget/index.dart';
+import '../../constant/index.dart';
+import '../../custom widget/index.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -16,7 +17,7 @@ class _LoginPageState extends State<LoginPage> {
   final GlobalKey<FormState> _formKey2 = GlobalKey<FormState>();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController pwdController = TextEditingController();
-  AutovalidateMode _autoValidateMode = AutovalidateMode.disabled;
+  final AutovalidateMode _autoValidateMode = AutovalidateMode.disabled;
 
   @override
   Widget build(BuildContext context) {
@@ -192,9 +193,14 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
                 SizedBox(height: SizeSpacing().doubleSpacing15),
-                Submitbutton(
-                  size: size.width,
-                  title: 'Sign In',
+                InkWell(
+                  onTap: () {
+                    context.goNamed("/home_page");
+                  },
+                  child: Submitbutton(
+                    size: size.width,
+                    title: 'Sign In',
+                  ),
                 ),
                 SizedBox(height: SizeSpacing().doubleSpacing15),
                 Center(
