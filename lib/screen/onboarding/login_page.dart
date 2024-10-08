@@ -205,13 +205,20 @@ class _LoginPageState extends State<LoginPage> {
                   SizedBox(height: SizeSpacing().doubleSpacing15),
                   Submitbutton(
                     onTap: () {
-                    context.goNamed("/home_page");
-                  },
-                  buttonRadius: SizeSpacing().doubleSpacing5,
-                    size: size.width,
-                    title: 'Sign In',
+                      context.goNamed("/home_page");
+                    },
+                    buttonRadius: SizeSpacing().doubleSpacing5,
+                    width: size.width,
+                    widget: Text(
+                      'Sign In',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: CleanUpColor.white,
+                        fontWeight: FontWeight.w600,
+                        fontFamily: GoogleFonts.inter().fontFamily,
+                      ),
+                    ),
                     buttonColor: CleanUpColor.buttonColor,
-                    textButtonColor: CleanUpColor.white,
                   ),
                   SizedBox(height: SizeSpacing().doubleSpacing15),
                   SizedBox(

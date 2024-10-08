@@ -51,10 +51,17 @@ class OnboardingPage extends StatelessWidget {
                     onTap: () {
                       context.goNamed("/home_page");
                     },
-                    size: size.width,
-                    title: 'Find an Event',
-                    buttonColor: CleanUpColor.buttonColor,
-                    textButtonColor: CleanUpColor.white,
+                    width: size.width,
+                    widget: Text(
+                      'Find an Event',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: CleanUpColor.black,
+                        fontWeight: FontWeight.w600,
+                        fontFamily: GoogleFonts.inter().fontFamily,
+                      ),
+                    ),
+                    buttonColor: CleanUpColor.white,
                     buttonRadius: SizeSpacing().doubleSpacing20,
                     boxShadow: const [
                       BoxShadow(
@@ -69,10 +76,17 @@ class OnboardingPage extends StatelessWidget {
                     onTap: () {
                       context.goNamed("/login_page");
                     },
-                    size: size.width,
-                    title: 'Sign In',
-                    buttonColor: CleanUpColor.white,
-                    textButtonColor: CleanUpColor.primary,
+                    width: size.width,
+                    widget: Text(
+                      'Sign In',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: CleanUpColor.white,
+                        fontWeight: FontWeight.w600,
+                        fontFamily: GoogleFonts.inter().fontFamily,
+                      ),
+                    ),
+                    buttonColor: CleanUpColor.primary,
                     buttonRadius: SizeSpacing().doubleSpacing20,
                     boxShadow: const [
                       BoxShadow(

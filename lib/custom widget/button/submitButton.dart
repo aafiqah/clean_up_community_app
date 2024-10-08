@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import '../../constant/index.dart';
 
@@ -7,19 +6,19 @@ class Submitbutton extends StatelessWidget {
   const Submitbutton({
     super.key,
     required this.onTap,
-    required this.size,
-    required this.title,
+    this.width,
+    this.height,
+    required this.widget,
     required this.buttonColor,
-    required this.textButtonColor,
     required this.buttonRadius,
     this.boxShadow,
   });
 
   final Function() onTap;
-  final double size;
-  final String title;
+  final double? width;
+  final double? height;
+  final Widget widget;
   final Color buttonColor;
-  final Color textButtonColor;
   final double buttonRadius;
   final List<BoxShadow>? boxShadow;
 
@@ -28,7 +27,8 @@ class Submitbutton extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: Container(
-        width: size,
+        width: width,
+        height: height,
         padding: EdgeInsets.symmetric(
           vertical: SizeSpacing().doubleSpacing15,
           horizontal: SizeSpacing().doubleSpacing10,
@@ -38,15 +38,7 @@ class Submitbutton extends StatelessWidget {
           color: buttonColor,
           boxShadow: boxShadow,
         ),
-        child: Text(
-          title,
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            color: textButtonColor,
-            fontWeight: FontWeight.w600,
-            fontFamily: GoogleFonts.inter().fontFamily,
-          ),
-        ),
+        child: widget,
       ),
     );
   }
