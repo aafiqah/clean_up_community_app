@@ -56,8 +56,15 @@ class OnboardingPage extends StatelessWidget {
                     buttonColor: CleanUpColor.buttonColor,
                     textButtonColor: CleanUpColor.white,
                     buttonRadius: SizeSpacing().doubleSpacing20,
+                    boxShadow: const [
+                      BoxShadow(
+                        color: CleanUpColor.black,
+                        blurRadius: 25,
+                        offset: Offset(0, 5), // changes position of shadow
+                      ),
+                    ],
                   ),
-                  SizedBox(height: SizeSpacing().doubleSpacing15),
+                  SizedBox(height: SizeSpacing().doubleSpacing20),
                   Submitbutton(
                     onTap: () {
                       context.goNamed("/login_page");
@@ -67,6 +74,13 @@ class OnboardingPage extends StatelessWidget {
                     buttonColor: CleanUpColor.white,
                     textButtonColor: CleanUpColor.primary,
                     buttonRadius: SizeSpacing().doubleSpacing20,
+                    boxShadow: const [
+                      BoxShadow(
+                        color: CleanUpColor.black,
+                        blurRadius: 25,
+                        offset: Offset(0, 5), // changes position of shadow
+                      ),
+                    ],
                   ),
                 ],
               ),

@@ -4,15 +4,15 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../constant/index.dart';
 
 class Submitbutton extends StatelessWidget {
-  const Submitbutton(
-      {
-        super.key,
-      required this.onTap,
-      required this.size,
-      required this.title,
-      required this.buttonColor,
-      required this.textButtonColor,
-      required this.buttonRadius,
+  const Submitbutton({
+    super.key,
+    required this.onTap,
+    required this.size,
+    required this.title,
+    required this.buttonColor,
+    required this.textButtonColor,
+    required this.buttonRadius,
+    this.boxShadow,
   });
 
   final Function() onTap;
@@ -21,6 +21,7 @@ class Submitbutton extends StatelessWidget {
   final Color buttonColor;
   final Color textButtonColor;
   final double buttonRadius;
+  final List<BoxShadow>? boxShadow;
 
   @override
   Widget build(BuildContext context) {
@@ -35,6 +36,7 @@ class Submitbutton extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(buttonRadius),
           color: buttonColor,
+          boxShadow: boxShadow,
         ),
         child: Text(
           title,
