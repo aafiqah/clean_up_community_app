@@ -24,7 +24,14 @@ class MyApp extends StatelessWidget {
 }
 
 final GoRouter _router =
-    GoRouter(initialLocation: "/login_page", routes: <RouteBase>[
+    GoRouter(initialLocation: "/onBoarding_page", routes: <RouteBase>[
+  GoRoute(
+    name: "/onBoarding_page",
+    path: "/onBoarding_page",
+    builder: (context, state) {
+      return const OnboardingPage();
+    },
+  ),
   GoRoute(
     name: "/login_page",
     path: "/login_page",
