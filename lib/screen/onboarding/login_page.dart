@@ -203,14 +203,15 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                   SizedBox(height: SizeSpacing().doubleSpacing15),
-                  InkWell(
+                  Submitbutton(
                     onTap: () {
-                      context.goNamed("/home_page");
-                    },
-                    child: Submitbutton(
-                      size: size.width,
-                      title: 'Sign In',
-                    ),
+                    context.goNamed("/home_page");
+                  },
+                  buttonRadius: SizeSpacing().doubleSpacing5,
+                    size: size.width,
+                    title: 'Sign In',
+                    buttonColor: CleanUpColor.buttonColor,
+                    textButtonColor: CleanUpColor.white,
                   ),
                   SizedBox(height: SizeSpacing().doubleSpacing15),
                   SizedBox(
