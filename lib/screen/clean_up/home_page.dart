@@ -56,10 +56,10 @@ class _HomePageState extends State<HomePage> {
       body: Stack(
         children: [
           const Positioned(
-            top: -120,
+            top: -200,
             right: -50,
             left: -50,
-            bottom: 500,
+            bottom: 380,
             child: Image(
               image: AssetImage(CleanUpImages.appBarBg),
             ),
