@@ -25,15 +25,19 @@ class CustomSearchBar extends StatefulWidget {
 }
 
 class _CustomSearchBarState extends State<CustomSearchBar> {
-  late final FocusScopeNode focusNode;
-
   @override
   void initState() {
     super.initState();
+    widget.controller?.addListener(() {
+      setState(() {});
+    });
   }
 
   @override
   void dispose() {
+    widget.controller?.removeListener(() {
+      setState(() {});
+    });
     super.dispose();
   }
 
@@ -77,6 +81,7 @@ class _CustomSearchBarState extends State<CustomSearchBar> {
                       child: InkWell(
                         onTap: () {
                           widget.controller!.clear();
+                          setState(() {});
                           if (widget.onSubmitted != null) {
                             widget.onSubmitted?.call('');
                           }
