@@ -12,12 +12,29 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final ScrollController _scrollController = ScrollController();
+  final TextEditingController _searchController = TextEditingController();
+
+  @override
+  void initState() {
+    _searchController.addListener(() {});
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    _searchController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+
     return Scaffold(
-      backgroundColor: CleanUpColor.primary,
       appBar: AppBarShared(
-        stringTitle: 'Home',
+        stringTitle: 'CleanUp Community',
         titleColor: CleanUpColor.white,
         backgroundColor: CleanUpColor.primary,
         actions: <Widget>[
@@ -36,7 +53,51 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
       ),
-      body: const SizedBox.expand(),
+      body: Stack(
+        children: [
+          const Positioned(
+            top: -120,
+            right: -50,
+            left: -50,
+            bottom: 500,
+            child: Image(
+              image: AssetImage(CleanUpImages.appBarBg),
+            ),
+          ),
+          CustomScrollView(
+            controller: _scrollController,
+            slivers: <Widget>[
+              SliverToBoxAdapter(
+                child: Padding(
+                  padding: const EdgeInsets.only(
+                    left: 50,
+                    right: 50,
+                    top: 10,
+                  ),
+                  child: CustomSearchBar(
+                    hintText: 'Find your event',
+                    controller: _searchController,
+                    borderRadius: 20,
+                    fillColor: CleanUpColor.searchBarColor,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+      floatingActionButton: Submitbutton(
+        onTap: () {},
+        buttonColor: CleanUpColor.primary,
+        width: 75,
+        height: 75,
+        widget: const Icon(
+          Icons.add,
+          size: 30,
+          color: CleanUpColor.white,
+        ),
+        buttonRadius: 20,
+      ),
     );
   }
 }
