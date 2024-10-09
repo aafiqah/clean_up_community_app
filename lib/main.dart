@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import 'custom widget/index.dart';
 import 'screen/index.dart';
 
 void main() {
@@ -23,27 +24,50 @@ class MyApp extends StatelessWidget {
   }
 }
 
-final GoRouter _router =
-    GoRouter(initialLocation: "/onBoarding_page", routes: <RouteBase>[
-  GoRoute(
-    name: "/onBoarding_page",
-    path: "/onBoarding_page",
-    builder: (context, state) {
-      return const OnboardingPage();
-    },
-  ),
-  GoRoute(
-    name: "/login_page",
-    path: "/login_page",
-    builder: (context, state) {
-      return const LoginPage();
-    },
-  ),
-  GoRoute(
-    name: "/home_page",
-    path: "/home_page",
-    builder: (context, state) {
-      return const HomePage();
-    },
-  ),
-]);
+final GoRouter _router = GoRouter(
+  initialLocation: '/onBoarding_page',
+  routes: <RouteBase>[
+    GoRoute(
+      name: '/onBoarding_page',
+      path: '/onBoarding_page',
+      builder: (context, state) {
+        return const OnboardingPage();
+      },
+    ),
+    GoRoute(
+      name: '/login_page',
+      path: '/login_page',
+      builder: (context, state) {
+        return const LoginPage();
+      },
+    ),
+    GoRoute(
+      name: '/home_page',
+      path: '/home_page',
+      builder: (context, state) {
+        return const Bottomnavbar();
+      },
+    ),
+    GoRoute(
+      name: '/chat_page',
+      path: '/chat_page',
+      builder: (context, state) {
+        return const ChatPage();
+      },
+    ),
+    GoRoute(
+      name: '/saved_page',
+      path: '/saved_page',
+      builder: (context, state) {
+        return const SavedPage();
+      },
+    ),
+    GoRoute(
+      name: '/menu_page',
+      path: '/menu_page',
+      builder: (context, state) {
+        return const MenuPage();
+      },
+    ),
+  ],
+);
