@@ -32,6 +32,7 @@ class _MenuPageState extends State<MenuPage> {
     Size size = MediaQuery.of(context).size;
 
     return Scaffold(
+      backgroundColor: CleanUpColor.primary,
       appBar: AppBarShared(
         stringTitle: 'Menu',
         titleColor: CleanUpColor.white,
@@ -48,7 +49,7 @@ class _MenuPageState extends State<MenuPage> {
                 top: 10,
               ),
               child: CustomSearchBar(
-                hintText: 'Find your event',
+                hintText: 'Search',
                 controller: _searchController,
                 borderRadius: 20,
                 fillColor: CleanUpColor.searchBarColor,

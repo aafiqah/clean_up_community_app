@@ -32,6 +32,7 @@ class _SavedPageState extends State<SavedPage> {
     Size size = MediaQuery.of(context).size;
 
     return Scaffold(
+      backgroundColor: CleanUpColor.primary,
       appBar: AppBarShared(
         stringTitle: 'Saved',
         titleColor: CleanUpColor.white,
@@ -48,7 +49,7 @@ class _SavedPageState extends State<SavedPage> {
                 top: 10,
               ),
               child: CustomSearchBar(
-                hintText: 'Find your event',
+                hintText: 'Search Event',
                 controller: _searchController,
                 borderRadius: 20,
                 fillColor: CleanUpColor.searchBarColor,

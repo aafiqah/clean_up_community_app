@@ -32,6 +32,7 @@ class _ChatPageState extends State<ChatPage> {
     Size size = MediaQuery.of(context).size;
 
     return Scaffold(
+      backgroundColor: CleanUpColor.primary,
       appBar: AppBarShared(
         stringTitle: 'Message',
         titleColor: CleanUpColor.white,
@@ -48,7 +49,7 @@ class _ChatPageState extends State<ChatPage> {
                 top: 10,
               ),
               child: CustomSearchBar(
-                hintText: 'Find your event',
+                hintText: 'Search Contact',
                 controller: _searchController,
                 borderRadius: 20,
                 fillColor: CleanUpColor.searchBarColor,
