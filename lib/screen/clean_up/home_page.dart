@@ -87,7 +87,9 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
       floatingActionButton: Submitbutton(
-        onTap: () {},
+        onTap: () {
+          context.goNamed("/create_event_page");
+        },
         buttonColor: CleanUpColor.primary,
         width: 75,
         height: 75,

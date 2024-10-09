@@ -1,17 +1,16 @@
 import 'package:clean_up_community_app/constant/index.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
 import '../../custom widget/index.dart';
 
-class SavedPage extends StatefulWidget {
-  const SavedPage({super.key});
+class ChatPage extends StatefulWidget {
+  const ChatPage({super.key});
 
   @override
-  State<SavedPage> createState() => _SavedPageState();
+  State<ChatPage> createState() => _ChatPageState();
 }
 
-class _SavedPageState extends State<SavedPage> {
+class _ChatPageState extends State<ChatPage> {
   final ScrollController _scrollController = ScrollController();
   final TextEditingController _searchController = TextEditingController();
 
@@ -34,7 +33,7 @@ class _SavedPageState extends State<SavedPage> {
 
     return Scaffold(
       appBar: AppBarShared(
-        stringTitle: 'Saved',
+        stringTitle: 'Message',
         titleColor: CleanUpColor.white,
         backgroundColor: CleanUpColor.primary,
       ),

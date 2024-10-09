@@ -1,8 +1,5 @@
+import 'package:clean_up_community_app/constant/index.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-
-import 'custom widget/index.dart';
-import 'screen/index.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,58 +13,15 @@ class MyApp extends StatelessWidget {
     return MaterialApp.router(
       title: 'Flutter Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: CleanUpColor.buttonColor),
         useMaterial3: true,
+        bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+          backgroundColor: CleanUpColor.white,
+          selectedItemColor: CleanUpColor.buttonColor,
+          unselectedItemColor: CleanUpColor.white,
+        ),
       ),
-      routerConfig: _router,
+      routerConfig: AppNavigation.router,
     );
   }
 }
-
-final GoRouter _router = GoRouter(
-  initialLocation: '/onBoarding_page',
-  routes: <RouteBase>[
-    GoRoute(
-      name: '/onBoarding_page',
-      path: '/onBoarding_page',
-      builder: (context, state) {
-        return const OnboardingPage();
-      },
-    ),
-    GoRoute(
-      name: '/login_page',
-      path: '/login_page',
-      builder: (context, state) {
-        return const LoginPage();
-      },
-    ),
-    GoRoute(
-      name: '/home_page',
-      path: '/home_page',
-      builder: (context, state) {
-        return const Bottomnavbar();
-      },
-    ),
-    GoRoute(
-      name: '/chat_page',
-      path: '/chat_page',
-      builder: (context, state) {
-        return const ChatPage();
-      },
-    ),
-    GoRoute(
-      name: '/saved_page',
-      path: '/saved_page',
-      builder: (context, state) {
-        return const SavedPage();
-      },
-    ),
-    GoRoute(
-      name: '/menu_page',
-      path: '/menu_page',
-      builder: (context, state) {
-        return const MenuPage();
-      },
-    ),
-  ],
-);
