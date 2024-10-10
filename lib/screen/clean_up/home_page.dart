@@ -30,8 +30,6 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
-
     return Scaffold(
       appBar: AppBarShared(
         stringTitle: 'CleanUp Community',
@@ -64,22 +62,33 @@ class _HomePageState extends State<HomePage> {
               image: AssetImage(CleanUpImages.appBarBg),
             ),
           ),
-          CustomScrollView(
-            controller: _scrollController,
-            slivers: <Widget>[
-              SliverToBoxAdapter(
-                child: Padding(
-                  padding: const EdgeInsets.only(
-                    left: 50,
-                    right: 50,
-                    top: 10,
-                  ),
-                  child: CustomSearchBar(
-                    hintText: 'Find your event',
-                    controller: _searchController,
-                    borderRadius: 20,
-                    fillColor: CleanUpColor.searchBarColor,
-                  ),
+          Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(
+                  left: 50,
+                  right: 50,
+                  top: 10,
+                ),
+                child: CustomSearchBar(
+                  hintText: 'Find your event',
+                  controller: _searchController,
+                  borderRadius: 20,
+                  fillColor: CleanUpColor.searchBarColor,
+                ),
+              ),
+              Expanded(
+                child: CustomScrollView(
+                  controller: _scrollController,
+                  slivers: const <Widget>[
+                    SliverToBoxAdapter(
+                      child: Padding(
+                        padding:
+                            EdgeInsets.symmetric(vertical: 20, horizontal: 30),
+                        child: CardPostEvent(),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ],
