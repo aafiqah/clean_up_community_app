@@ -61,7 +61,7 @@ class AppNavigation {
                   key: state.pageKey,
                 );
               },
-              routes: [
+              routes: const [
                 // SUB HOME
               ],
             ),
@@ -76,7 +76,7 @@ class AppNavigation {
                   key: state.pageKey,
                 );
               },
-              routes: [
+              routes: const [
                 // SUB HOME
               ],
             ),
@@ -91,7 +91,7 @@ class AppNavigation {
                   key: state.pageKey,
                 );
               },
-              routes: [
+              routes: const [
                 // SUB HOME
               ],
             ),
