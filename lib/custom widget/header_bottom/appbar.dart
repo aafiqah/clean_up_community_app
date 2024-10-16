@@ -4,13 +4,20 @@ import '../../constant/index.dart';
 
 class AppBarShared extends AppBar {
   final String stringTitle;
+  @override
   Widget? title;
+  @override
   Widget? leading;
+  @override
   final Color? backgroundColor;
+  @override
   final Color? foregroundColor;
   final Color? titleColor;
+  @override
   final bool? centerTitle;
+  @override
   final double? elevation;
+  @override
   final List<Widget>? actions;
 
   AppBarShared({
