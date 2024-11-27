@@ -204,10 +204,10 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   SizedBox(height: SizeSpacing().doubleSpacing15),
                   Submitbutton(
-                    onTap: () {
+                    onPressed: () {
                       context.goNamed("/home_page");
                     },
-                    buttonRadius: SizeSpacing().doubleSpacing5,
+                    borderRadius: SizeSpacing().doubleSpacing5,
                     width: size.width,
                     widget: Text(
                       'Sign In',

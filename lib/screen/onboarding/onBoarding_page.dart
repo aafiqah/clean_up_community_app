@@ -48,7 +48,7 @@ class OnboardingPage extends StatelessWidget {
               child: Column(
                 children: [
                   Submitbutton(
-                    onTap: () {
+                    onPressed: () {
                       context.goNamed("/home_page");
                     },
                     width: size.width,
@@ -62,18 +62,12 @@ class OnboardingPage extends StatelessWidget {
                       ),
                     ),
                     buttonColor: CleanUpColor.white,
-                    buttonRadius: SizeSpacing().doubleSpacing20,
-                    boxShadow: const [
-                      BoxShadow(
-                        color: CleanUpColor.black,
-                        blurRadius: 25,
-                        offset: Offset(0, 5), // changes position of shadow
-                      ),
-                    ],
+                    borderRadius: SizeSpacing().doubleSpacing20,
+                    
                   ),
                   SizedBox(height: SizeSpacing().doubleSpacing20),
                   Submitbutton(
-                    onTap: () {
+                    onPressed: () {
                       context.goNamed("/login_page");
                     },
                     width: size.width,
@@ -86,15 +80,9 @@ class OnboardingPage extends StatelessWidget {
                         fontFamily: GoogleFonts.inter().fontFamily,
                       ),
                     ),
-                    buttonColor: CleanUpColor.primary,
-                    buttonRadius: SizeSpacing().doubleSpacing20,
-                    boxShadow: const [
-                      BoxShadow(
-                        color: CleanUpColor.black,
-                        blurRadius: 25,
-                        offset: Offset(0, 5), // changes position of shadow
-                      ),
-                    ],
+                    buttonColor: CleanUpColor.buttonColor,
+                    borderRadius: SizeSpacing().doubleSpacing20,
+                    
                   ),
                 ],
               ),
