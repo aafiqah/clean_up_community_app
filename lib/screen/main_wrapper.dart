@@ -33,119 +33,120 @@ class _MainWrapperState extends State<MainWrapper> {
         height: double.infinity,
         child: widget.navigationShell,
       ),
-      bottomNavigationBar: Material(
-        elevation: 18,
-        child: Container(
-          color: CleanUpColor.white,
-          padding: const EdgeInsets.symmetric(vertical: 10),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              GestureDetector(
-                onTap: () => goToBranch(0),
-                child: Container(
-                  height: 55,
-                  width: 55,
-                  decoration: BoxDecoration(
-                    color: selectedIndex == 0
-                        ? CleanUpColor.buttonColor
-                        : CleanUpColor.white,
-                    border: Border.all(
-                      strokeAlign: 0.5,
+      bottomNavigationBar: SafeArea(
+        child: Material(
+          child: Container(
+            color: CleanUpColor.white,
+            padding: const EdgeInsets.symmetric(vertical: 10),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                GestureDetector(
+                  onTap: () => goToBranch(0),
+                  child: Container(
+                    height: 55,
+                    width: 55,
+                    decoration: BoxDecoration(
                       color: selectedIndex == 0
                           ? CleanUpColor.buttonColor
-                          : CleanUpColor.greyMedium,
+                          : CleanUpColor.white,
+                      border: Border.all(
+                        strokeAlign: 0.5,
+                        color: selectedIndex == 0
+                            ? CleanUpColor.buttonColor
+                            : CleanUpColor.greyMedium,
+                      ),
+                      borderRadius: BorderRadius.circular(5),
                     ),
-                    borderRadius: BorderRadius.circular(5),
-                  ),
-                  child: Icon(
-                    Icons.home,
-                    size: 28,
-                    color: selectedIndex == 0
-                        ? CleanUpColor.white
-                        : CleanUpColor.buttonColor,
+                    child: Icon(
+                      Icons.home,
+                      size: 28,
+                      color: selectedIndex == 0
+                          ? CleanUpColor.white
+                          : CleanUpColor.buttonColor,
+                    ),
                   ),
                 ),
-              ),
-              GestureDetector(
-                onTap: () => goToBranch(1),
-                child: Container(
-                  height: 55,
-                  width: 55,
-                  decoration: BoxDecoration(
-                    color: selectedIndex == 1
-                        ? CleanUpColor.buttonColor
-                        : CleanUpColor.white,
-                    border: Border.all(
-                      strokeAlign: 0.5,
+                GestureDetector(
+                  onTap: () => goToBranch(1),
+                  child: Container(
+                    height: 55,
+                    width: 55,
+                    decoration: BoxDecoration(
                       color: selectedIndex == 1
                           ? CleanUpColor.buttonColor
-                          : CleanUpColor.greyMedium,
+                          : CleanUpColor.white,
+                      border: Border.all(
+                        strokeAlign: 0.5,
+                        color: selectedIndex == 1
+                            ? CleanUpColor.buttonColor
+                            : CleanUpColor.greyMedium,
+                      ),
+                      borderRadius: BorderRadius.circular(5),
                     ),
-                    borderRadius: BorderRadius.circular(5),
-                  ),
-                  child: Icon(
-                    Icons.message,
-                    size: 28,
-                    color: selectedIndex == 1
-                        ? CleanUpColor.white
-                        : CleanUpColor.buttonColor,
+                    child: Icon(
+                      Icons.message,
+                      size: 28,
+                      color: selectedIndex == 1
+                          ? CleanUpColor.white
+                          : CleanUpColor.buttonColor,
+                    ),
                   ),
                 ),
-              ),
-              GestureDetector(
-                onTap: () => goToBranch(2),
-                child: Container(
-                  height: 55,
-                  width: 55,
-                  decoration: BoxDecoration(
-                    color: selectedIndex == 2
-                        ? CleanUpColor.buttonColor
-                        : CleanUpColor.white,
-                    border: Border.all(
-                      strokeAlign: 0.5,
+                GestureDetector(
+                  onTap: () => goToBranch(2),
+                  child: Container(
+                    height: 55,
+                    width: 55,
+                    decoration: BoxDecoration(
                       color: selectedIndex == 2
                           ? CleanUpColor.buttonColor
-                          : CleanUpColor.greyMedium,
+                          : CleanUpColor.white,
+                      border: Border.all(
+                        strokeAlign: 0.5,
+                        color: selectedIndex == 2
+                            ? CleanUpColor.buttonColor
+                            : CleanUpColor.greyMedium,
+                      ),
+                      borderRadius: BorderRadius.circular(5),
                     ),
-                    borderRadius: BorderRadius.circular(5),
-                  ),
-                  child: Icon(
-                    Icons.bookmark_outline,
-                    size: 28,
-                    color: selectedIndex == 2
-                        ? CleanUpColor.white
-                        : CleanUpColor.buttonColor,
+                    child: Icon(
+                      Icons.bookmark_outline,
+                      size: 28,
+                      color: selectedIndex == 2
+                          ? CleanUpColor.white
+                          : CleanUpColor.buttonColor,
+                    ),
                   ),
                 ),
-              ),
-              GestureDetector(
-                onTap: () => goToBranch(3),
-                child: Container(
-                  height: 55,
-                  width: 55,
-                  decoration: BoxDecoration(
-                    color: selectedIndex == 3
-                        ? CleanUpColor.buttonColor
-                        : CleanUpColor.white,
-                    border: Border.all(
-                      strokeAlign: 0.5,
+                GestureDetector(
+                  onTap: () => goToBranch(3),
+                  child: Container(
+                    height: 55,
+                    width: 55,
+                    decoration: BoxDecoration(
                       color: selectedIndex == 3
                           ? CleanUpColor.buttonColor
-                          : CleanUpColor.greyMedium,
+                          : CleanUpColor.white,
+                      border: Border.all(
+                        strokeAlign: 0.5,
+                        color: selectedIndex == 3
+                            ? CleanUpColor.buttonColor
+                            : CleanUpColor.greyMedium,
+                      ),
+                      borderRadius: BorderRadius.circular(5),
                     ),
-                    borderRadius: BorderRadius.circular(5),
-                  ),
-                  child: Icon(
-                    Icons.menu,
-                    size: 28,
-                    color: selectedIndex == 3
-                        ? CleanUpColor.white
-                        : CleanUpColor.buttonColor,
+                    child: Icon(
+                      Icons.menu,
+                      size: 28,
+                      color: selectedIndex == 3
+                          ? CleanUpColor.white
+                          : CleanUpColor.buttonColor,
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
