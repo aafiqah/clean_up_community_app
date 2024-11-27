@@ -17,250 +17,264 @@ class _LoginPageState extends State<LoginPage> {
   final GlobalKey<FormState> _formKey2 = GlobalKey<FormState>();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController pwdController = TextEditingController();
-  final AutovalidateMode _autoValidateMode = AutovalidateMode.disabled;
+  final ValueNotifier<AutovalidateMode> _autoValidateModeEmail =
+      ValueNotifier(AutovalidateMode.disabled);
+  final ValueNotifier<AutovalidateMode> _autoValidateModePwd =
+      ValueNotifier(AutovalidateMode.disabled);
+  final ValueNotifier<bool> _isPasswordVisible = ValueNotifier<bool>(false);
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    emailController.dispose();
+    pwdController.dispose();
+    _autoValidateModeEmail.dispose();
+    _autoValidateModePwd.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
+    Size size = MediaQuery.sizeOf(context);
 
     return Scaffold(
       backgroundColor: CleanUpColor.primary,
       body: Center(
-          child: SizedBox(
-        width: size.width * 0.85,
-        child: FittedBox(
-          fit: BoxFit.fitWidth,
-          child: Card(
-            elevation: 4,
-            color: CleanUpColor.searchBarColor,
-            surfaceTintColor: CleanUpColor.searchBarColor,
-            child: Padding(
-              padding: EdgeInsets.symmetric(
-                vertical: SizeSpacing().doubleSpacing30,
-                horizontal: SizeSpacing().doubleSpacing15,
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+        child: Container(
+          padding: EdgeInsets.symmetric(
+            vertical: SizeSpacing().doubleSpacing30,
+            horizontal: SizeSpacing().doubleSpacing20,
+          ),
+          child: ListView(
+            children: [
+              Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    'Sign in',
-                    style: TextStyle(
-                      fontSize: 20,
-                      color: CleanUpColor.black,
-                      fontWeight: FontWeight.w600,
-                      fontFamily: GoogleFonts.inter().fontFamily,
-                    ),
-                  ),
-                  SizedBox(height: SizeSpacing().doubleSpacing5),
-                  Text(
-                    'Enter Your Email Address & Password to Sign In',
-                    style: TextStyle(
-                      fontSize: 10,
-                      color: CleanUpColor.black,
-                      fontWeight: FontWeight.w400,
-                      fontFamily: GoogleFonts.inter().fontFamily,
-                    ),
-                  ),
-                  SizedBox(height: SizeSpacing().doubleSpacing20),
-                  Text(
-                    'Email',
-                    style: TextStyle(
-                      color: CleanUpColor.black,
-                      fontWeight: FontWeight.w600,
-                      fontFamily: GoogleFonts.inter().fontFamily,
-                    ),
-                  ),
-                  SizedBox(height: SizeSpacing().doubleSpacing5),
-                  SizedBox(
-                    width: size.width,
-                    child: Form(
-                      key: _formKey,
-                      autovalidateMode: _autoValidateMode,
-                      child: TextFormField(
-                        controller: emailController,
-                        autocorrect: false,
-                        style: TextStyle(
-                          fontSize: 14,
-                          color: CleanUpColor.black,
-                          fontWeight: FontWeight.w400,
-                          fontFamily: GoogleFonts.roboto().fontFamily,
-                        ),
-                        decoration: InputDecoration(
-                          contentPadding:
-                              EdgeInsets.all(SizeSpacing().doubleSpacing5),
-                          border: const OutlineInputBorder(
-                            borderRadius: BorderRadius.zero,
-                            borderSide: BorderSide(
-                              width: 1,
-                              color: CleanUpColor.primary,
-                            ),
-                          ),
-                          hintStyle: TextStyle(
-                            fontSize: 16,
-                            color: CleanUpColor.primary,
-                            fontWeight: FontWeight.w400,
-                            fontFamily: GoogleFonts.roboto().fontFamily,
-                          ),
-                          hintText: 'me@gmail.com',
-                          enabledBorder: const OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: CleanUpColor.primary,
-                            ),
-                          ),
-                          errorBorder: const OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: CleanUpColor.redMedium,
-                            ),
-                          ),
-                          focusedBorder: const OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: CleanUpColor.blueMedium,
-                            ),
-                          ),
-                        ),
-                        onTapOutside: (event) {
-                          FocusScope.of(context).unfocus();
-                        },
-                        validator: (String? categoryname) {
-                          if (categoryname!.trim().isEmpty) {
-                            return 'Please enter your email here';
-                          } else {
-                            return null;
-                          }
-                        },
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: SizeSpacing().doubleSpacing15),
-                  Text(
-                    'Password',
-                    style: TextStyle(
-                      color: CleanUpColor.black,
-                      fontWeight: FontWeight.w600,
-                      fontFamily: GoogleFonts.inter().fontFamily,
-                    ),
-                  ),
-                  SizedBox(height: SizeSpacing().doubleSpacing5),
-                  SizedBox(
-                    width: size.width,
-                    child: Form(
-                      key: _formKey2,
-                      autovalidateMode: _autoValidateMode,
-                      child: TextFormField(
-                        controller: pwdController,
-                        autocorrect: false,
-                        style: TextStyle(
-                          fontSize: 14,
-                          color: CleanUpColor.black,
-                          fontWeight: FontWeight.w400,
-                          fontFamily: GoogleFonts.roboto().fontFamily,
-                        ),
-                        decoration: InputDecoration(
-                          contentPadding:
-                              EdgeInsets.all(SizeSpacing().doubleSpacing5),
-                          border: const OutlineInputBorder(
-                            borderRadius: BorderRadius.zero,
-                            borderSide: BorderSide(
-                              width: 1,
-                              color: CleanUpColor.primary,
-                            ),
-                          ),
-                          hintStyle: TextStyle(
-                            fontSize: 16,
-                            color: CleanUpColor.primary,
-                            fontWeight: FontWeight.w400,
-                            fontFamily: GoogleFonts.roboto().fontFamily,
-                          ),
-                          hintText: 'password',
-                          enabledBorder: const OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: CleanUpColor.primary,
-                            ),
-                          ),
-                          errorBorder: const OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: CleanUpColor.redMedium,
-                            ),
-                          ),
-                          focusedBorder: const OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: CleanUpColor.blueMedium,
-                            ),
-                          ),
-                        ),
-                        onTapOutside: (event) {
-                          FocusScope.of(context).unfocus();
-                        },
-                        validator: (String? categoryname) {
-                          if (categoryname!.trim().isEmpty) {
-                            return 'Please enter your email here';
-                          } else {
-                            return null;
-                          }
-                        },
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: SizeSpacing().doubleSpacing15),
-                  Submitbutton(
+                  BackButtonGlobal(
                     onPressed: () {
-                      context.goNamed("/home_page");
+                      context.goNamed('/onBoarding_page');
                     },
-                    borderRadius: SizeSpacing().doubleSpacing5,
-                    width: size.width,
-                    widget: Text(
-                      'Sign In',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: CleanUpColor.white,
-                        fontWeight: FontWeight.w600,
-                        fontFamily: GoogleFonts.inter().fontFamily,
-                      ),
-                    ),
-                    buttonColor: CleanUpColor.buttonColor,
                   ),
-                  SizedBox(height: SizeSpacing().doubleSpacing15),
-                  SizedBox(
-                    width: size.width,
-                    child: Center(
-                      child: SizedBox(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              'Don`t have an account?',
-                              style: TextStyle(
-                                color: CleanUpColor.black,
-                                fontWeight: FontWeight.w400,
-                                fontFamily: GoogleFonts.inter().fontFamily,
-                              ),
-                            ),
-                            SizedBox(width: SizeSpacing().doubleSpacing30),
-                            InkWell(
-                              onTap: () {},
-                              child: Text(
-                                'Register Now',
-                                style: TextStyle(
-                                  color: CleanUpColor.black,
-                                  fontWeight: FontWeight.w400,
-                                  fontFamily: GoogleFonts.inter().fontFamily,
-                                  decoration: TextDecoration.underline,
-                                  decorationColor: CleanUpColor.black,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Sign in',
+                        style: TextStyleShared.textStyle.title
+                            .copyWith(fontSize: 20, color: CleanUpColor.white),
                       ),
-                    ),
-                  ),
+                      SizedBox(height: SizeSpacing().doubleSpacing5),
+                      Text(
+                        'Enter Your Email Address & Password to Sign In',
+                        style: TextStyleShared.textStyle.subtitle
+                            .copyWith(fontSize: 12, color: CleanUpColor.white),
+                      ),
+                    ],
+                  )
                 ],
               ),
-            ),
+              Container(
+                margin: EdgeInsets.only(
+                  top: SizeSpacing().doubleSpacing30,
+                  bottom: SizeSpacing().doubleSpacing10,
+                ),
+                width: size.width,
+                child: ValueListenableBuilder<AutovalidateMode>(
+                  valueListenable: _autoValidateModeEmail,
+                  builder: (
+                    context,
+                    valueNotifierAttributeValueEmail,
+                    child,
+                  ) {
+                    return Form(
+                      key: _formKey,
+                      autovalidateMode: valueNotifierAttributeValueEmail,
+                      child: FormFieldWidget(
+                        controller: emailController,
+                        keyboardType: TextInputType.emailAddress,
+                        padding: const EdgeInsets.only(bottom: 15),
+                        title: 'Email',
+                        titleStyleTitle:
+                            TextStyleShared.textStyle.bodyMedium.copyWith(
+                          color: CleanUpColor.white,
+                        ),
+                        hintText: 'me@gmail.com',
+                        hintStyle:
+                            TextStyleShared.textStyle.bodyMedium.copyWith(
+                          color: CleanUpColor.greyMedium,
+                        ),
+                        errorStyle:
+                            TextStyleShared.textStyle.bodyMedium.copyWith(
+                          color: CleanUpColor.redLight,
+                        ),
+                        validator: (String? email) {
+                          if (email == null || email.trim().isEmpty) {
+                            return 'Please enter your email';
+                          }
+                          // Regex for email validation
+                          final emailRegex = RegExp(r'^[^@]+@[^@]+\.[^@]+$');
+                          if (!emailRegex.hasMatch(email)) {
+                            return 'Please enter a valid email address';
+                          }
+                          return null;
+                        },
+                        color: CleanUpColor.searchBarColor,
+                      ),
+                    );
+                  },
+                ),
+              ),
+              SizedBox(
+                width: size.width,
+                child: ValueListenableBuilder<AutovalidateMode>(
+                  valueListenable: _autoValidateModePwd,
+                  builder: (context, valueNotifierAttributeValuePwd, child) {
+                    return Form(
+                      key: _formKey2,
+                      autovalidateMode: valueNotifierAttributeValuePwd,
+                      child: ValueListenableBuilder<bool>(
+                        valueListenable: _isPasswordVisible,
+                        builder: (context, isPasswordVisible, child) {
+                          return FormFieldWidget(
+                            controller: pwdController,
+                            keyboardType: TextInputType.visiblePassword,
+                            obscureText: !isPasswordVisible,
+                            padding: const EdgeInsets.only(bottom: 15),
+                            title: 'Password',
+                            titleStyleTitle:
+                                TextStyleShared.textStyle.bodyMedium.copyWith(
+                              color: CleanUpColor.white,
+                            ),
+                            hintText: 'Enter your password',
+                            hintStyle:
+                                TextStyleShared.textStyle.bodyMedium.copyWith(
+                              color: CleanUpColor.greyMedium,
+                            ),
+                            errorStyle:
+                                TextStyleShared.textStyle.bodyMedium.copyWith(
+                              color: CleanUpColor.redLight,
+                            ),
+                            suffixIcon: GestureDetector(
+                              onTap: () {
+                                _isPasswordVisible.value = !_isPasswordVisible
+                                    .value; // Toggle the state
+                              },
+                              child: Icon(
+                                isPasswordVisible
+                                    ? Icons.visibility_outlined
+                                    : Icons.visibility_off_outlined,
+                                color: CleanUpColor.primary,
+                                size: 18,
+                              ),
+                            ),
+                            validator: (String? pwd) {
+                              if (pwd == null || pwd.trim().isEmpty) {
+                                return 'Please enter your password';
+                              }
+                              if (pwd.length < 6) {
+                                return 'Password must be at least 6 characters long';
+                              }
+                              if (!RegExp(r'[A-Z]').hasMatch(pwd)) {
+                                return 'Password must contain at least one uppercase letter';
+                              }
+                              if (!RegExp(r'[a-z]').hasMatch(pwd)) {
+                                return 'Password must contain at least one lowercase letter';
+                              }
+                              if (!RegExp(r'\d').hasMatch(pwd)) {
+                                return 'Password must contain at least one number';
+                              }
+                              if (!RegExp(r'[!@#$%^&*(),.?":{}|<>]')
+                                  .hasMatch(pwd)) {
+                                return 'Password must contain at least one special character';
+                              }
+                              return null;
+                            },
+                            color: CleanUpColor.searchBarColor,
+                          );
+                        },
+                      ),
+                    );
+                  },
+                ),
+              ),
+            ],
           ),
         ),
-      )),
+      ),
+      bottomNavigationBar: Container(
+        height: 150,
+        padding: EdgeInsets.symmetric(
+          horizontal: SizeSpacing().doubleSpacing20,
+        ),
+        child: Column(
+          children: [
+            Submitbutton(
+              onPressed: () {
+                _autoValidateModeEmail.value = AutovalidateMode.always;
+                _autoValidateModePwd.value = AutovalidateMode.always;
+
+                final form = _formKey.currentState;
+                final form2 = _formKey2.currentState;
+
+                if (form != null &&
+                    form.validate() &&
+                    form2 != null &&
+                    form2.validate()) {
+                  form.save();
+                  context.goNamed("/home_page");
+                }
+              },
+              borderRadius: SizeSpacing().doubleSpacing5,
+              width: size.width,
+              widget: Text(
+                'Sign In',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: CleanUpColor.white,
+                  fontWeight: FontWeight.w600,
+                  fontFamily: GoogleFonts.inter().fontFamily,
+                ),
+              ),
+              buttonColor: CleanUpColor.buttonColor,
+            ),
+            SizedBox(height: SizeSpacing().doubleSpacing20),
+            SizedBox(
+              width: size.width,
+              child: Center(
+                child: SizedBox(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Don`t have an account?',
+                        style: TextStyleShared.textStyle.bodyMedium.copyWith(
+                          color: CleanUpColor.white,
+                        ),
+                      ),
+                      SizedBox(width: SizeSpacing().doubleSpacing30),
+                      InkWell(
+                        onTap: () {},
+                        child: Text(
+                          'Register Now',
+                          style: TextStyleShared.textStyle.bodyMedium.copyWith(
+                            color: CleanUpColor.white,
+                            decoration: TextDecoration.underline,
+                            decorationColor: CleanUpColor.white,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            )
+          ],
+        ),
+      ),
     );
   }
 }
