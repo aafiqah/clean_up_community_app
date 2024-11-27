@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:toasty_box/toast_service.dart';
 
 import '../../constant/index.dart';
 import '../../custom widget/index.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+class SignUpPage extends StatefulWidget {
+  const SignUpPage({super.key});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<SignUpPage> createState() => _SignUpPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _SignUpPageState extends State<SignUpPage> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final GlobalKey<FormState> _formKey2 = GlobalKey<FormState>();
   final TextEditingController emailController = TextEditingController();
@@ -63,13 +64,13 @@ class _LoginPageState extends State<LoginPage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Sign in',
+                        'Sign Up',
                         style: TextStyleShared.textStyle.title
                             .copyWith(fontSize: 20, color: CleanUpColor.white),
                       ),
                       SizedBox(height: SizeSpacing().doubleSpacing5),
                       Text(
-                        'Enter Your Email Address & Password to Sign In',
+                        'Register with Your Email Address & Password to Sign Up',
                         style: TextStyleShared.textStyle.subtitle
                             .copyWith(fontSize: 12, color: CleanUpColor.white),
                       ),
@@ -225,13 +226,17 @@ class _LoginPageState extends State<LoginPage> {
                     form2 != null &&
                     form2.validate()) {
                   form.save();
-                  context.goNamed("/home_page");
+                  context.goNamed("/onBoarding_page");
+                  ToastService.showSuccessToast(
+                    context,
+                    message: 'Link has been sent to your email',
+                  );
                 }
               },
               borderRadius: SizeSpacing().doubleSpacing5,
               width: size.width,
               widget: Text(
-                'Sign In',
+                'Sign Up',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: CleanUpColor.white,
@@ -250,7 +255,7 @@ class _LoginPageState extends State<LoginPage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        'Don`t have an account?',
+                        'Already have an account?',
                         style: TextStyleShared.textStyle.bodyMedium.copyWith(
                           color: CleanUpColor.white,
                         ),
@@ -258,10 +263,10 @@ class _LoginPageState extends State<LoginPage> {
                       SizedBox(width: SizeSpacing().doubleSpacing30),
                       InkWell(
                         onTap: () {
-                          context.goNamed("/sign_up_page");
+                          context.goNamed("/login_page");
                         },
                         child: Text(
-                          'Register Now',
+                          'Login Now',
                           style: TextStyleShared.textStyle.bodyMedium.copyWith(
                             color: CleanUpColor.white,
                             decoration: TextDecoration.underline,

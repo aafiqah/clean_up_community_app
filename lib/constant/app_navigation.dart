@@ -113,6 +113,13 @@ class AppNavigation {
               return const LoginPage();
             },
           ),
+          GoRoute(
+            name: '/sign_up_page',
+            path: '/sign_up_page',
+            builder: (context, state) {
+              return const SignUpPage();
+            },
+          ),
         ],
       ),
     ],
