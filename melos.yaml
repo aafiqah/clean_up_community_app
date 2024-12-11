@@ -13,7 +13,7 @@ scripts:
   get:
     run: melos exec -- flutter pub get
   gen-assets:
-    run: melos exec -- dart run build_runner build
+    run: dart run build_runner build
     description: Generate models
 
 flutter:
