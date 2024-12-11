@@ -29,8 +29,6 @@ class _MenuPageState extends State<MenuPage> {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
-
     return Scaffold(
       backgroundColor: CleanUpColor.primary,
       appBar: AppBarShared(
@@ -56,6 +54,46 @@ class _MenuPageState extends State<MenuPage> {
               ),
             ),
           ),
+          SliverFillRemaining(
+            child: Column(
+              children: [
+                Center(
+                  child: Container(
+                    margin: EdgeInsets.only(
+                      top: SizeSpacing().doubleSpacing30,
+                      bottom: SizeSpacing().doubleSpacing5,
+                    ),
+                    width: 180,
+                    height: 180,
+                    padding: EdgeInsets.all(SizeSpacing().doubleSpacing10),
+                    decoration: BoxDecoration(
+                      color: CleanUpColor.icognitoBg,
+                      borderRadius: BorderRadius.circular(
+                        SizeSpacing().doubleSpacing15,
+                      ),
+                    ),
+                    child: Container(
+                      width: 160,
+                      height: 160,
+                      padding: EdgeInsets.all(SizeSpacing().doubleSpacing15),
+                      decoration: BoxDecoration(
+                        color: CleanUpColor.white,
+                        borderRadius: BorderRadius.circular(
+                          SizeSpacing().doubleSpacing15,
+                        ),
+                        image: const DecorationImage(
+                          image: AssetImage(
+                            CleanUpImages.logoCleanUp,
+                          ),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          )
         ],
       ),
     );
