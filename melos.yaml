@@ -1,0 +1,20 @@
+name: CleanUpMonoRepo
+repository: https://github.com/aafiqah/clean_up_community_app
+packages:
+  - packages/**
+
+scripts:
+  bootstrap: |
+    melos bootstrap
+  analyze: |
+    melos run analyze
+  test: |
+    melos run test
+  get:
+    run: melos exec -- flutter pub get
+  gen-assets:
+    run: melos exec -- dart run build_runner build --delete-conflicting-outputs
+    description: Generate models and image
+
+flutter:
+  sdkPath: /path/to/flutter/sdk
