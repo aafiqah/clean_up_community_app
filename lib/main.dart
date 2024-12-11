@@ -1,5 +1,6 @@
-import 'package:clean_up_community_app/constant/index.dart';
 import 'package:flutter/material.dart';
+
+import 'core/index.dart';
 
 void main() {
   runApp(const MyApp());
