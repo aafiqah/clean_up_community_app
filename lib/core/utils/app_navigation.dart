@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../presentation/screen/index.dart';
+import '../../presentation/index.dart';
 
 class AppNavigation {
   AppNavigation._();
@@ -110,7 +111,10 @@ class AppNavigation {
             name: '/login_page',
             path: '/login_page',
             builder: (context, state) {
-              return const LoginPage();
+              return BlocProvider(
+                create: (context) => OnboardingCubit(),
+                child: const LoginPage(),
+              );
             },
           ),
           GoRoute(

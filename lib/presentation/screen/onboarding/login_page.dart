@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../core/constant/index.dart';
+import '../../cubits/index.dart';
 import '../../widgets/index.dart';
 
 class LoginPage extends StatefulWidget {
@@ -21,7 +23,6 @@ class _LoginPageState extends State<LoginPage> {
       ValueNotifier(AutovalidateMode.disabled);
   final ValueNotifier<AutovalidateMode> _autoValidateModePwd =
       ValueNotifier(AutovalidateMode.disabled);
-  final ValueNotifier<bool> _isPasswordVisible = ValueNotifier<bool>(false);
 
   @override
   void initState() {
@@ -136,13 +137,12 @@ class _LoginPageState extends State<LoginPage> {
                     return Form(
                       key: _formKey2,
                       autovalidateMode: valueNotifierAttributeValuePwd,
-                      child: ValueListenableBuilder<bool>(
-                        valueListenable: _isPasswordVisible,
-                        builder: (context, isPasswordVisible, child) {
+                      child: BlocBuilder<OnboardingCubit, OnboardingState>(
+                        builder: (context, onBoardingState) {
                           return FormFieldWidget(
                             controller: pwdController,
                             keyboardType: TextInputType.visiblePassword,
-                            obscureText: !isPasswordVisible,
+                            obscureText: !onBoardingState.isPasswordVisible,
                             padding: const EdgeInsets.only(bottom: 15),
                             title: 'Password',
                             titleStyleTitle:
@@ -159,12 +159,11 @@ class _LoginPageState extends State<LoginPage> {
                               color: CleanUpColor.redLight,
                             ),
                             suffixIcon: GestureDetector(
-                              onTap: () {
-                                _isPasswordVisible.value = !_isPasswordVisible
-                                    .value; // Toggle the state
-                              },
+                              onTap: () => context
+                                  .read<OnboardingCubit>()
+                                  .togglePasswordVisible(),
                               child: Icon(
-                                isPasswordVisible
+                                onBoardingState.isPasswordVisible
                                     ? Icons.visibility_outlined
                                     : Icons.visibility_off_outlined,
                                 color: CleanUpColor.primary,
