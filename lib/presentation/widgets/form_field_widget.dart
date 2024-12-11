@@ -72,8 +72,9 @@ class FormFieldWidget extends StatelessWidget {
               trailingChild ?? const SizedBox.shrink(),
             ],
           ),
-        Padding(
+        Container(
           padding: padding,
+          margin: const EdgeInsets.only(top: 3),
           child: TextFormField(
             onChanged: onChanged,
             inputFormatters: inputFormatters,
