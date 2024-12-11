@@ -21,6 +21,7 @@ OnboardingState _$OnboardingStateFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$OnboardingState {
   bool get isPasswordVisible => throw _privateConstructorUsedError;
+  bool get switchSignUp => throw _privateConstructorUsedError;
 
   /// Serializes this OnboardingState to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -38,7 +39,7 @@ abstract class $OnboardingStateCopyWith<$Res> {
           OnboardingState value, $Res Function(OnboardingState) then) =
       _$OnboardingStateCopyWithImpl<$Res, OnboardingState>;
   @useResult
-  $Res call({bool isPasswordVisible});
+  $Res call({bool isPasswordVisible, bool switchSignUp});
 }
 
 /// @nodoc
@@ -57,11 +58,16 @@ class _$OnboardingStateCopyWithImpl<$Res, $Val extends OnboardingState>
   @override
   $Res call({
     Object? isPasswordVisible = null,
+    Object? switchSignUp = null,
   }) {
     return _then(_value.copyWith(
       isPasswordVisible: null == isPasswordVisible
           ? _value.isPasswordVisible
           : isPasswordVisible // ignore: cast_nullable_to_non_nullable
+              as bool,
+      switchSignUp: null == switchSignUp
+          ? _value.switchSignUp
+          : switchSignUp // ignore: cast_nullable_to_non_nullable
               as bool,
     ) as $Val);
   }
@@ -75,7 +81,7 @@ abstract class _$$OnboardingStateImplCopyWith<$Res>
       __$$OnboardingStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({bool isPasswordVisible});
+  $Res call({bool isPasswordVisible, bool switchSignUp});
 }
 
 /// @nodoc
@@ -92,11 +98,16 @@ class __$$OnboardingStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? isPasswordVisible = null,
+    Object? switchSignUp = null,
   }) {
     return _then(_$OnboardingStateImpl(
       isPasswordVisible: null == isPasswordVisible
           ? _value.isPasswordVisible
           : isPasswordVisible // ignore: cast_nullable_to_non_nullable
+              as bool,
+      switchSignUp: null == switchSignUp
+          ? _value.switchSignUp
+          : switchSignUp // ignore: cast_nullable_to_non_nullable
               as bool,
     ));
   }
@@ -105,17 +116,20 @@ class __$$OnboardingStateImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$OnboardingStateImpl implements _OnboardingState {
-  _$OnboardingStateImpl({required this.isPasswordVisible});
+  _$OnboardingStateImpl(
+      {required this.isPasswordVisible, required this.switchSignUp});
 
   factory _$OnboardingStateImpl.fromJson(Map<String, dynamic> json) =>
       _$$OnboardingStateImplFromJson(json);
 
   @override
   final bool isPasswordVisible;
+  @override
+  final bool switchSignUp;
 
   @override
   String toString() {
-    return 'OnboardingState(isPasswordVisible: $isPasswordVisible)';
+    return 'OnboardingState(isPasswordVisible: $isPasswordVisible, switchSignUp: $switchSignUp)';
   }
 
   @override
@@ -124,12 +138,14 @@ class _$OnboardingStateImpl implements _OnboardingState {
         (other.runtimeType == runtimeType &&
             other is _$OnboardingStateImpl &&
             (identical(other.isPasswordVisible, isPasswordVisible) ||
-                other.isPasswordVisible == isPasswordVisible));
+                other.isPasswordVisible == isPasswordVisible) &&
+            (identical(other.switchSignUp, switchSignUp) ||
+                other.switchSignUp == switchSignUp));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, isPasswordVisible);
+  int get hashCode => Object.hash(runtimeType, isPasswordVisible, switchSignUp);
 
   /// Create a copy of OnboardingState
   /// with the given fields replaced by the non-null parameter values.
@@ -149,14 +165,17 @@ class _$OnboardingStateImpl implements _OnboardingState {
 }
 
 abstract class _OnboardingState implements OnboardingState {
-  factory _OnboardingState({required final bool isPasswordVisible}) =
-      _$OnboardingStateImpl;
+  factory _OnboardingState(
+      {required final bool isPasswordVisible,
+      required final bool switchSignUp}) = _$OnboardingStateImpl;
 
   factory _OnboardingState.fromJson(Map<String, dynamic> json) =
       _$OnboardingStateImpl.fromJson;
 
   @override
   bool get isPasswordVisible;
+  @override
+  bool get switchSignUp;
 
   /// Create a copy of OnboardingState
   /// with the given fields replaced by the non-null parameter values.

@@ -113,15 +113,8 @@ class AppNavigation {
             builder: (context, state) {
               return BlocProvider(
                 create: (context) => OnboardingCubit(),
-                child: const LoginPage(),
+                child: const LoginSignUpPage(),
               );
-            },
-          ),
-          GoRoute(
-            name: '/sign_up_page',
-            path: '/sign_up_page',
-            builder: (context, state) {
-              return const SignUpPage();
             },
           ),
         ],
