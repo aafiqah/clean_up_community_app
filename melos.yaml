@@ -4,7 +4,7 @@ packages:
   - packages/**
 
 scripts:
-  bootstrap: |
+  bs: |
     melos bootstrap
   analyze: |
     melos run analyze
@@ -13,8 +13,8 @@ scripts:
   get:
     run: melos exec -- flutter pub get
   gen-assets:
-    run: melos exec -- dart run build_runner build --delete-conflicting-outputs
-    description: Generate models and image
+    run: melos exec -- dart run build_runner build
+    description: Generate models
 
 flutter:
   sdkPath: /path/to/flutter/sdk
