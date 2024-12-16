@@ -31,4 +31,16 @@ class CleanUpColor {
   static const Color greyLight = Color(0xFFD3D3D3);
   static const Color greyMedium = Color(0xFF808080);
   static const Color greyDark = Color(0xFF404040);
+
+  static const Color orangeLight = Color(0xFFFFE4B2);
+  static const Color orangeMedium = Color(0xFFFFA500);
+  static const Color orangeDark = Color(0xFFCC8400);
+
+  static const Color purpleLight = Color(0xFFD8BFD8);
+  static const Color purpleMedium = Color(0xFF800080);
+  static const Color purpleDark = Color(0xFF4B0082);
+
+  static const Color yellowLight = Color(0xFFFFFFE0);
+  static const Color yellowMedium = Color(0xFFFFFF00);
+  static const Color yellowDark = Color(0xFFCCCC00);
 }
