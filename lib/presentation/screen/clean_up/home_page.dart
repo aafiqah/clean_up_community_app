@@ -85,7 +85,14 @@ class _HomePageState extends State<HomePage> {
                       child: Padding(
                         padding:
                             EdgeInsets.symmetric(vertical: 20, horizontal: 30),
-                        child: CardPostEvent(),
+                        child: CardPostEvent(
+                          eventName: 'Kempen Membersihkan Pantai',
+                          spotsLeft: 3,
+                          participantsCount: 15,
+                          imagePath: 'assets/images/logoCleanUp.png',
+                          eventDateTime:'30th December 2022, 8.30am - 1.00pm',
+                          eventAddress: 'Pantai Muara | Muara, Serasa, Brunei-Muara',
+                        ),
                       ),
                     ),
                   ],
