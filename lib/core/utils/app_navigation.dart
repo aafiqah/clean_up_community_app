@@ -35,8 +35,11 @@ class AppNavigation {
               name: '/home_page',
               path: '/home_page',
               builder: (context, state) {
-                return HomePage(
-                  key: state.pageKey,
+                return BlocProvider(
+                create: (context) => HomePageCubit(),
+                  child: HomePage(
+                    key: state.pageKey,
+                  ),
                 );
               },
               routes: [

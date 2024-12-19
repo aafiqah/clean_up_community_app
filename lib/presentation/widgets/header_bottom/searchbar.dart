@@ -5,6 +5,8 @@ import 'package:google_fonts/google_fonts.dart';
 class CustomSearchBar extends StatefulWidget {
   const CustomSearchBar({
     super.key,
+    this.onTap,
+    this.iconOnTap,
     this.value,
     this.borderRadius = 0,
     this.fillColor,
@@ -13,6 +15,8 @@ class CustomSearchBar extends StatefulWidget {
     this.hintText,
   });
 
+  final Function()? onTap;
+  final Function()? iconOnTap;
   final ValueChanged<String>? value;
   final double borderRadius;
   final Color? fillColor;
@@ -44,6 +48,7 @@ class _CustomSearchBarState extends State<CustomSearchBar> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      onTap:widget.onTap ,
       textInputAction: TextInputAction.search,
       controller: widget.controller,
       onChanged: (value) {
@@ -79,16 +84,18 @@ class _CustomSearchBarState extends State<CustomSearchBar> {
                     padding: const EdgeInsets.symmetric(horizontal: 15),
                     child: GestureDetector(
                       child: InkWell(
-                        onTap: () {
-                          widget.controller!.clear();
-                          setState(() {});
-                          if (widget.onSubmitted != null) {
-                            widget.onSubmitted?.call('');
-                          }
-                          if (widget.value != null) {
-                            widget.value?.call('');
-                          }
-                        },
+                        onTap:
+                         widget.iconOnTap,
+                        // () {
+                        //   widget.controller!.clear();
+                        //   setState(() {});
+                        //   if (widget.onSubmitted != null) {
+                        //     widget.onSubmitted?.call('');
+                        //   }
+                        //   if (widget.value != null) {
+                        //     widget.value?.call('');
+                        //   }
+                        // },
                         child: const Icon(
                           Icons.close,
                           color: CleanUpColor.greyMedium,
@@ -100,6 +107,7 @@ class _CustomSearchBarState extends State<CustomSearchBar> {
                 : Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 15),
                     child: GestureDetector(
+                      // onTap: widget.iconOnTap,
                       child: const Icon(
                         Icons.search,
                         color: CleanUpColor.greyMedium,
