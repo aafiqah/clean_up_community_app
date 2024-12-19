@@ -24,7 +24,7 @@ class TextStyleVariationBak {
       );
 
   TextStyle get bodyMedium => GoogleFonts.inter().copyWith(
-        fontSize: 14,
+        fontSize: 12,
         fontWeight: FontWeight.w400,
         color: CleanUpColor.black,
       );
