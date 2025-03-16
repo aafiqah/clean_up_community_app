@@ -29,19 +29,21 @@ class CustomSearchBar extends StatefulWidget {
 }
 
 class _CustomSearchBarState extends State<CustomSearchBar> {
+  void _onTextChanged() {
+    if (mounted) {
+      setState(() {});
+    }
+  }
+
   @override
   void initState() {
     super.initState();
-    widget.controller?.addListener(() {
-      setState(() {});
-    });
+    widget.controller?.addListener(_onTextChanged);
   }
 
   @override
   void dispose() {
-    widget.controller?.removeListener(() {
-      setState(() {});
-    });
+    widget.controller?.removeListener(_onTextChanged);
     super.dispose();
   }
 
@@ -80,30 +82,31 @@ class _CustomSearchBarState extends State<CustomSearchBar> {
         ),
         prefixIcon:
             widget.controller != null && widget.controller!.text.isNotEmpty
-                ? Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 15),
-                    child: GestureDetector(
-                      child: InkWell(
-                        onTap:
-                         widget.iconOnTap,
-                        // () {
-                        //   widget.controller!.clear();
-                        //   setState(() {});
-                        //   if (widget.onSubmitted != null) {
-                        //     widget.onSubmitted?.call('');
-                        //   }
-                        //   if (widget.value != null) {
-                        //     widget.value?.call('');
-                        //   }
-                        // },
-                        child: const Icon(
-                          Icons.close,
-                          color: CleanUpColor.greyMedium,
-                          size: 30,
-                        ),
-                      ),
-                    ),
-                  )
+                // ? Padding(
+                //     padding: const EdgeInsets.symmetric(horizontal: 15),
+                //     child: GestureDetector(
+                //       child: InkWell(
+                //         onTap:
+                //          widget.iconOnTap,
+                //         // () {
+                //         //   widget.controller!.clear();
+                //         //   setState(() {});
+                //         //   if (widget.onSubmitted != null) {
+                //         //     widget.onSubmitted?.call('');
+                //         //   }
+                //         //   if (widget.value != null) {
+                //         //     widget.value?.call('');
+                //         //   }
+                //         // },
+                //         child: const Icon(
+                //           Icons.close,
+                //           color: CleanUpColor.greyMedium,
+                //           size: 30,
+                //         ),
+                //       ),
+                //     ),
+                //   )
+                ? null
                 : Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 15),
                     child: GestureDetector(

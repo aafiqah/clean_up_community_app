@@ -85,7 +85,7 @@ class _MainWrapperState extends State<MainWrapper> {
                       borderRadius: BorderRadius.circular(5),
                     ),
                     child: Icon(
-                      Icons.message,
+                      Icons.my_location_rounded,
                       size: 28,
                       color: selectedIndex == 1
                           ? CleanUpColor.white
@@ -111,7 +111,7 @@ class _MainWrapperState extends State<MainWrapper> {
                       borderRadius: BorderRadius.circular(5),
                     ),
                     child: Icon(
-                      Icons.bookmark_outline,
+                      Icons.message,
                       size: 28,
                       color: selectedIndex == 2
                           ? CleanUpColor.white
@@ -137,9 +137,35 @@ class _MainWrapperState extends State<MainWrapper> {
                       borderRadius: BorderRadius.circular(5),
                     ),
                     child: Icon(
-                      Icons.menu,
+                      Icons.bookmark_outline,
                       size: 28,
                       color: selectedIndex == 3
+                          ? CleanUpColor.white
+                          : CleanUpColor.buttonColor,
+                    ),
+                  ),
+                ),
+                GestureDetector(
+                  onTap: () => goToBranch(4),
+                  child: Container(
+                    height: 55,
+                    width: 55,
+                    decoration: BoxDecoration(
+                      color: selectedIndex == 4
+                          ? CleanUpColor.buttonColor
+                          : CleanUpColor.white,
+                      border: Border.all(
+                        strokeAlign: 0.5,
+                        color: selectedIndex == 4
+                            ? CleanUpColor.buttonColor
+                            : CleanUpColor.greyMedium,
+                      ),
+                      borderRadius: BorderRadius.circular(5),
+                    ),
+                    child: Icon(
+                      Icons.menu,
+                      size: 28,
+                      color: selectedIndex == 4
                           ? CleanUpColor.white
                           : CleanUpColor.buttonColor,
                     ),
