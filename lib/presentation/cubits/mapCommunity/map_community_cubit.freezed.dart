@@ -24,6 +24,7 @@ mixin _$MapCommunityState {
   double get longitude => throw _privateConstructorUsedError;
   bool get isSearchPage => throw _privateConstructorUsedError;
   bool get isFilterPage => throw _privateConstructorUsedError;
+  bool get hasPermission => throw _privateConstructorUsedError;
 
   /// Serializes this MapCommunityState to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -45,7 +46,8 @@ abstract class $MapCommunityStateCopyWith<$Res> {
       {double latitude,
       double longitude,
       bool isSearchPage,
-      bool isFilterPage});
+      bool isFilterPage,
+      bool hasPermission});
 }
 
 /// @nodoc
@@ -67,6 +69,7 @@ class _$MapCommunityStateCopyWithImpl<$Res, $Val extends MapCommunityState>
     Object? longitude = null,
     Object? isSearchPage = null,
     Object? isFilterPage = null,
+    Object? hasPermission = null,
   }) {
     return _then(_value.copyWith(
       latitude: null == latitude
@@ -85,6 +88,10 @@ class _$MapCommunityStateCopyWithImpl<$Res, $Val extends MapCommunityState>
           ? _value.isFilterPage
           : isFilterPage // ignore: cast_nullable_to_non_nullable
               as bool,
+      hasPermission: null == hasPermission
+          ? _value.hasPermission
+          : hasPermission // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -101,7 +108,8 @@ abstract class _$$MapCommunityStateImplCopyWith<$Res>
       {double latitude,
       double longitude,
       bool isSearchPage,
-      bool isFilterPage});
+      bool isFilterPage,
+      bool hasPermission});
 }
 
 /// @nodoc
@@ -121,6 +129,7 @@ class __$$MapCommunityStateImplCopyWithImpl<$Res>
     Object? longitude = null,
     Object? isSearchPage = null,
     Object? isFilterPage = null,
+    Object? hasPermission = null,
   }) {
     return _then(_$MapCommunityStateImpl(
       latitude: null == latitude
@@ -139,6 +148,10 @@ class __$$MapCommunityStateImplCopyWithImpl<$Res>
           ? _value.isFilterPage
           : isFilterPage // ignore: cast_nullable_to_non_nullable
               as bool,
+      hasPermission: null == hasPermission
+          ? _value.hasPermission
+          : hasPermission // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -150,7 +163,8 @@ class _$MapCommunityStateImpl implements _MapCommunityState {
       {required this.latitude,
       required this.longitude,
       required this.isSearchPage,
-      required this.isFilterPage});
+      required this.isFilterPage,
+      required this.hasPermission});
 
   factory _$MapCommunityStateImpl.fromJson(Map<String, dynamic> json) =>
       _$$MapCommunityStateImplFromJson(json);
@@ -163,10 +177,12 @@ class _$MapCommunityStateImpl implements _MapCommunityState {
   final bool isSearchPage;
   @override
   final bool isFilterPage;
+  @override
+  final bool hasPermission;
 
   @override
   String toString() {
-    return 'MapCommunityState(latitude: $latitude, longitude: $longitude, isSearchPage: $isSearchPage, isFilterPage: $isFilterPage)';
+    return 'MapCommunityState(latitude: $latitude, longitude: $longitude, isSearchPage: $isSearchPage, isFilterPage: $isFilterPage, hasPermission: $hasPermission)';
   }
 
   @override
@@ -181,13 +197,15 @@ class _$MapCommunityStateImpl implements _MapCommunityState {
             (identical(other.isSearchPage, isSearchPage) ||
                 other.isSearchPage == isSearchPage) &&
             (identical(other.isFilterPage, isFilterPage) ||
-                other.isFilterPage == isFilterPage));
+                other.isFilterPage == isFilterPage) &&
+            (identical(other.hasPermission, hasPermission) ||
+                other.hasPermission == hasPermission));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, latitude, longitude, isSearchPage, isFilterPage);
+  int get hashCode => Object.hash(runtimeType, latitude, longitude,
+      isSearchPage, isFilterPage, hasPermission);
 
   /// Create a copy of MapCommunityState
   /// with the given fields replaced by the non-null parameter values.
@@ -211,7 +229,8 @@ abstract class _MapCommunityState implements MapCommunityState {
       {required final double latitude,
       required final double longitude,
       required final bool isSearchPage,
-      required final bool isFilterPage}) = _$MapCommunityStateImpl;
+      required final bool isFilterPage,
+      required final bool hasPermission}) = _$MapCommunityStateImpl;
 
   factory _MapCommunityState.fromJson(Map<String, dynamic> json) =
       _$MapCommunityStateImpl.fromJson;
@@ -224,6 +243,8 @@ abstract class _MapCommunityState implements MapCommunityState {
   bool get isSearchPage;
   @override
   bool get isFilterPage;
+  @override
+  bool get hasPermission;
 
   /// Create a copy of MapCommunityState
   /// with the given fields replaced by the non-null parameter values.

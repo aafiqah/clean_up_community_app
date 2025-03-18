@@ -12,6 +12,10 @@ class MapCommunityCubit extends Cubit<MapCommunityState> {
     emit(state.copyWith(latitude: latitude, longitude: longitude));
   }
 
+  void hasPermissionGps(bool hasPermission) {
+    emit(state.copyWith(hasPermission: hasPermission));
+  }
+
   void changeSearchPage(bool isSearchPage) {
     emit(state.copyWith(isSearchPage: isSearchPage));
   }

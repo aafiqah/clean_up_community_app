@@ -49,7 +49,8 @@ class OnboardingPage extends StatelessWidget {
                 children: [
                   Submitbutton(
                     onPressed: () {
-                      context.goNamed("/home_page");
+                      // context.goNamed("/home_page");
+                      context.goNamed("/location_permission_page");
                     },
                     width: size.width,
                     widget: Text(

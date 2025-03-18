@@ -24,6 +24,37 @@ class AppNavigation {
     navigatorKey: _rootNavigatorKey,
     debugLogDiagnostics: true,
     routes: <RouteBase>[
+      GoRoute(
+        name: '/onBoarding_page',
+        path: '/onBoarding_page',
+        builder: (context, state) {
+          return const OnboardingPage();
+        },
+        routes: [
+          // SUB HOME
+          GoRoute(
+            name: '/login_page',
+            path: '/login_page',
+            builder: (context, state) {
+              return BlocProvider(
+                create: (context) => OnboardingCubit(),
+                child: const LoginSignUpPage(),
+              );
+            },
+          ),
+          // CHECK ALL PERMISSION (MAP/CONTACTS/GALLERY)
+          GoRoute(
+            name: '/location_permission_page',
+            path: '/location_permission_page',
+            builder: (context, state) {
+              return BlocProvider(
+                create: (context) => MapCommunityCubit(),
+                child: const LoadingPermissionPage(),
+              );
+            },
+          ),
+        ],
+      ),
       StatefulShellRoute.indexedStack(
         builder: (context, state, navigationShell) {
           return MainWrapper(
@@ -38,7 +69,7 @@ class AppNavigation {
               path: '/home_page',
               builder: (context, state) {
                 return BlocProvider(
-                  create: (context) => HomePageCubit(),
+                      create: (context) => HomePageCubit(),
                   child: HomePage(
                     key: state.pageKey,
                   ),
@@ -63,11 +94,8 @@ class AppNavigation {
               name: '/map_page',
               path: '/map_page',
               builder: (context, state) {
-                return BlocProvider(
-                  create: (context) => MapCommunityCubit(),
-                  child: MapEventPage(
-                    key: state.pageKey,
-                  ),
+                return MapEventPage(
+                  key: state.pageKey,
                 );
               },
               routes: const [],
@@ -118,26 +146,6 @@ class AppNavigation {
               ],
             ),
           ])
-        ],
-      ),
-      GoRoute(
-        name: '/onBoarding_page',
-        path: '/onBoarding_page',
-        builder: (context, state) {
-          return const OnboardingPage();
-        },
-        routes: [
-          // SUB HOME
-          GoRoute(
-            name: '/login_page',
-            path: '/login_page',
-            builder: (context, state) {
-              return BlocProvider(
-                create: (context) => OnboardingCubit(),
-                child: const LoginSignUpPage(),
-              );
-            },
-          ),
         ],
       ),
     ],
