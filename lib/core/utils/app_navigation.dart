@@ -10,6 +10,8 @@ class AppNavigation {
   static final _rootNavigatorKey = GlobalKey<NavigatorState>();
   static final _rootNavigatorHome =
       GlobalKey<NavigatorState>(debugLabel: 'shellHome');
+  static final _rootNavigatorMap =
+      GlobalKey<NavigatorState>(debugLabel: 'shellMap');
   static final _rootNavigatorChat =
       GlobalKey<NavigatorState>(debugLabel: 'shellChat');
   static final _rootNavigatorSaved =
@@ -36,7 +38,7 @@ class AppNavigation {
               path: '/home_page',
               builder: (context, state) {
                 return BlocProvider(
-                create: (context) => HomePageCubit(),
+                  create: (context) => HomePageCubit(),
                   child: HomePage(
                     key: state.pageKey,
                   ),
@@ -53,6 +55,22 @@ class AppNavigation {
                   },
                 ),
               ],
+            ),
+          ]),
+          // MAP
+          StatefulShellBranch(navigatorKey: _rootNavigatorMap, routes: [
+            GoRoute(
+              name: '/map_page',
+              path: '/map_page',
+              builder: (context, state) {
+                return BlocProvider(
+                  create: (context) => MapCommunityCubit(),
+                  child: MapEventPage(
+                    key: state.pageKey,
+                  ),
+                );
+              },
+              routes: const [],
             ),
           ]),
           // CHAT
