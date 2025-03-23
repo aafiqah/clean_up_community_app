@@ -24,6 +24,26 @@ class AppNavigation {
     navigatorKey: _rootNavigatorKey,
     debugLogDiagnostics: true,
     routes: <RouteBase>[
+      GoRoute(
+        name: '/onBoarding_page',
+        path: '/onBoarding_page',
+        builder: (context, state) {
+          return const OnBoardingPage();
+        },
+        routes: [
+          // SUB HOME
+          GoRoute(
+            name: '/login_page',
+            path: '/login_page',
+            builder: (context, state) {
+              return BlocProvider(
+                create: (context) => OnboardingCubit(),
+                child: const LoginSignUpPage(),
+              );
+            },
+          ),
+        ],
+      ),
       StatefulShellRoute.indexedStack(
         builder: (context, state, navigationShell) {
           return MainWrapper(
@@ -118,26 +138,6 @@ class AppNavigation {
               ],
             ),
           ])
-        ],
-      ),
-      GoRoute(
-        name: '/onBoarding_page',
-        path: '/onBoarding_page',
-        builder: (context, state) {
-          return const OnboardingPage();
-        },
-        routes: [
-          // SUB HOME
-          GoRoute(
-            name: '/login_page',
-            path: '/login_page',
-            builder: (context, state) {
-              return BlocProvider(
-                create: (context) => OnboardingCubit(),
-                child: const LoginSignUpPage(),
-              );
-            },
-          ),
         ],
       ),
     ],

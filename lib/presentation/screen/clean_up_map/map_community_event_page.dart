@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:clean_up_community_app/core/constant/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -19,98 +17,138 @@ class MapEventPage extends StatefulWidget {
 
 class _MapEventPageState extends State<MapEventPage> {
   final TextEditingController _searchController = TextEditingController();
-  final MapController _mapController = MapController();
+  MapController? mapController;
+  List<Marker> markers = [];
 
   @override
   void initState() {
     super.initState();
+    mapController = MapController();
     _getCurrentLocation();
   }
 
   @override
   void dispose() {
     _searchController.dispose();
-    _mapController.dispose();
+    mapController?.dispose();
     super.dispose();
   }
 
-  // Get current location
   Future<Position?> _getCurrentLocation() async {
+    final cubit = context.read<MapCommunityCubit>();
     try {
-      final cubit = context.read<MapCommunityCubit>();
       bool hasPermission = await _checkLocationPermission();
       if (!hasPermission) {
-        _mapController.move(LatLng(cubit.state.latitude, cubit.state.longitude), 14);
+        cubit.hasLocationPermission(false);
+        mapController?.move(
+            LatLng(cubit.state.latitude, cubit.state.longitude), 14);
+        return null;
       }
 
-      final isGpsEnabled = await Geolocator.isLocationServiceEnabled();
-      if (!isGpsEnabled) return null;
+      bool isGpsEnabled = await Geolocator.isLocationServiceEnabled();
+      if (!isGpsEnabled) {
+        await _showEnableLocationDialog();
+      }
 
-      Position position = await Geolocator.getCurrentPosition(
+      if (hasPermission && isGpsEnabled) {
+        Position position = await Geolocator.getCurrentPosition(
+            locationSettings:
+                const LocationSettings(accuracy: LocationAccuracy.high));
+        cubit.setCurrentLocation(position.latitude, position.longitude);
+        cubit.hasLocationPermission(true);
+        mapController?.move(LatLng(position.latitude, position.longitude), 14);
+      }
+
+      return await Geolocator.getCurrentPosition(
           locationSettings:
               const LocationSettings(accuracy: LocationAccuracy.high));
-
-      if (mounted) {
-        cubit.setCurrentLocation(position.latitude, position.longitude);
-        _mapController.move(LatLng(cubit.state.latitude, cubit.state.longitude), 14);
-      }
-
-      return position;
     } catch (e) {
-      log('Error getting current location: $e');
       return null;
     }
   }
 
-  // Request location permission
   Future<bool> _checkLocationPermission() async {
+    final cubit = context.read<MapCommunityCubit>();
     LocationPermission permission = await Geolocator.checkPermission();
 
     if (permission == LocationPermission.denied) {
       permission = await Geolocator.requestPermission();
+
+      if (cubit.state.latitude == 0 && cubit.state.longitude == 0) {
+        cubit.setCurrentLocation(3.1319197, 101.6840589);
+      }
     }
 
     if (permission == LocationPermission.deniedForever) {
-      if (!mounted) return false;
-
-      context.read<MapCommunityCubit>().setCurrentLocation(3.1319197, 101.6840589);
-
-      await showDialog(
-        context: context,
-        builder: (context) => AlertDialog(
-          title: const Text('Location Permission Required'),
-          content: const Text(
-              'Please grant location permission to use this feature.'),
-          actions: [
-            TextButton(
-              onPressed: () async {
-                bool opened = await openAppSettings();
-
-                if (!context.mounted) return;
-
-                if (!opened) {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('Failed to open settings.')),
-                  );
-                }
-
-                Navigator.of(context).pop();
-              },
-              child: const Text('Enable Location Permission'),
-            ),
-          ],
-        ),
-      );
+      await _showLocationPermissionDialog();
     }
 
     return permission == LocationPermission.whileInUse ||
         permission == LocationPermission.always;
   }
 
+  Future<void> _showEnableLocationDialog() async {
+    if (!mounted) return;
+    await showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (dialogContext) => AlertDialog(
+        title: const Text('Enable Location'),
+        content: const Text(
+          "You need to allow access to location in order to use Pcari.\nPlease enable location and try again.",
+        ),
+        actions: [
+          TextButton(
+            onPressed: () {
+              if (Navigator.canPop(dialogContext)) {
+                Navigator.pop(dialogContext);
+                _getCurrentLocation();
+              }
+            },
+            child: const Text('Try Again'),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Future<void> _showLocationPermissionDialog() async {
+    if (!mounted) return;
+
+    await showDialog(
+      context: context,
+      builder: (dialogContext) => AlertDialog(
+        title: const Text('Location Permission Required'),
+        content: const Text(
+          'Please grant location permission to use this feature in app settings.',
+        ),
+        actions: [
+          TextButton(
+            onPressed: () {
+              if (Navigator.canPop(dialogContext)) {
+                Navigator.pop(dialogContext);
+              }
+              context
+                  .read<MapCommunityCubit>()
+                  .setCurrentLocation(3.1319197, 101.6840589);
+            },
+            child: const Text('Close'),
+          ),
+          TextButton(
+            onPressed: () {
+              openAppSettings();
+            },
+            child: const Text('Settings'),
+          ),
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    
+
     return BlocBuilder<MapCommunityCubit, MapCommunityState>(
       builder: (context, mapCommunityState) {
         return Scaffold(
@@ -124,7 +162,8 @@ class _MapEventPageState extends State<MapEventPage> {
                 padding: const EdgeInsets.symmetric(horizontal: 10),
                 child: GestureDetector(
                   onTap: () {
-                    if(context.read<MapCommunityCubit>().state.isFilterPage == true) {
+                    if (context.read<MapCommunityCubit>().state.isFilterPage ==
+                        true) {
                       context.read<MapCommunityCubit>().changeFilterPage(false);
                     }
 
@@ -138,7 +177,8 @@ class _MapEventPageState extends State<MapEventPage> {
                 padding: const EdgeInsets.symmetric(horizontal: 10),
                 child: GestureDetector(
                   onTap: () {
-                    if(context.read<MapCommunityCubit>().state.isSearchPage==true) {
+                    if (context.read<MapCommunityCubit>().state.isSearchPage ==
+                        true) {
                       context.read<MapCommunityCubit>().changeSearchPage(false);
                     }
 
@@ -155,24 +195,61 @@ class _MapEventPageState extends State<MapEventPage> {
           body: Stack(
             children: [
               FlutterMap(
-                mapController: _mapController,
+                mapController: mapController,
                 options: MapOptions(
-                  initialCenter: LatLng(mapCommunityState.latitude,mapCommunityState.longitude),
+                  initialCenter: LatLng(
+                      mapCommunityState.latitude, mapCommunityState.longitude),
                   initialZoom: 10,
+                  // onTap: (tapPosition, latLng) {
+                  //   setState(() {
+                  //     markers = List.from(markers)
+                  //       ..add(
+                  //         Marker(
+                  //           width: 50,
+                  //           height: 50,
+                  //           point: latLng,
+                  //           child: const Icon(
+                  //             Icons.location_pin,
+                  //             color: Colors.red,
+                  //             size: 50,
+                  //           ),
+                  //         ),
+                  //       );
+                  //   });
+                  // },
                 ),
                 children: [
                   TileLayer(
-                    urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-                    subdomains: const ['a', 'b', 'c'],
+                    urlTemplate:
+                        'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
                     userAgentPackageName: 'com.example.app',
                   ),
-                  if (LatLng(mapCommunityState.latitude,mapCommunityState.longitude) != const LatLng(0,0))
+                  // MarkerLayer(
+                  //   markers: [
+                  //     Marker(
+                  //       width: 50,
+                  //       height: 50,
+                  //       point: LatLng(mapCommunityState.latitude,
+                  //           mapCommunityState.longitude),
+                  //       child: const Icon(
+                  //         Icons.location_pin,
+                  //         color: CleanUpColor.primary,
+                  //         size: 50,
+                  //       ),
+                  //     ),
+                  //     ...markers, // Ensures dynamically added markers are shown
+                  //   ],
+                  // ),
+                  if (LatLng(mapCommunityState.latitude,
+                          mapCommunityState.longitude) !=
+                      const LatLng(0, 0))
                     MarkerLayer(
                       markers: [
                         Marker(
                           width: 50,
                           height: 50,
-                          point: LatLng(mapCommunityState.latitude,mapCommunityState.longitude),
+                          point: LatLng(mapCommunityState.latitude,
+                              mapCommunityState.longitude),
                           child: const Icon(
                             Icons.location_pin,
                             color: CleanUpColor.primary,
@@ -188,9 +265,7 @@ class _MapEventPageState extends State<MapEventPage> {
                 right: 20,
                 child: GestureDetector(
                   onTap: () {
-                    _mapController.move(
-                      LatLng(mapCommunityState.latitude, mapCommunityState.longitude), 14
-                    );
+                    _getCurrentLocation();
                   },
                   child: Container(
                     width: 50,
@@ -227,9 +302,9 @@ class _MapEventPageState extends State<MapEventPage> {
                     FloatingActionButton(
                       heroTag: 'zoomIn',
                       onPressed: () {
-                        _mapController.move(
-                          _mapController.camera.center,
-                          _mapController.camera.zoom + 1,
+                        mapController?.move(
+                          mapController!.camera.center,
+                          mapController!.camera.zoom + 1,
                         );
                       },
                       backgroundColor: CleanUpColor.primary,
@@ -240,9 +315,9 @@ class _MapEventPageState extends State<MapEventPage> {
                     FloatingActionButton(
                       heroTag: 'zoomOut',
                       onPressed: () {
-                        _mapController.move(
-                          _mapController.camera.center,
-                          _mapController.camera.zoom - 1,
+                        mapController?.move(
+                          mapController!.camera.center,
+                          mapController!.camera.zoom - 1,
                         );
                       },
                       backgroundColor: CleanUpColor.primary,
@@ -253,21 +328,23 @@ class _MapEventPageState extends State<MapEventPage> {
                   ],
                 ),
               ),
-              if(mapCommunityState.isSearchPage == true)
+              if (mapCommunityState.isSearchPage == true)
                 Container(
                   width: size.width,
                   height: size.height,
                   decoration: const BoxDecoration(
                     color: CleanUpColor.white,
                   ),
-                  child:  Padding(
+                  child: Padding(
                     padding: const EdgeInsets.all(15),
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         GestureDetector(
                           onTap: () {
-                            context.read<MapCommunityCubit>().changeSearchPage(false);
+                            context
+                                .read<MapCommunityCubit>()
+                                .changeSearchPage(false);
                             _searchController.clear();
                           },
                           child: Container(
@@ -289,9 +366,11 @@ class _MapEventPageState extends State<MapEventPage> {
                             ),
                           ),
                         ),
-                        const SizedBox(width: 10,),
+                        const SizedBox(
+                          width: 10,
+                        ),
                         Expanded(
-                          child:  CustomSearchBar(
+                          child: CustomSearchBar(
                             borderRadius: 10,
                             controller: _searchController,
                           ),
@@ -300,17 +379,15 @@ class _MapEventPageState extends State<MapEventPage> {
                     ),
                   ),
                 ),
-              if(mapCommunityState.isFilterPage == true)
+              if (mapCommunityState.isFilterPage == true)
                 Container(
                   width: size.width,
                   height: size.height,
                   decoration: const BoxDecoration(
                     color: CleanUpColor.white,
                   ),
-                  child:  const Padding(
-                    padding: EdgeInsets.all(15),
-                    child: Text('data')
-                  ),
+                  child: const Padding(
+                      padding: EdgeInsets.all(15), child: Text('data')),
                 ),
             ],
           ),

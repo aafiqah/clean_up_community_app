@@ -19,7 +19,6 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void initState() {
-    _searchController.addListener(() {});
     super.initState();
   }
 
@@ -97,14 +96,16 @@ class _HomePageState extends State<HomePage> {
                               children: [
                                 ListView.builder(
                                   shrinkWrap: true,
-                                  physics: const NeverScrollableScrollPhysics(),
+                                  physics:
+                                      const NeverScrollableScrollPhysics(),
                                   itemCount: 5,
                                   itemBuilder: (context, index) {
                                     return const Padding(
                                       padding: EdgeInsets.symmetric(
                                           vertical: 10, horizontal: 30),
                                       child: CardPostEvent(
-                                        eventName: 'Kempen Membersihkan Pantai',
+                                        eventName:
+                                            'Kempen Membersihkan Pantai',
                                         spotsLeft: 3,
                                         participantsCount: 15,
                                         imagePath:
