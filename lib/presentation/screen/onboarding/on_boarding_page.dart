@@ -4,9 +4,20 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../../../core/constant/index.dart';
 import '../../widgets/button/index.dart';
+import '../../widgets/index.dart';
 
-class OnboardingPage extends StatelessWidget {
-  const OnboardingPage({super.key});
+class OnBoardingPage extends StatefulWidget {
+  const OnBoardingPage({super.key});
+
+  @override
+  State<OnBoardingPage> createState() => _OnBoardingPageState();
+}
+
+class _OnBoardingPageState extends State<OnBoardingPage> {
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -14,9 +25,11 @@ class OnboardingPage extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: CleanUpColor.primary,
-      body: Padding(
-        padding: const EdgeInsets.only(top: 80),
+      body: SizedBox(
+        height: size.height,
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
           children: [
             const Row(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -50,6 +63,7 @@ class OnboardingPage extends StatelessWidget {
                   Submitbutton(
                     onPressed: () {
                       context.goNamed("/home_page");
+                      // context.goNamed("/location_permission_page");
                     },
                     width: size.width,
                     widget: Text(
@@ -63,7 +77,6 @@ class OnboardingPage extends StatelessWidget {
                     ),
                     buttonColor: CleanUpColor.white,
                     borderRadius: SizeSpacing().doubleSpacing20,
-                    
                   ),
                   SizedBox(height: SizeSpacing().doubleSpacing20),
                   Submitbutton(
@@ -82,7 +95,6 @@ class OnboardingPage extends StatelessWidget {
                     ),
                     buttonColor: CleanUpColor.buttonColor,
                     borderRadius: SizeSpacing().doubleSpacing20,
-                    
                   ),
                 ],
               ),
