@@ -13,7 +13,8 @@ _$MapCommunityStateImpl _$$MapCommunityStateImplFromJson(
       longitude: (json['longitude'] as num).toDouble(),
       isSearchPage: json['isSearchPage'] as bool,
       isFilterPage: json['isFilterPage'] as bool,
-      hasPermission: json['hasPermission'] as bool,
+      hasLocationPermission: json['hasLocationPermission'] as bool,
+      hasGpsPermission: json['hasGpsPermission'] as bool,
     );
 
 Map<String, dynamic> _$$MapCommunityStateImplToJson(
@@ -23,5 +24,6 @@ Map<String, dynamic> _$$MapCommunityStateImplToJson(
       'longitude': instance.longitude,
       'isSearchPage': instance.isSearchPage,
       'isFilterPage': instance.isFilterPage,
-      'hasPermission': instance.hasPermission,
+      'hasLocationPermission': instance.hasLocationPermission,
+      'hasGpsPermission': instance.hasGpsPermission,
     };

@@ -7,7 +7,8 @@ class MapCommunityState with _$MapCommunityState {
     required double longitude,
     required bool isSearchPage,
     required bool isFilterPage,
-    required bool hasPermission,
+    required bool hasLocationPermission,
+    required bool hasGpsPermission,
   }) = _MapCommunityState;
 
   factory MapCommunityState.initial() => MapCommunityState(
@@ -15,7 +16,8 @@ class MapCommunityState with _$MapCommunityState {
         longitude: 0.0,
         isSearchPage: false,
         isFilterPage: false,
-        hasPermission: false,
+        hasLocationPermission: false,
+        hasGpsPermission: false,
       );
 
   factory MapCommunityState.fromJson(Map<String, dynamic> json) =>

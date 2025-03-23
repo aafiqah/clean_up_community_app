@@ -28,7 +28,7 @@ class AppNavigation {
         name: '/onBoarding_page',
         path: '/onBoarding_page',
         builder: (context, state) {
-          return const OnboardingPage();
+          return const OnBoardingPage();
         },
         routes: [
           // SUB HOME
@@ -39,17 +39,6 @@ class AppNavigation {
               return BlocProvider(
                 create: (context) => OnboardingCubit(),
                 child: const LoginSignUpPage(),
-              );
-            },
-          ),
-          // CHECK ALL PERMISSION (MAP/CONTACTS/GALLERY)
-          GoRoute(
-            name: '/location_permission_page',
-            path: '/location_permission_page',
-            builder: (context, state) {
-              return BlocProvider(
-                create: (context) => MapCommunityCubit(),
-                child: const LoadingPermissionPage(),
               );
             },
           ),
@@ -69,7 +58,7 @@ class AppNavigation {
               path: '/home_page',
               builder: (context, state) {
                 return BlocProvider(
-                      create: (context) => HomePageCubit(),
+                  create: (context) => HomePageCubit(),
                   child: HomePage(
                     key: state.pageKey,
                   ),
@@ -94,8 +83,11 @@ class AppNavigation {
               name: '/map_page',
               path: '/map_page',
               builder: (context, state) {
-                return MapEventPage(
-                  key: state.pageKey,
+                return BlocProvider(
+                  create: (context) => MapCommunityCubit(),
+                  child: MapEventPage(
+                    key: state.pageKey,
+                  ),
                 );
               },
               routes: const [],
