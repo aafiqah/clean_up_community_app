@@ -34,10 +34,11 @@ class CardPostEvent extends StatelessWidget {
       elevation: 4,
       color: CleanUpColor.white,
       child: Container(
-        height: MediaQuery.sizeOf(context).height / 2.7,
+        height: 330,
         padding: const EdgeInsets.all(15),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
+          spacing: 10,
           children: [
             Container(
               height: MediaQuery.sizeOf(context).height / 6,
@@ -53,21 +54,23 @@ class CardPostEvent extends StatelessWidget {
                 borderRadius: BorderRadius.circular(10),
               ),
             ),
-            const SizedBox(height: 10),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
+                spacing: 5,
                 children: [
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    spacing: 5,
                     children: [
                       Text(
                         eventName,
                         style: TextStyleShared.textStyle.subtitle,
                       ),
-                      const Spacer(),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.end,
+                        mainAxisSize: MainAxisSize.min,
                         children: [
                           SizedBox(
                             height: 20,
@@ -84,7 +87,6 @@ class CardPostEvent extends StatelessWidget {
                                     offset: Offset(index * 8, 0),
                                     child: Container(
                                       height: 20,
-                                      width: 20,
                                       decoration: BoxDecoration(
                                         shape: BoxShape.circle,
                                         color: CleanUpColor.greyLight,
@@ -108,7 +110,6 @@ class CardPostEvent extends StatelessWidget {
                                   offset: Offset(index * 8, 0),
                                   child: Container(
                                     height: 20,
-                                    width: 20,
                                     decoration: BoxDecoration(
                                       shape: BoxShape.circle,
                                       border: Border.all(
@@ -126,7 +127,6 @@ class CardPostEvent extends StatelessWidget {
                               },
                             ),
                           ),
-                          const SizedBox(height: 5),
                           Text(
                             '$spotsLeft spots left',
                             style:
@@ -139,13 +139,12 @@ class CardPostEvent extends StatelessWidget {
                       ),
                     ],
                   ),
-                  const SizedBox(height: 5),
                   Row(
+                    spacing: 10,
                     children: [
                       const Image(
                         image: AssetImage(CleanUpImages.calendar),
                       ),
-                      const SizedBox(width: 10),
                       Expanded(
                         child: Text(
                           eventDateTime,
@@ -156,13 +155,12 @@ class CardPostEvent extends StatelessWidget {
                       ),
                     ],
                   ),
-                  const SizedBox(height: 5),
                   Row(
+                    spacing: 10,
                     children: [
                       const Image(
                         image: AssetImage(CleanUpImages.map),
                       ),
-                      const SizedBox(width: 10),
                       Expanded(
                         child: Text(
                           eventAddress,
@@ -173,7 +171,6 @@ class CardPostEvent extends StatelessWidget {
                       ),
                     ],
                   ),
-                  const Spacer(),
                   Container(
                     decoration: BoxDecoration(
                       color: CleanUpColor.buttonColor,
