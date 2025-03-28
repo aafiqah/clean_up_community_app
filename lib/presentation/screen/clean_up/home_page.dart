@@ -37,21 +37,21 @@ class _HomePageState extends State<HomePage> {
         stringTitle: 'CleanUp Community',
         titleColor: CleanUpColor.white,
         backgroundColor: CleanUpColor.primary,
-        actions: <Widget>[
-          Padding(
-            padding: EdgeInsets.only(right: SizeSpacing().doubleSpacing10),
-            child: InkWell(
-              onTap: () {
-                context.goNamed("/onBoarding_page");
-              },
-              child: Icon(
-                Icons.exit_to_app,
-                size: SizeSpacing().doubleSpacing30,
-                color: CleanUpColor.white,
-              ),
-            ),
-          ),
-        ],
+        // actions: <Widget>[
+        //   Padding(
+        //     padding: EdgeInsets.only(right: SizeSpacing().doubleSpacing10),
+        //     child: InkWell(
+        //       onTap: () {
+        //         context.goNamed("/onBoarding_page");
+        //       },
+        //       child: Icon(
+        //         Icons.exit_to_app,
+        //         size: SizeSpacing().doubleSpacing30,
+        //         color: CleanUpColor.white,
+        //       ),
+        //     ),
+        //   ),
+        // ],
       ),
       body: BlocBuilder<HomePageCubit, HomePageState>(
         builder: (context, homePageState) {
