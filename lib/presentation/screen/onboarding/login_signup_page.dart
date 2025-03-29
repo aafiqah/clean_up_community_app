@@ -62,25 +62,32 @@ class _LoginSignUpPageState extends State<LoginSignUpPage> {
                           context.goNamed('/onBoarding_page');
                         },
                       ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            onBoardingState.switchSignUp
-                                ? 'Sign Up'
-                                : 'Sign In',
-                            style: TextStyleShared.textStyle.title.copyWith(
-                                fontSize: 20, color: CleanUpColor.white),
-                          ),
-                          SizedBox(height: SizeSpacing().doubleSpacing5),
-                          Text(
-                            onBoardingState.switchSignUp
-                                ? 'Register with Your Email Address & Password to Sign Up'
-                                : 'Enter Your Email Address & Password to Sign In',
-                            style: TextStyleShared.textStyle.subtitle.copyWith(
-                                fontSize: 12, color: CleanUpColor.white),
-                          ),
-                        ],
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          spacing: SizeSpacing().doubleSpacing5,
+                          children: [
+                            Text(
+                              onBoardingState.switchSignUp
+                                  ? 'Sign Up'
+                                  : 'Sign In',
+                              style: TextStyleShared.textStyle.title.copyWith(
+                                  fontSize: 20, color: CleanUpColor.white),
+                            ),
+                            Text(
+                              onBoardingState.switchSignUp
+                                  ? 'Register with Your Email Address & Password to Sign Up'
+                                  : 'Enter Your Email Address & Password to Sign In',
+                              style:
+                                  TextStyleShared.textStyle.subtitle.copyWith(
+                                fontSize: 12,
+                                color: CleanUpColor.white,
+                              ),
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ],
+                        ),
                       )
                     ],
                   ),
