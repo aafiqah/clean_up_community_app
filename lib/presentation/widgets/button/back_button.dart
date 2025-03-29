@@ -40,14 +40,6 @@ class BackButtonGlobal extends StatelessWidget {
         padding: EdgeInsets.zero,
         child: Container(
           padding: EdgeInsets.all(SizeSpacing().doubleSpacing10),
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            color: Theme.of(context)
-                .textTheme
-                .bodyLarge!
-                .color!
-                .withOpacity((1) * .5),
-          ),
           child: const ClipOval(
             child: ColoredBox(
                 color: CleanUpColor.white,

@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable, overridden_fields
+
 import 'package:flutter/material.dart';
 
 import '../../../core/constant/index.dart';
