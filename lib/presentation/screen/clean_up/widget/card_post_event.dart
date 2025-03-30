@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../core/constant/index.dart';
+import '../../../../core/constant/index.dart';
 
 final List<Color> colors = [
   CleanUpColor.redMedium,
@@ -34,7 +34,7 @@ class CardPostEvent extends StatelessWidget {
       elevation: 4,
       color: CleanUpColor.white,
       child: Container(
-        height: 330,
+        height: 328,
         padding: const EdgeInsets.all(15),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -62,12 +62,12 @@ class CardPostEvent extends StatelessWidget {
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisSize: MainAxisSize.min,
-                    spacing: 5,
                     children: [
                       Text(
                         eventName,
                         style: TextStyleShared.textStyle.subtitle,
                       ),
+                      const Spacer(),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.end,
                         mainAxisSize: MainAxisSize.min,
@@ -171,6 +171,7 @@ class CardPostEvent extends StatelessWidget {
                       ),
                     ],
                   ),
+                  const Spacer(),
                   Container(
                     decoration: BoxDecoration(
                       color: CleanUpColor.buttonColor,
