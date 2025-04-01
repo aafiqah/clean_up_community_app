@@ -2,6 +2,7 @@ import 'package:clean_up_community_app/core/constant/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../infrastructure/data_sources/index.dart';
 import '../../index.dart';
 
 class HomePage extends StatefulWidget {
@@ -14,6 +15,19 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final ScrollController _scrollController = ScrollController();
   final TextEditingController _searchController = TextEditingController();
+  final eventsType = CleanupEventDataSource.getEvents();
+  final upcomingEvents = UpcomingEventDataSource.getEvents();
+
+  String getGreeting() {
+    final hour = DateTime.now().hour;
+    if (hour < 12) {
+      return 'Good Morning';
+    } else if (hour < 18) {
+      return 'Good Afternoon';
+    } else {
+      return 'Good Evening';
+    }
+  }
 
   @override
   void initState() {
@@ -36,7 +50,7 @@ class _HomePageState extends State<HomePage> {
           backgroundColor: CleanUpColor.primary.withValues(alpha: 0.2),
           body: SafeArea(
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+              padding: const EdgeInsets.only(left: 15, right: 15, top: 10),
               child: !homePageState.ontapSearch
                   ? ListView(
                       children: [
@@ -64,7 +78,7 @@ class _HomePageState extends State<HomePage> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    'Good Morning, Lez',
+                                    '${getGreeting()}, Lez',
                                     style: TextStyleShared.textStyle.bodyMedium,
                                   ),
                                   Row(
@@ -73,9 +87,11 @@ class _HomePageState extends State<HomePage> {
                                         Icons.location_on,
                                         color: CleanUpColor.primary,
                                       ),
-                                      Text('Johor, JB',
-                                          style: TextStyleShared
-                                              .textStyle.bodyMedium),
+                                      Text(
+                                        'Johor, JB',
+                                        style: TextStyleShared
+                                            .textStyle.bodyMedium,
+                                      ),
                                     ],
                                   ),
                                 ],
@@ -119,22 +135,43 @@ class _HomePageState extends State<HomePage> {
                           child: ListView.builder(
                             controller: _scrollController,
                             scrollDirection: Axis.horizontal,
-                            itemCount: 5,
+                            itemCount: eventsType.length,
                             itemBuilder: (context, index) {
-                              return Container(
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 5),
-                                margin: const EdgeInsets.only(right: 10),
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(5),
-                                  color: CleanUpColor.primary
-                                      .withValues(alpha: 0.2),
-                                ),
-                                child: Row(
-                                  children: [
-                                    Text('${index + 1}'),
-                                    const Text('🏖 Beach Cleanup'),
-                                  ],
+                              final event = eventsType[index];
+                              final isSelected =
+                                  homePageState.onSelectedFilterTypeEvents ==
+                                      index;
+
+                              return GestureDetector(
+                                onTap: () {
+                                  context
+                                      .read<HomePageCubit>()
+                                      .onSelectedFilterTypeEvents(index);
+                                },
+                                child: Container(
+                                  width: event.name == 'All' ? 50 : null,
+                                  padding:
+                                      const EdgeInsets.symmetric(horizontal: 5),
+                                  margin: const EdgeInsets.only(right: 10),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(5),
+                                    color: isSelected
+                                        ? CleanUpColor.primary
+                                        : CleanUpColor.primary
+                                            .withValues(alpha: 0.2),
+                                  ),
+                                  child: Center(
+                                    child: Text(
+                                      event.name,
+                                      style: TextStyleShared
+                                          .textStyle.bodyMedium
+                                          .copyWith(
+                                        color: isSelected
+                                            ? CleanUpColor.white
+                                            : CleanUpColor.black,
+                                      ),
+                                    ),
+                                  ),
                                 ),
                               );
                             },
@@ -166,7 +203,7 @@ class _HomePageState extends State<HomePage> {
                             padding: const EdgeInsets.all(5),
                             shrinkWrap: true,
                             scrollDirection: Axis.horizontal,
-                            itemCount: 8,
+                            itemCount: upcomingEvents.length,
                             gridDelegate:
                                 const SliverGridDelegateWithFixedCrossAxisCount(
                               crossAxisCount: 2,
@@ -175,11 +212,14 @@ class _HomePageState extends State<HomePage> {
                               childAspectRatio: .4, // Adjust width-height ratio
                             ),
                             itemBuilder: (context, index) {
-                              return const UpcomingEventWidget(
-                                eventName: 'Kempen Membersihkan Pantai',
-                                eventDate: 'May, 2025',
-                                eventLocation: 'JB, Johor',
-                                imagePath: 'assets/images/logoCleanUp.png',
+                              final event = upcomingEvents[index];
+
+                              return UpcomingEventWidget(
+                                eventName: event.eventName,
+                                eventDate: event.eventDate,
+                                eventLocation:
+                                    '${event.eventLocation.eventCity}, ${event.eventLocation.eventState}',
+                                imagePath: event.imagePath,
                               );
                             },
                           ),
@@ -209,15 +249,21 @@ class _HomePageState extends State<HomePage> {
                           physics: const NeverScrollableScrollPhysics(),
                           itemCount: 5,
                           itemBuilder: (context, index) {
-                            return const CardPostEvent(
-                              eventName: 'Kempen Membersihkan Pantai',
-                              spotsLeft: 3,
-                              participantsCount: 15,
-                              imagePath: 'assets/images/logoCleanUp.png',
-                              eventDateTime:
-                                  '30th December 2022, 8.30am - 1.00pm',
-                              eventAddress:
-                                  'Pantai Muara | Muara, Serasa, Brunei-Muara',
+                            final event = upcomingEvents[index];
+
+                            return Container(
+                              margin: const EdgeInsets.only(bottom: 5),
+                              child: CardPostEvent(
+                                eventName: event.eventName,
+                                spotsLeft: event.totalParticipant -
+                                    event.participantCount,
+                                participantsCount: event.participantCount,
+                                imagePath: event.imagePath,
+                                eventDateTime:
+                                    '${event.eventDate}, (${event.eventTime})',
+                                eventAddress:
+                                    '${event.eventLocation.eventCity}, ${event.eventLocation.eventState}',
+                              ),
                             );
                           },
                         ),

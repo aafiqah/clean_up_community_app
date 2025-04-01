@@ -174,7 +174,7 @@ class CardPostEvent extends StatelessWidget {
                   const Spacer(),
                   Container(
                     decoration: BoxDecoration(
-                      color: CleanUpColor.buttonColor,
+                      color: CleanUpColor.primary,
                       borderRadius: BorderRadius.circular(20),
                     ),
                     width: MediaQuery.sizeOf(context).width,
