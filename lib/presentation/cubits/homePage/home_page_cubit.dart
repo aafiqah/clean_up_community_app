@@ -11,4 +11,8 @@ class HomePageCubit extends Cubit<HomePageState> {
   void onTapSeacrh(bool ontapSearch) {
     emit(state.copyWith(ontapSearch: ontapSearch));
   }
+
+  void onSelectedFilterTypeEvents(int onSelectedFilterTypeEvents) {
+    emit(state.copyWith(onSelectedFilterTypeEvents: onSelectedFilterTypeEvents));
+  }
 }

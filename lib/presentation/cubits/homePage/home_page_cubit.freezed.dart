@@ -21,6 +21,7 @@ HomePageState _$HomePageStateFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$HomePageState {
   bool get ontapSearch => throw _privateConstructorUsedError;
+  int get onSelectedFilterTypeEvents => throw _privateConstructorUsedError;
 
   /// Serializes this HomePageState to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -38,7 +39,7 @@ abstract class $HomePageStateCopyWith<$Res> {
           HomePageState value, $Res Function(HomePageState) then) =
       _$HomePageStateCopyWithImpl<$Res, HomePageState>;
   @useResult
-  $Res call({bool ontapSearch});
+  $Res call({bool ontapSearch, int onSelectedFilterTypeEvents});
 }
 
 /// @nodoc
@@ -57,12 +58,17 @@ class _$HomePageStateCopyWithImpl<$Res, $Val extends HomePageState>
   @override
   $Res call({
     Object? ontapSearch = null,
+    Object? onSelectedFilterTypeEvents = null,
   }) {
     return _then(_value.copyWith(
       ontapSearch: null == ontapSearch
           ? _value.ontapSearch
           : ontapSearch // ignore: cast_nullable_to_non_nullable
               as bool,
+      onSelectedFilterTypeEvents: null == onSelectedFilterTypeEvents
+          ? _value.onSelectedFilterTypeEvents
+          : onSelectedFilterTypeEvents // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
   }
 }
@@ -75,7 +81,7 @@ abstract class _$$HomePageStateImplCopyWith<$Res>
       __$$HomePageStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({bool ontapSearch});
+  $Res call({bool ontapSearch, int onSelectedFilterTypeEvents});
 }
 
 /// @nodoc
@@ -92,12 +98,17 @@ class __$$HomePageStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? ontapSearch = null,
+    Object? onSelectedFilterTypeEvents = null,
   }) {
     return _then(_$HomePageStateImpl(
       ontapSearch: null == ontapSearch
           ? _value.ontapSearch
           : ontapSearch // ignore: cast_nullable_to_non_nullable
               as bool,
+      onSelectedFilterTypeEvents: null == onSelectedFilterTypeEvents
+          ? _value.onSelectedFilterTypeEvents
+          : onSelectedFilterTypeEvents // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -105,17 +116,20 @@ class __$$HomePageStateImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$HomePageStateImpl implements _HomePageState {
-  _$HomePageStateImpl({required this.ontapSearch});
+  _$HomePageStateImpl(
+      {required this.ontapSearch, required this.onSelectedFilterTypeEvents});
 
   factory _$HomePageStateImpl.fromJson(Map<String, dynamic> json) =>
       _$$HomePageStateImplFromJson(json);
 
   @override
   final bool ontapSearch;
+  @override
+  final int onSelectedFilterTypeEvents;
 
   @override
   String toString() {
-    return 'HomePageState(ontapSearch: $ontapSearch)';
+    return 'HomePageState(ontapSearch: $ontapSearch, onSelectedFilterTypeEvents: $onSelectedFilterTypeEvents)';
   }
 
   @override
@@ -124,12 +138,17 @@ class _$HomePageStateImpl implements _HomePageState {
         (other.runtimeType == runtimeType &&
             other is _$HomePageStateImpl &&
             (identical(other.ontapSearch, ontapSearch) ||
-                other.ontapSearch == ontapSearch));
+                other.ontapSearch == ontapSearch) &&
+            (identical(other.onSelectedFilterTypeEvents,
+                    onSelectedFilterTypeEvents) ||
+                other.onSelectedFilterTypeEvents ==
+                    onSelectedFilterTypeEvents));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, ontapSearch);
+  int get hashCode =>
+      Object.hash(runtimeType, ontapSearch, onSelectedFilterTypeEvents);
 
   /// Create a copy of HomePageState
   /// with the given fields replaced by the non-null parameter values.
@@ -148,14 +167,17 @@ class _$HomePageStateImpl implements _HomePageState {
 }
 
 abstract class _HomePageState implements HomePageState {
-  factory _HomePageState({required final bool ontapSearch}) =
-      _$HomePageStateImpl;
+  factory _HomePageState(
+      {required final bool ontapSearch,
+      required final int onSelectedFilterTypeEvents}) = _$HomePageStateImpl;
 
   factory _HomePageState.fromJson(Map<String, dynamic> json) =
       _$HomePageStateImpl.fromJson;
 
   @override
   bool get ontapSearch;
+  @override
+  int get onSelectedFilterTypeEvents;
 
   /// Create a copy of HomePageState
   /// with the given fields replaced by the non-null parameter values.
