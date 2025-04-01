@@ -53,18 +53,28 @@ class UpcomingEventWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  '$eventName - $eventDate',
+                  eventName,
                   overflow: TextOverflow.ellipsis,
-                  maxLines: 2,
+                  style: TextStyleShared.textStyle.subtitle,
+                ),
+                Text(
+                  '- $eventDate -',
+                  style: TextStyleShared.textStyle.bodySmall,
                 ),
                 const Spacer(),
                 Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Expanded(
                       child: Text(
                         eventLocation,
+                        style: TextStyleShared.textStyle.bodyMedium,
                         overflow: TextOverflow.ellipsis,
+                        maxLines: 2,
                       ),
+                    ),
+                    const SizedBox(
+                      width: 5,
                     ),
                     Submitbutton(
                       onPressed: () {},
