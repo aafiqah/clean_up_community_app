@@ -61,6 +61,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
               child: Column(
                 children: [
                   Submitbutton(
+                    key: const ValueKey('homePage'),
                     onPressed: () {
                       context.goNamed("/home_page");
                       // context.goNamed("/location_permission_page");
@@ -80,6 +81,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                   ),
                   SizedBox(height: SizeSpacing().doubleSpacing20),
                   Submitbutton(
+                    key: const ValueKey('logInOnBoarding'),
                     onPressed: () {
                       context.goNamed("/login_page");
                     },
