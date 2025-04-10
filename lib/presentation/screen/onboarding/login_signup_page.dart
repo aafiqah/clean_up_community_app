@@ -68,18 +68,15 @@ class _LoginSignUpPageState extends State<LoginSignUpPage> {
                           spacing: SizeSpacing().doubleSpacing5,
                           children: [
                             Text(
-                              onBoardingState.switchSignUp
-                                  ? 'Sign Up'
-                                  : 'Sign In',
-                              style: TextStyleShared.textStyle.title.copyWith(
-                                  fontSize: 20, color: CleanUpColor.white),
+                              onBoardingState.switchSignUp ? 'Sign Up' : 'Sign In',
+                              style: TextStyleShared.textStyle.title
+                                  .copyWith(fontSize: 20, color: CleanUpColor.white),
                             ),
                             Text(
                               onBoardingState.switchSignUp
                                   ? 'Register with Your Email Address & Password to Sign Up'
                                   : 'Enter Your Email Address & Password to Sign In',
-                              style:
-                                  TextStyleShared.textStyle.subtitle.copyWith(
+                              style: TextStyleShared.textStyle.subtitle.copyWith(
                                 fontSize: 12,
                                 color: CleanUpColor.white,
                               ),
@@ -108,21 +105,19 @@ class _LoginSignUpPageState extends State<LoginSignUpPage> {
                           key: _formKey,
                           autovalidateMode: valueNotifierAttributeValueEmail,
                           child: FormFieldWidget(
+                            key: const ValueKey('email'),
                             controller: emailController,
                             keyboardType: TextInputType.emailAddress,
                             padding: const EdgeInsets.only(bottom: 15),
                             title: 'Email',
-                            titleStyleTitle:
-                                TextStyleShared.textStyle.bodyMedium.copyWith(
+                            titleStyleTitle: TextStyleShared.textStyle.bodyMedium.copyWith(
                               color: CleanUpColor.white,
                             ),
                             hintText: 'me@gmail.com',
-                            hintStyle:
-                                TextStyleShared.textStyle.bodyMedium.copyWith(
+                            hintStyle: TextStyleShared.textStyle.bodyMedium.copyWith(
                               color: CleanUpColor.greyMedium,
                             ),
-                            errorStyle:
-                                TextStyleShared.textStyle.bodyMedium.copyWith(
+                            errorStyle: TextStyleShared.textStyle.bodyMedium.copyWith(
                               color: CleanUpColor.redLight,
                             ),
                             validator: (String? email) {
@@ -130,8 +125,7 @@ class _LoginSignUpPageState extends State<LoginSignUpPage> {
                                 return 'Please enter your email';
                               }
                               // Regex for email validation
-                              final emailRegex =
-                                  RegExp(r'^[^@]+@[^@]+\.[^@]+$');
+                              final emailRegex = RegExp(r'^[^@]+@[^@]+\.[^@]+$');
                               if (!emailRegex.hasMatch(email)) {
                                 return 'Please enter a valid email address';
                               }
@@ -147,34 +141,29 @@ class _LoginSignUpPageState extends State<LoginSignUpPage> {
                     width: size.width,
                     child: ValueListenableBuilder<AutovalidateMode>(
                       valueListenable: _autoValidateModePwd,
-                      builder:
-                          (context, valueNotifierAttributeValuePwd, child) {
+                      builder: (context, valueNotifierAttributeValuePwd, child) {
                         return Form(
                           key: _formKey2,
                           autovalidateMode: valueNotifierAttributeValuePwd,
                           child: FormFieldWidget(
+                            key: const ValueKey('password'),
                             controller: pwdController,
                             keyboardType: TextInputType.visiblePassword,
                             obscureText: !onBoardingState.isPasswordVisible,
                             padding: const EdgeInsets.only(bottom: 15),
                             title: 'Password',
-                            titleStyleTitle:
-                                TextStyleShared.textStyle.bodyMedium.copyWith(
+                            titleStyleTitle: TextStyleShared.textStyle.bodyMedium.copyWith(
                               color: CleanUpColor.white,
                             ),
                             hintText: 'Enter your password',
-                            hintStyle:
-                                TextStyleShared.textStyle.bodyMedium.copyWith(
+                            hintStyle: TextStyleShared.textStyle.bodyMedium.copyWith(
                               color: CleanUpColor.greyMedium,
                             ),
-                            errorStyle:
-                                TextStyleShared.textStyle.bodyMedium.copyWith(
+                            errorStyle: TextStyleShared.textStyle.bodyMedium.copyWith(
                               color: CleanUpColor.redLight,
                             ),
                             suffixIcon: GestureDetector(
-                              onTap: () => context
-                                  .read<OnboardingCubit>()
-                                  .togglePasswordVisible(),
+                              onTap: () => context.read<OnboardingCubit>().togglePasswordVisible(),
                               child: Icon(
                                 onBoardingState.isPasswordVisible
                                     ? Icons.visibility_outlined
@@ -199,8 +188,7 @@ class _LoginSignUpPageState extends State<LoginSignUpPage> {
                               if (!RegExp(r'\d').hasMatch(pwd)) {
                                 return 'Password must contain at least one number';
                               }
-                              if (!RegExp(r'[!@#$%^&*(),.?":{}|<>]')
-                                  .hasMatch(pwd)) {
+                              if (!RegExp(r'[!@#$%^&*(),.?":{}|<>]').hasMatch(pwd)) {
                                 return 'Password must contain at least one special character';
                               }
                               return null;
@@ -223,6 +211,9 @@ class _LoginSignUpPageState extends State<LoginSignUpPage> {
             child: Column(
               children: [
                 Submitbutton(
+                  key: onBoardingState.switchSignUp
+                      ? const ValueKey('submitSignUp')
+                      : const ValueKey('submitLogIn'),
                   onPressed: () {
                     _autoValidateModeEmail.value = AutovalidateMode.always;
                     _autoValidateModePwd.value = AutovalidateMode.always;
@@ -230,10 +221,7 @@ class _LoginSignUpPageState extends State<LoginSignUpPage> {
                     final form = _formKey.currentState;
                     final form2 = _formKey2.currentState;
 
-                    if (form != null &&
-                        form.validate() &&
-                        form2 != null &&
-                        form2.validate()) {
+                    if (form != null && form.validate() && form2 != null && form2.validate()) {
                       form.save();
                       context.goNamed("/home_page");
                     }
@@ -263,22 +251,19 @@ class _LoginSignUpPageState extends State<LoginSignUpPage> {
                             onBoardingState.switchSignUp
                                 ? 'Already have an account'
                                 : 'Don`t have an account?',
-                            style:
-                                TextStyleShared.textStyle.bodyMedium.copyWith(
+                            style: TextStyleShared.textStyle.bodyMedium.copyWith(
                               color: CleanUpColor.white,
                             ),
                           ),
                           SizedBox(width: SizeSpacing().doubleSpacing30),
                           InkWell(
-                            onTap: () => context
-                                .read<OnboardingCubit>()
-                                .toggleSwitchSignUp(),
+                            key: onBoardingState.switchSignUp
+                                ? const ValueKey('switchRegister')
+                                : const ValueKey('switchHasAccount'),
+                            onTap: () => context.read<OnboardingCubit>().toggleSwitchSignUp(),
                             child: Text(
-                              onBoardingState.switchSignUp
-                                  ? 'Login Now'
-                                  : 'Register Now',
-                              style:
-                                  TextStyleShared.textStyle.bodyMedium.copyWith(
+                              onBoardingState.switchSignUp ? 'Login Now' : 'Register Now',
+                              style: TextStyleShared.textStyle.bodyMedium.copyWith(
                                 color: CleanUpColor.white,
                                 decoration: TextDecoration.underline,
                                 decorationColor: CleanUpColor.white,

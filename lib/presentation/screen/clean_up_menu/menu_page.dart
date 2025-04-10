@@ -119,6 +119,7 @@ class _MenuPageState extends State<MenuPage> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 50),
                   child: Submitbutton(
+                    key: const ValueKey('logOut'),
                     onPressed: () {
                       context.goNamed("/onBoarding_page");
                     },

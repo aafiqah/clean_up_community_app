@@ -42,6 +42,7 @@ class _MainWrapperState extends State<MainWrapper> {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 GestureDetector(
+                  key: const ValueKey('branchHome'),
                   onTap: () => goToBranch(0),
                   child: Container(
                     height: 55,
@@ -68,6 +69,7 @@ class _MainWrapperState extends State<MainWrapper> {
                   ),
                 ),
                 GestureDetector(
+                  key: const ValueKey('branchMap'),
                   onTap: () => goToBranch(1),
                   child: Container(
                     height: 55,
@@ -94,6 +96,7 @@ class _MainWrapperState extends State<MainWrapper> {
                   ),
                 ),
                 GestureDetector(
+                  key: const ValueKey('branchMessage'),
                   onTap: () => goToBranch(2),
                   child: Container(
                     height: 55,
@@ -120,6 +123,7 @@ class _MainWrapperState extends State<MainWrapper> {
                   ),
                 ),
                 GestureDetector(
+                  key: const ValueKey('branchSaved'),
                   onTap: () => goToBranch(3),
                   child: Container(
                     height: 55,
@@ -146,6 +150,7 @@ class _MainWrapperState extends State<MainWrapper> {
                   ),
                 ),
                 GestureDetector(
+                  key: const ValueKey('branchMenu'),
                   onTap: () => goToBranch(4),
                   child: Container(
                     height: 55,
