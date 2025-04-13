@@ -53,10 +53,13 @@ void main() {
         expect(find.text('Login Now'), findsOneWidget);
       }
 
-      // If the button isn't present, go directly to Sign-Up
+      // Enter email and password
       await tester.enterText(email, 'alessajohar@gmail.com');
+      await tester.pumpAndSettle();
       await tester.enterText(password, 'Alessa@1234');
+      await tester.pumpAndSettle();
 
+      // Tap on signup button to navigation to home page
       await tester.tap(submitSignUp);
       await tester.pumpAndSettle();
 
@@ -78,9 +81,11 @@ void main() {
       await tester.tap(logInOnBoarding);
       await tester.pumpAndSettle();
 
-      // Directly do Log In
+      // Enter email and password
       await tester.enterText(email, 'alessajohar@gmail.com');
+      await tester.pumpAndSettle();
       await tester.enterText(password, 'Alessa@1234');
+      await tester.pumpAndSettle();
 
       // Tap on login button to navigation to home page
       await tester.tap(submitLogIn);

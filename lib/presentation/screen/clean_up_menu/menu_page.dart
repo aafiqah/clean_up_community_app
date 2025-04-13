@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../widgets/index.dart';
+import '../../global_widgets/index.dart';
 
 class MenuPage extends StatefulWidget {
   const MenuPage({super.key});

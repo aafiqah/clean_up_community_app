@@ -1,28 +1,63 @@
-C/C++ Structured Logƒ
-€
+C/C++ Structured Logï¿½
+ï¿½
 ~/Users/aafiqah/development/projects/clean_up_community_app/android/app/.cxx/Debug/1v031p3e/x86_64/additional_project_files.txtC
 A
-?com.android.build.gradle.internal.cxx.io.EncodedFileFingerPrint	Š“»ëá2 Æîþ¢à2
+<<<<<<< Updated upstream
+?com.android.build.gradle.internal.cxx.io.EncodedFileFingerPrint	ï¿½ï¿½ï¿½ï¿½2 ï¿½ï¿½ï¿½ï¿½ï¿½2
 }
-{/Users/aafiqah/development/projects/clean_up_community_app/android/app/.cxx/Debug/1v031p3e/x86_64/android_gradle_build.json	Š“»ëá2„ Çîþ¢à2†
-ƒ
-€/Users/aafiqah/development/projects/clean_up_community_app/android/app/.cxx/Debug/1v031p3e/x86_64/android_gradle_build_mini.json	Š“»ëá2‰ Çîþ¢à2q
+{/Users/aafiqah/development/projects/clean_up_community_app/android/app/.cxx/Debug/1v031p3e/x86_64/android_gradle_build.json	ï¿½ï¿½ï¿½ï¿½ï¿½2ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½2ï¿½
+ï¿½
+ï¿½/Users/aafiqah/development/projects/clean_up_community_app/android/app/.cxx/Debug/1v031p3e/x86_64/android_gradle_build_mini.json	ï¿½ï¿½ï¿½ï¿½ï¿½2ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½2q
 o
-m/Users/aafiqah/development/projects/clean_up_community_app/android/app/.cxx/Debug/1v031p3e/x86_64/build.ninja	Š“»ëá2‚Ê ½îþ¢à2u
+m/Users/aafiqah/development/projects/clean_up_community_app/android/app/.cxx/Debug/1v031p3e/x86_64/build.ninja	ï¿½ï¿½ï¿½ï¿½ï¿½2ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½2u
 s
-q/Users/aafiqah/development/projects/clean_up_community_app/android/app/.cxx/Debug/1v031p3e/x86_64/build.ninja.txt	Š“»ëá2z
+q/Users/aafiqah/development/projects/clean_up_community_app/android/app/.cxx/Debug/1v031p3e/x86_64/build.ninja.txt	ï¿½ï¿½ï¿½ï¿½ï¿½2z
 x
-v/Users/aafiqah/development/projects/clean_up_community_app/android/app/.cxx/Debug/1v031p3e/x86_64/build_file_index.txt	Š“»ëá2_ Èîþ¢à2{
+v/Users/aafiqah/development/projects/clean_up_community_app/android/app/.cxx/Debug/1v031p3e/x86_64/build_file_index.txt	ï¿½ï¿½ï¿½ï¿½2
+_ ï¿½ï¿½ï¿½ï¿½ï¿½2{
 y
-w/Users/aafiqah/development/projects/clean_up_community_app/android/app/.cxx/Debug/1v031p3e/x86_64/compile_commands.json	Š“»ëá2
+w/Users/aafiqah/development/projects/clean_up_community_app/android/app/.cxx/Debug/1v031p3e/x86_64/compile_commands.json	ï¿½ï¿½ï¿½ï¿½ï¿½2
 }
-{/Users/aafiqah/development/projects/clean_up_community_app/android/app/.cxx/Debug/1v031p3e/x86_64/compile_commands.json.bin	Š“»ëá2	‡
-„
-/Users/aafiqah/development/projects/clean_up_community_app/android/app/.cxx/Debug/1v031p3e/x86_64/metadata_generation_command.txt	Š“»ëá2
-ú Èîþ¢à2x
+{/Users/aafiqah/development/projects/clean_up_community_app/android/app/.cxx/Debug/1v031p3e/x86_64/compile_commands.json.bin	ï¿½ï¿½ï¿½ï¿½ï¿½2	ï¿½
+ï¿½
+ï¿½/Users/aafiqah/development/projects/clean_up_community_app/android/app/.cxx/Debug/1v031p3e/x86_64/metadata_generation_command.txt	ï¿½ï¿½ï¿½ï¿½ï¿½2
+ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½2x
 v
-t/Users/aafiqah/development/projects/clean_up_community_app/android/app/.cxx/Debug/1v031p3e/x86_64/prefab_config.json	Š“»ëá2( Èîþ¢à2}
+t/Users/aafiqah/development/projects/clean_up_community_app/android/app/.cxx/Debug/1v031p3e/x86_64/prefab_config.json	ï¿½ï¿½ï¿½ï¿½ï¿½2
+( ï¿½ï¿½ï¿½ï¿½ï¿½2}
 {
-y/Users/aafiqah/development/projects/clean_up_community_app/android/app/.cxx/Debug/1v031p3e/x86_64/symbol_folder_index.txt	‹“»ëá2p Èîþ¢à2c
+y/Users/aafiqah/development/projects/clean_up_community_app/android/app/.cxx/Debug/1v031p3e/x86_64/symbol_folder_index.txt	ï¿½ï¿½ï¿½ï¿½ï¿½2
+p ï¿½ï¿½ï¿½ï¿½ï¿½2c
 a
-_/Users/aafiqah/fvm/versions/stable/packages/flutter_tools/gradle/src/main/groovy/CMakeLists.txt	‹“»ëá2¤ òÊªðÙ2
+_/Users/aafiqah/fvm/versions/stable/packages/flutter_tools/gradle/src/main/groovy/CMakeLists.txt	ï¿½ï¿½ï¿½ï¿½ï¿½2
+ï¿½ ï¿½Êªï¿½ï¿½2
+=======
+?com.android.build.gradle.internal.cxx.io.EncodedFileFingerPrint	ï¿½ï¿½ï¿½ï¿½ï¿½2 ï¿½ï¿½ï¿½ï¿½ï¿½2
+}
+{/Users/aafiqah/development/projects/clean_up_community_app/android/app/.cxx/Debug/1v031p3e/x86_64/android_gradle_build.json	ï¿½ï¿½ï¿½ï¿½ï¿½2ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½2ï¿½
+ï¿½
+ï¿½/Users/aafiqah/development/projects/clean_up_community_app/android/app/.cxx/Debug/1v031p3e/x86_64/android_gradle_build_mini.json	ï¿½ï¿½ï¿½ï¿½ï¿½2ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½2q
+o
+m/Users/aafiqah/development/projects/clean_up_community_app/android/app/.cxx/Debug/1v031p3e/x86_64/build.ninja	ï¿½ï¿½ï¿½ï¿½ï¿½2ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½2u
+s
+q/Users/aafiqah/development/projects/clean_up_community_app/android/app/.cxx/Debug/1v031p3e/x86_64/build.ninja.txt	ï¿½ï¿½ï¿½ï¿½ï¿½2z
+x
+v/Users/aafiqah/development/projects/clean_up_community_app/android/app/.cxx/Debug/1v031p3e/x86_64/build_file_index.txt	ï¿½ï¿½ï¿½ï¿½ï¿½2
+_ ï¿½ï¿½ï¿½ï¿½ï¿½2{
+y
+w/Users/aafiqah/development/projects/clean_up_community_app/android/app/.cxx/Debug/1v031p3e/x86_64/compile_commands.json	ï¿½ï¿½ï¿½ï¿½ï¿½2
+}
+{/Users/aafiqah/development/projects/clean_up_community_app/android/app/.cxx/Debug/1v031p3e/x86_64/compile_commands.json.bin	ï¿½ï¿½ï¿½ï¿½ï¿½2	ï¿½
+ï¿½
+ï¿½/Users/aafiqah/development/projects/clean_up_community_app/android/app/.cxx/Debug/1v031p3e/x86_64/metadata_generation_command.txt	ï¿½ï¿½ï¿½ï¿½ï¿½2
+ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½2x
+v
+t/Users/aafiqah/development/projects/clean_up_community_app/android/app/.cxx/Debug/1v031p3e/x86_64/prefab_config.json	ï¿½ï¿½ï¿½ï¿½ï¿½2
+( ï¿½ï¿½ï¿½ï¿½ï¿½2}
+{
+y/Users/aafiqah/development/projects/clean_up_community_app/android/app/.cxx/Debug/1v031p3e/x86_64/symbol_folder_index.txt	ï¿½ï¿½ï¿½ï¿½ï¿½2
+p ï¿½ï¿½ï¿½ï¿½ï¿½2c
+a
+_/Users/aafiqah/fvm/versions/stable/packages/flutter_tools/gradle/src/main/groovy/CMakeLists.txt	ï¿½ï¿½ï¿½ï¿½ï¿½2
+ï¿½ ï¿½Êªï¿½ï¿½2
+>>>>>>> Stashed changes

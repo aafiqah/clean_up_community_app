@@ -5,7 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../../../core/constant/index.dart';
 import '../../cubits/index.dart';
-import '../../widgets/index.dart';
+import '../../global_widgets/index.dart';
 
 class LoginSignUpPage extends StatefulWidget {
   const LoginSignUpPage({super.key});
