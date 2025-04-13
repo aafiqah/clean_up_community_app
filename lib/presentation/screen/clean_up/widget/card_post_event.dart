@@ -79,8 +79,7 @@ class CardPostEvent extends StatelessWidget {
                               shrinkWrap: true,
                               scrollDirection: Axis.horizontal,
                               reverse: true,
-                              itemCount:
-                                  participantsCount > 5 ? 6 : participantsCount,
+                              itemCount: participantsCount > 5 ? 6 : participantsCount,
                               itemBuilder: (BuildContext context, int index) {
                                 if (index == 5) {
                                   return Transform.translate(
@@ -129,8 +128,7 @@ class CardPostEvent extends StatelessWidget {
                           ),
                           Text(
                             '$spotsLeft spots left',
-                            style:
-                                TextStyleShared.textStyle.bodyMedium.copyWith(
+                            style: TextStyleShared.textStyle.bodyMedium.copyWith(
                               color: CleanUpColor.redMedium,
                               fontSize: 10,
                             ),
@@ -165,8 +163,6 @@ class CardPostEvent extends StatelessWidget {
                         child: Text(
                           eventAddress,
                           style: TextStyleShared.textStyle.bodyMedium,
-                          maxLines: 2,
-                          overflow: TextOverflow.ellipsis,
                         ),
                       ),
                     ],
@@ -181,8 +177,7 @@ class CardPostEvent extends StatelessWidget {
                     padding: const EdgeInsets.all(10),
                     child: Text(
                       'More Details',
-                      style: TextStyleShared.textStyle.subtitle
-                          .copyWith(color: CleanUpColor.white),
+                      style: TextStyleShared.textStyle.subtitle.copyWith(color: CleanUpColor.white),
                       textAlign: TextAlign.center,
                     ),
                   ),
