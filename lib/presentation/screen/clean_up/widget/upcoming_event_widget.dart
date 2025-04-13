@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/index.dart';
-import '../../../widgets/index.dart';
+import '../../../global_widgets/index.dart';
 
 class UpcomingEventWidget extends StatelessWidget {
   const UpcomingEventWidget({

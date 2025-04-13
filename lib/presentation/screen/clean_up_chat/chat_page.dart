@@ -1,7 +1,7 @@
 import 'package:clean_up_community_app/core/constant/index.dart';
 import 'package:flutter/material.dart';
 
-import '../../widgets/index.dart';
+import '../../global_widgets/index.dart';
 
 class ChatPage extends StatefulWidget {
   const ChatPage({super.key});
