@@ -1,4 +1,5 @@
-import '../../domain/index.dart';
+import '../../../domain/index.dart';
+import '../index.dart';
 
 class UpcomingEventDataSource {
   static List<UpcomingEvent> getEvents() {
@@ -6,7 +7,8 @@ class UpcomingEventDataSource {
       UpcomingEvent(
         eventName: 'Kempen Membersihkan Pantai',
         eventDate: '10 April 2025',
-        eventTime: '08:00 AM - 10:30 AM',
+        eventTimeStart: '08:00 AM',
+        eventTimeEnd: '10:30 AM',
         eventLocation: UpcomingEventLocation(
           eventAddressOne: 'Jalan Pantai Desaru',
           eventAddressTwo: 'Sebelah Resort Desaru',
@@ -17,13 +19,15 @@ class UpcomingEventDataSource {
           eventLongitude: '104.3030',
         ),
         imagePath: 'assets/images/logoCleanUp.png',
+        eventType: CleanupEventType.beach.title(),
         participantCount: 35,
         totalParticipant: 50,
       ),
       UpcomingEvent(
         eventName: 'Kempen Membersihkan Sekolah',
         eventDate: '15 April 2025',
-        eventTime: '09:00 AM - 12:00 PM',
+        eventTimeStart: '09:00 AM',
+        eventTimeEnd: '12:00 PM',
         eventLocation: UpcomingEventLocation(
           eventAddressOne: 'Jalan Sekolah 1',
           eventAddressTwo: 'Berhampiran Masjid Bukit Indah',
@@ -34,13 +38,15 @@ class UpcomingEventDataSource {
           eventLongitude: '103.6760',
         ),
         imagePath: 'assets/images/logoCleanUp.png',
+        eventType: CleanupEventType.school.title(),
         participantCount: 20,
         totalParticipant: 30,
       ),
       UpcomingEvent(
         eventName: 'Kempen Membersihkan Taman',
         eventDate: '20 April 2025',
-        eventTime: '07:30 AM - 09:45 AM',
+        eventTimeStart: '07:30 AM',
+        eventTimeEnd: '09:45 AM',
         eventLocation: UpcomingEventLocation(
           eventAddressOne: 'Taman Tasik Titiwangsa',
           eventAddressTwo: 'Berhadapan dengan KL Tower',
@@ -51,13 +57,15 @@ class UpcomingEventDataSource {
           eventLongitude: '101.7040',
         ),
         imagePath: 'assets/images/logoCleanUp.png',
+        eventType: CleanupEventType.park.title(),
         participantCount: 50,
         totalParticipant: 100,
       ),
       UpcomingEvent(
         eventName: 'Kempen Membersihkan Kejiranan',
         eventDate: '25 April 2025',
-        eventTime: '05:00 PM - 07:00 PM',
+        eventTimeStart: '05:00 PM',
+        eventTimeEnd: '07:00 PM',
         eventLocation: UpcomingEventLocation(
           eventAddressOne: 'Jalan Melawati 3',
           eventAddressTwo: 'Dekat Pasaraya Giant',
@@ -68,13 +76,15 @@ class UpcomingEventDataSource {
           eventLongitude: '101.7500',
         ),
         imagePath: 'assets/images/logoCleanUp.png',
+        eventType: CleanupEventType.house.title(),
         participantCount: 15,
         totalParticipant: 25,
       ),
       UpcomingEvent(
         eventName: 'Kempen Membersihkan Pejabat',
         eventDate: '1 Mei 2025',
-        eventTime: '02:00 PM - 04:00 PM',
+        eventTimeStart: '02:00 PM',
+        eventTimeEnd: '04:00 PM',
         eventLocation: UpcomingEventLocation(
           eventAddressOne: 'Menara KL, Jalan P Ramlee',
           eventAddressTwo: 'Bersebelahan KL Tower',
@@ -85,13 +95,15 @@ class UpcomingEventDataSource {
           eventLongitude: '101.7070',
         ),
         imagePath: 'assets/images/logoCleanUp.png',
+        eventType: CleanupEventType.office.title(),
         participantCount: 10,
         totalParticipant: 20,
       ),
       UpcomingEvent(
         eventName: 'Kempen Membersihkan Lebuhraya',
         eventDate: '5 Mei 2025',
-        eventTime: '06:30 AM - 09:00 AM',
+        eventTimeStart: '06:30 AM',
+        eventTimeEnd: '09:00 AM',
         eventLocation: UpcomingEventLocation(
           eventAddressOne: 'Lebuhraya Utara-Selatan (PLUS)',
           eventAddressTwo: 'Kawasan Rehat & Rawat Seremban',
@@ -102,13 +114,15 @@ class UpcomingEventDataSource {
           eventLongitude: '101.9380',
         ),
         imagePath: 'assets/images/logoCleanUp.png',
+        eventType: CleanupEventType.highway.title(),
         participantCount: 40,
         totalParticipant: 50,
       ),
       UpcomingEvent(
         eventName: 'Kempen Membersihkan Sungai',
         eventDate: '10 Mei 2025',
-        eventTime: '07:00 AM - 11:00 AM',
+        eventTimeStart: '07:00 AM',
+        eventTimeEnd: '11:00 AM',
         eventLocation: UpcomingEventLocation(
           eventAddressOne: 'Sungai Klang',
           eventAddressTwo: 'Berhampiran Masjid Jamek',
@@ -119,13 +133,15 @@ class UpcomingEventDataSource {
           eventLongitude: '101.4450',
         ),
         imagePath: 'assets/images/logoCleanUp.png',
+        eventType: CleanupEventType.river.title(),
         participantCount: 60,
         totalParticipant: 80,
       ),
       UpcomingEvent(
         eventName: 'Bengkel Pengurangan Sisa',
         eventDate: '15 Mei 2025',
-        eventTime: '10:00 AM - 01:00 PM',
+        eventTimeStart: '10:00 AM',
+        eventTimeEnd: '01:00 PM',
         eventLocation: UpcomingEventLocation(
           eventAddressOne: 'Pusat Eco Pulau Pinang',
           eventAddressTwo: 'Berdekatan Padang Kota Lama',
@@ -136,6 +152,7 @@ class UpcomingEventDataSource {
           eventLongitude: '100.3290',
         ),
         imagePath: 'assets/images/logoCleanUp.png',
+        eventType: CleanupEventType.house.title(),
         participantCount: 25,
         totalParticipant: 40,
       ),

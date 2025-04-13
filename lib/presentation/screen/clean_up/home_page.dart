@@ -15,8 +15,6 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final ScrollController _scrollController = ScrollController();
   final TextEditingController _searchController = TextEditingController();
-  final eventsType = CleanupEventDataSource.getEvents();
-  final upcomingEvents = UpcomingEventDataSource.getEvents();
 
   String getGreeting() {
     final hour = DateTime.now().hour;
@@ -68,12 +66,9 @@ class _HomePageState extends State<HomePage> {
                                   color: CleanUpColor.primary,
                                   borderRadius: BorderRadius.circular(20),
                                 ),
-                                child: const Icon(Icons.person,
-                                    color: CleanUpColor.white),
+                                child: const Icon(Icons.person, color: CleanUpColor.white),
                               ),
-                              const SizedBox(
-                                  width:
-                                      5), // Added spacing instead of `spacing`
+                              const SizedBox(width: 5), // Added spacing instead of `spacing`
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
@@ -89,8 +84,7 @@ class _HomePageState extends State<HomePage> {
                                       ),
                                       Text(
                                         'Johor, JB',
-                                        style: TextStyleShared
-                                            .textStyle.bodyMedium,
+                                        style: TextStyleShared.textStyle.bodyMedium,
                                       ),
                                     ],
                                   ),
@@ -100,9 +94,7 @@ class _HomePageState extends State<HomePage> {
                               GestureDetector(
                                 key: const ValueKey('onTapSearchHome'),
                                 onTap: () {
-                                  context
-                                      .read<HomePageCubit>()
-                                      .onTapSeacrh(true);
+                                  context.read<HomePageCubit>().onTapSeacrh(true);
                                 },
                                 child: Container(
                                   padding: const EdgeInsets.all(10),
@@ -111,8 +103,7 @@ class _HomePageState extends State<HomePage> {
                                     color: CleanUpColor.primary,
                                     borderRadius: BorderRadius.circular(20),
                                   ),
-                                  child: const Icon(Icons.search,
-                                      color: CleanUpColor.white),
+                                  child: const Icon(Icons.search, color: CleanUpColor.white),
                                 ),
                               ),
                               GestureDetector(
@@ -136,40 +127,30 @@ class _HomePageState extends State<HomePage> {
                           child: ListView.builder(
                             controller: _scrollController,
                             scrollDirection: Axis.horizontal,
-                            itemCount: eventsType.length,
+                            itemCount: CleanupEventDataSource.getEvents().length,
                             itemBuilder: (context, index) {
-                              final event = eventsType[index];
-                              final isSelected =
-                                  homePageState.onSelectedFilterTypeEvents ==
-                                      index;
+                              final event = CleanupEventDataSource.getEvents()[index];
+                              final isSelected = homePageState.onSelectedFilterTypeEvents == index;
 
                               return GestureDetector(
                                 onTap: () {
-                                  context
-                                      .read<HomePageCubit>()
-                                      .onSelectedFilterTypeEvents(index);
+                                  context.read<HomePageCubit>().onSelectedFilterTypeEvents(index);
                                 },
                                 child: Container(
                                   width: event.name == 'All' ? 50 : null,
-                                  padding:
-                                      const EdgeInsets.symmetric(horizontal: 5),
+                                  padding: const EdgeInsets.symmetric(horizontal: 5),
                                   margin: const EdgeInsets.only(right: 10),
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(5),
                                     color: isSelected
                                         ? CleanUpColor.primary
-                                        : CleanUpColor.primary
-                                            .withValues(alpha: 0.2),
+                                        : CleanUpColor.primary.withValues(alpha: 0.2),
                                   ),
                                   child: Center(
                                     child: Text(
                                       event.name,
-                                      style: TextStyleShared
-                                          .textStyle.bodyMedium
-                                          .copyWith(
-                                        color: isSelected
-                                            ? CleanUpColor.white
-                                            : CleanUpColor.black,
+                                      style: TextStyleShared.textStyle.bodyMedium.copyWith(
+                                        color: isSelected ? CleanUpColor.white : CleanUpColor.black,
                                       ),
                                     ),
                                   ),
@@ -204,20 +185,22 @@ class _HomePageState extends State<HomePage> {
                             padding: const EdgeInsets.all(5),
                             shrinkWrap: true,
                             scrollDirection: Axis.horizontal,
-                            itemCount: upcomingEvents.length,
-                            gridDelegate:
-                                const SliverGridDelegateWithFixedCrossAxisCount(
+                            itemCount: homePageState.filteredEvents.length,
+                            // itemCount: filteredEvents.length,
+                            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                               crossAxisCount: 2,
                               crossAxisSpacing: 15, // Space between columns
                               mainAxisSpacing: 15, // Space between rows
                               childAspectRatio: .4, // Adjust width-height ratio
                             ),
                             itemBuilder: (context, index) {
-                              final event = upcomingEvents[index];
+                              final event = homePageState.filteredEvents[index];
 
                               return UpcomingEventWidget(
                                 eventName: event.eventName,
                                 eventDate: event.eventDate,
+                                eventType: event.eventType,
+                                eventTimeStart: event.eventTimeStart,
                                 eventLocation:
                                     '${event.eventLocation.eventCity}, ${event.eventLocation.eventState}',
                                 imagePath: event.imagePath,
@@ -248,20 +231,19 @@ class _HomePageState extends State<HomePage> {
                         ListView.builder(
                           shrinkWrap: true,
                           physics: const NeverScrollableScrollPhysics(),
-                          itemCount: 5,
+                          itemCount: homePageState.filteredEvents.length,
                           itemBuilder: (context, index) {
-                            final event = upcomingEvents[index];
+                            final event = homePageState.filteredEvents[index];
 
                             return Container(
                               margin: const EdgeInsets.only(bottom: 5),
                               child: CardPostEvent(
                                 eventName: event.eventName,
-                                spotsLeft: event.totalParticipant -
-                                    event.participantCount,
+                                spotsLeft: event.totalParticipant - event.participantCount,
                                 participantsCount: event.participantCount,
                                 imagePath: event.imagePath,
                                 eventDateTime:
-                                    '${event.eventDate}, (${event.eventTime})',
+                                    '${event.eventDate}, (${event.eventTimeStart} - ${event.eventTimeEnd})',
                                 eventAddress:
                                     '${event.eventLocation.eventCity}, ${event.eventLocation.eventState}',
                               ),
@@ -282,9 +264,7 @@ class _HomePageState extends State<HomePage> {
                             children: [
                               GestureDetector(
                                 onTap: () {
-                                  context
-                                      .read<HomePageCubit>()
-                                      .onTapSeacrh(false);
+                                  context.read<HomePageCubit>().onTapSeacrh(false);
                                   _searchController.clear();
                                 },
                                 child: Container(
@@ -293,8 +273,7 @@ class _HomePageState extends State<HomePage> {
                                     color: CleanUpColor.primary,
                                     borderRadius: BorderRadius.circular(20),
                                   ),
-                                  child: const Icon(Icons.close_rounded,
-                                      color: CleanUpColor.white),
+                                  child: const Icon(Icons.close_rounded, color: CleanUpColor.white),
                                 ),
                               ),
                               const SizedBox(width: 5),
