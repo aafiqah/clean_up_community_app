@@ -11,6 +11,15 @@
 - A map view displaying upcoming beach cleanup events.
 - Filter options (e.g., date, location, type of event).
 - Details for each event, including time, location, and organizer information.
+----
+### Testing
+This project includes **integration tests** to verify core features like authentication, event filtering, and map-based functionality.
+
+To run the integration tests in terminal:
+
+```bash
+flutter test integration_test/app_test.dart
+```
 
 [//]: # (These are reference links used in the body of this note and get stripped out when the markdown processor does its job. There is no need to format nicely because it shouldn't be seen. Thanks SO - http://stackoverflow.com/questions/4823468/store-comments-in-markdown-syntax)
     
