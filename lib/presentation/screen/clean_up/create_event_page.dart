@@ -1,4 +1,4 @@
-import 'package:clean_up_community_app/presentation/widgets/index.dart';
+import 'package:clean_up_community_app/presentation/global_widgets/index.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 

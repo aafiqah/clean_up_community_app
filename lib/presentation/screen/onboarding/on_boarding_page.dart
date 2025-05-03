@@ -3,8 +3,8 @@ import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../core/constant/index.dart';
-import '../../widgets/button/index.dart';
-import '../../widgets/index.dart';
+import '../../global_widgets/button/index.dart';
+import '../../global_widgets/index.dart';
 
 class OnBoardingPage extends StatefulWidget {
   const OnBoardingPage({super.key});

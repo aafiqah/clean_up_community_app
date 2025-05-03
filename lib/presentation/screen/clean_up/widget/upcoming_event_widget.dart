@@ -1,19 +1,23 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/index.dart';
-import '../../../widgets/index.dart';
+import '../../../global_widgets/index.dart';
 
 class UpcomingEventWidget extends StatelessWidget {
   const UpcomingEventWidget({
     super.key,
     required this.eventName,
     required this.eventDate,
+    required this.eventTimeStart,
+    required this.eventType,
     required this.eventLocation,
     this.imagePath,
   });
 
   final String eventName;
   final String eventDate;
+  final String eventTimeStart;
+  final String eventType;
   final String eventLocation;
   final String? imagePath;
 
@@ -35,7 +39,7 @@ class UpcomingEventWidget extends StatelessWidget {
       child: Row(
         children: [
           Container(
-            width: MediaQuery.sizeOf(context).height / 9,
+            width: MediaQuery.sizeOf(context).width / 5,
             decoration: BoxDecoration(
               image: imagePath != null
                   ? DecorationImage(
@@ -58,12 +62,16 @@ class UpcomingEventWidget extends StatelessWidget {
                   style: TextStyleShared.textStyle.subtitle,
                 ),
                 Text(
-                  '- $eventDate -',
+                  '🗓️ $eventDate, $eventTimeStart',
+                  style: TextStyleShared.textStyle.bodySmall,
+                ),
+                Text(
+                  eventType,
                   style: TextStyleShared.textStyle.bodySmall,
                 ),
                 const Spacer(),
                 Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     Expanded(
                       child: Text(
@@ -77,6 +85,7 @@ class UpcomingEventWidget extends StatelessWidget {
                       width: 5,
                     ),
                     Submitbutton(
+                      height: MediaQuery.sizeOf(context).height / 25,
                       onPressed: () {},
                       text: 'Join',
                     ),
