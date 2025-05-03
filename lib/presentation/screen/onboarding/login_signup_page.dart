@@ -105,7 +105,7 @@ class _LoginSignUpPageState extends State<LoginSignUpPage> {
                           key: _formKey,
                           autovalidateMode: valueNotifierAttributeValueEmail,
                           child: FormFieldWidget(
-                            key: const ValueKey('email'),
+                            key: const ValueKey('email_field'),
                             controller: emailController,
                             keyboardType: TextInputType.emailAddress,
                             padding: const EdgeInsets.only(bottom: 15),
@@ -146,7 +146,7 @@ class _LoginSignUpPageState extends State<LoginSignUpPage> {
                           key: _formKey2,
                           autovalidateMode: valueNotifierAttributeValuePwd,
                           child: FormFieldWidget(
-                            key: const ValueKey('password'),
+                            key: const ValueKey('password_field'),
                             controller: pwdController,
                             keyboardType: TextInputType.visiblePassword,
                             obscureText: !onBoardingState.isPasswordVisible,
@@ -212,8 +212,8 @@ class _LoginSignUpPageState extends State<LoginSignUpPage> {
               children: [
                 Submitbutton(
                   key: onBoardingState.switchSignUp
-                      ? const ValueKey('submitSignUp')
-                      : const ValueKey('submitLogIn'),
+                      ? const ValueKey('signUp_button')
+                      : const ValueKey('logIn_button'),
                   onPressed: () {
                     _autoValidateModeEmail.value = AutovalidateMode.always;
                     _autoValidateModePwd.value = AutovalidateMode.always;
@@ -258,8 +258,8 @@ class _LoginSignUpPageState extends State<LoginSignUpPage> {
                           SizedBox(width: SizeSpacing().doubleSpacing30),
                           InkWell(
                             key: onBoardingState.switchSignUp
-                                ? const ValueKey('switchRegister')
-                                : const ValueKey('switchHasAccount'),
+                                ? const ValueKey('switch_Register')
+                                : const ValueKey('switch_Has_Account'),
                             onTap: () => context.read<OnboardingCubit>().toggleSwitchSignUp(),
                             child: Text(
                               onBoardingState.switchSignUp ? 'Login Now' : 'Register Now',

@@ -1,37 +1,13 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
 import 'package:clean_up_community_app/main.dart' as app;
+
+import 'helpers/index.dart';
 
 void main() {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
 
   group('CleanUp Community App', () {
-    // BRANCH BOTTOM BAR
-    final branchHome = find.byKey(const Key('branchHome'));
-    final branchMap = find.byKey(const Key('branchMap'));
-    final branchMessage = find.byKey(const Key('branchMessage'));
-    final branchSaved = find.byKey(const Key('branchSaved'));
-    final branchMenu = find.byKey(const Key('branchMenu'));
-
-    // ONBOARDING SCREEN
-    final homePage = find.byKey(const Key('homePage'));
-    final logInOnBoarding = find.byKey(const Key('logInOnBoarding'));
-
-    // LOG IN SCREEN
-    final email = find.byKey(const Key('email'));
-    final password = find.byKey(const Key('password'));
-    final submitLogIn = find.byKey(const Key('submitLogIn'));
-    final submitSignUp = find.byKey(const Key('submitSignUp'));
-    final switchHasAccount = find.byKey(const Key('switchHasAccount'));
-    final switchRegister = find.byKey(const Key('switchRegister'));
-
-    // HOME SCREEN
-    final onTapSearchHome = find.byKey(const Key('onTapSearchHome'));
-
-    // MENU SCREEN
-    final logOut = find.byKey(const Key('logOut'));
-
     testWidgets('create account', (WidgetTester tester) async {
       // Launch the app
       app.main();
@@ -54,13 +30,13 @@ void main() {
       }
 
       // Enter email and password
-      await tester.enterText(email, 'alessajohar@gmail.com');
+      await tester.enterText(emailField, 'alessajohar@gmail.com');
       await tester.pumpAndSettle();
-      await tester.enterText(password, 'Alessa@1234');
+      await tester.enterText(passwordField, 'Alessa@1234');
       await tester.pumpAndSettle();
 
       // Tap on signup button to navigation to home page
-      await tester.tap(submitSignUp);
+      await tester.tap(signUpButton);
       await tester.pumpAndSettle();
 
       // Navigation to menu page
@@ -68,7 +44,7 @@ void main() {
       await tester.pumpAndSettle();
 
       // Tap on log out button
-      await tester.tap(logOut);
+      await tester.tap(logOutButton);
       await tester.pumpAndSettle();
     });
 
@@ -82,13 +58,13 @@ void main() {
       await tester.pumpAndSettle();
 
       // Enter email and password
-      await tester.enterText(email, 'alessajohar@gmail.com');
+      await tester.enterText(emailField, 'alessajohar@gmail.com');
       await tester.pumpAndSettle();
-      await tester.enterText(password, 'Alessa@1234');
+      await tester.enterText(passwordField, 'Alessa@1234');
       await tester.pumpAndSettle();
 
       // Tap on login button to navigation to home page
-      await tester.tap(submitLogIn);
+      await tester.tap(logInButton);
       await tester.pumpAndSettle();
 
       // Navigation to menu page
@@ -96,7 +72,7 @@ void main() {
       await tester.pumpAndSettle();
 
       // Tap on log out button
-      await tester.tap(logOut);
+      await tester.tap(logOutButton);
       await tester.pumpAndSettle();
     });
 
@@ -110,7 +86,7 @@ void main() {
       await tester.pumpAndSettle();
 
       // Tap in search bar
-      await tester.tap(onTapSearchHome);
+      await tester.tap(searchBarHomePage);
       await tester.pumpAndSettle();
     });
   });
