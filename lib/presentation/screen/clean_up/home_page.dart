@@ -98,7 +98,7 @@ class _HomePageState extends State<HomePage> {
                               ),
                               const Spacer(),
                               GestureDetector(
-                                key: const ValueKey('onTapSearchHome'),
+                                key: const ValueKey('search_bar_home_page'),
                                 onTap: () {
                                   context
                                       .read<HomePageCubit>()
