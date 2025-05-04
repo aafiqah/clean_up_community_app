@@ -23,8 +23,8 @@ class _MapEventPageState extends State<MapEventPage> {
   @override
   void initState() {
     super.initState();
-    mapController = MapController();
     _getCurrentLocation();
+    mapController = MapController();
   }
 
   @override
@@ -195,6 +195,7 @@ class _MapEventPageState extends State<MapEventPage> {
           body: Stack(
             children: [
               FlutterMap(
+                key: const ValueKey('location_map'),
                 mapController: mapController,
                 options: MapOptions(
                   initialCenter: LatLng(
@@ -220,6 +221,7 @@ class _MapEventPageState extends State<MapEventPage> {
                 ),
                 children: [
                   TileLayer(
+                    key: const ValueKey('tile_layer_map'),
                     urlTemplate:
                         'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
                     userAgentPackageName: 'com.example.app',
@@ -246,6 +248,7 @@ class _MapEventPageState extends State<MapEventPage> {
                     MarkerLayer(
                       markers: [
                         Marker(
+                          key: const ValueKey('pin_marker_location'),
                           width: 50,
                           height: 50,
                           point: LatLng(mapCommunityState.latitude,
