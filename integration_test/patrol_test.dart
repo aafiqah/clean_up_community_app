@@ -97,7 +97,7 @@ void main() {
       await Future.delayed(const Duration(seconds: 3));
       await $(branchMap).tap();
 
-      // location permission native dialod
+      // location permission native dialog
       if (Platform.isIOS) {
         await $.native.grantPermissionWhenInUse();
       } else {
