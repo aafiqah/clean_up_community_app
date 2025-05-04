@@ -84,6 +84,7 @@ class FormFieldWidget extends StatelessWidget {
             controller: controller,
             keyboardType: keyboardType,
             obscureText: obscureText ?? false,
+            autofocus: true,
             onTapOutside: (event) {
               FocusScope.of(context).unfocus();
             },
