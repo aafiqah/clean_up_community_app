@@ -45,6 +45,7 @@ class _LoginSignUpPageState extends State<LoginSignUpPage> {
     return BlocBuilder<OnboardingCubit, OnboardingState>(
       builder: (context, onBoardingState) {
         return Scaffold(
+          key: const ValueKey('login_page'),
           backgroundColor: CleanUpColor.primary,
           body: Center(
             child: Container(
