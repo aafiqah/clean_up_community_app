@@ -98,12 +98,13 @@ void main() {
       await $(branchMap).tap();
 
       // location permission native dialog
-      if (Platform.isIOS) {
-        await $.native.grantPermissionWhenInUse();
-      } else {
-        await $.native.selectFineLocation();
-        await $.native.selectCoarseLocation();
+      if (Platform.isAndroid) {
+        await $.native.selectFineLocation(); // tap 'Precise' in selection type of map
+        // Or use: await $.native.selectCoarseLocation(); // tap 'Approximate' in selection type of map
       }
+      await $.native.grantPermissionWhenInUse(); // tap "While using the app"
+      // Or use: await $.native.grantPermissionOnlyThisTime(); // tap "Only this time"
+      // Or use: await $.native.denyPermission(); // tap "Don't allow"
 
       expect($(tileLayerMap).exists, true);
       await Future.delayed(const Duration(seconds: 20)); // Let map render
