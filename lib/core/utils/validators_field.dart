@@ -1,35 +1,40 @@
 class ValidatorUtils {
   static String? validateEmail(String? email) {
-    if (email == null || email.trim().isEmpty) {
+    if (email?.trim().isEmpty ?? true) {
       return 'Please enter your email';
     }
-    // Regex for email validation
-    final emailRegex = RegExp(r'^[^@]+@[^@]+\.[^@]+$');
-    if (!emailRegex.hasMatch(email)) {
+
+    final emailRegex = RegExp(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$');
+    if (!emailRegex.hasMatch(email!.trim())) {
       return 'Please enter a valid email address';
     }
+
     return null;
   }
 
   static String? validatePassword(String? pwd) {
-    if (pwd == null || pwd.trim().isEmpty) {
+    if (pwd?.trim().isEmpty ?? true) {
       return 'Please enter your password';
     }
-    if (pwd.length < 6) {
+
+    final password = pwd!.trim();
+
+    if (password.length < 6) {
       return 'Password must be at least 6 characters long';
     }
-    if (!RegExp(r'[A-Z]').hasMatch(pwd)) {
+    if (!RegExp(r'[A-Z]').hasMatch(password)) {
       return 'Password must contain at least one uppercase letter';
     }
-    if (!RegExp(r'[a-z]').hasMatch(pwd)) {
+    if (!RegExp(r'[a-z]').hasMatch(password)) {
       return 'Password must contain at least one lowercase letter';
     }
-    if (!RegExp(r'\d').hasMatch(pwd)) {
+    if (!RegExp(r'\d').hasMatch(password)) {
       return 'Password must contain at least one number';
     }
-    if (!RegExp(r'[!@#$%^&*(),.?":{}|<>]').hasMatch(pwd)) {
+    if (!RegExp(r'[!@#$%^&*(),.?":{}|<>]').hasMatch(password)) {
       return 'Password must contain at least one special character';
     }
+
     return null;
   }
 }
