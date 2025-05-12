@@ -5,4 +5,6 @@ class CleanUpImages {
   static const String appBarBg = "assets/icons/appbarBg.png";
   static const String calendar = "assets/icons/calendar.png";
   static const String map = "assets/icons/map.png";
+  static const String google = "assets/images/google.png";
+  static const String appleIOS = "assets/images/apple.png";
 }
