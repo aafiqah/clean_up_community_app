@@ -8,16 +8,11 @@ class AppNavigation {
   AppNavigation._();
 
   static final _rootNavigatorKey = GlobalKey<NavigatorState>();
-  static final _rootNavigatorHome =
-      GlobalKey<NavigatorState>(debugLabel: 'shellHome');
-  static final _rootNavigatorMap =
-      GlobalKey<NavigatorState>(debugLabel: 'shellMap');
-  static final _rootNavigatorChat =
-      GlobalKey<NavigatorState>(debugLabel: 'shellChat');
-  static final _rootNavigatorSaved =
-      GlobalKey<NavigatorState>(debugLabel: 'shellSaved');
-  static final _rootNavigatorMenu =
-      GlobalKey<NavigatorState>(debugLabel: 'shellMenu');
+  static final _rootNavigatorHome = GlobalKey<NavigatorState>(debugLabel: 'shellHome');
+  static final _rootNavigatorMap = GlobalKey<NavigatorState>(debugLabel: 'shellMap');
+  static final _rootNavigatorChat = GlobalKey<NavigatorState>(debugLabel: 'shellChat');
+  static final _rootNavigatorSaved = GlobalKey<NavigatorState>(debugLabel: 'shellSaved');
+  static final _rootNavigatorMenu = GlobalKey<NavigatorState>(debugLabel: 'shellMenu');
 
   static final GoRouter router = GoRouter(
     initialLocation: '/onBoarding_page',
@@ -28,7 +23,10 @@ class AppNavigation {
         name: '/onBoarding_page',
         path: '/onBoarding_page',
         builder: (context, state) {
-          return const OnBoardingPage();
+          return BlocProvider(
+            create: (context) => OnboardingCubit(),
+            child: const OnBoardingPage(),
+          );
         },
         routes: [
           // SUB HOME
@@ -36,10 +34,7 @@ class AppNavigation {
             name: '/login_page',
             path: '/login_page',
             builder: (context, state) {
-              return BlocProvider(
-                create: (context) => OnboardingCubit(),
-                child: const LoginSignUpPage(),
-              );
+              return const LoginSignUpPage();
             },
           ),
         ],
