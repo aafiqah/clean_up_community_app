@@ -18,6 +18,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController pwdController = TextEditingController();
+  final TextEditingController confirmPwdController = TextEditingController();
   final AutovalidateMode _autoValidateMode = AutovalidateMode.disabled;
 
   @override
@@ -183,6 +184,45 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                             validator: ValidatorUtils.validatePassword,
                             color: CleanUpColor.searchBarColor,
                           ),
+                          if (onBoardingState.switchSignUp)
+                            FormFieldWidget(
+                              key: const ValueKey('confirm_password_field'),
+                              controller: confirmPwdController,
+                              keyboardType: TextInputType.visiblePassword,
+                              obscureText: !onBoardingState.isConfirmPasswordVisible,
+                              padding: const EdgeInsets.only(bottom: 15),
+                              title: 'Confirm Password',
+                              titleStyleTitle: TextStyleShared.textStyle.bodyMedium.copyWith(
+                                color: CleanUpColor.white,
+                              ),
+                              hintText: 'Enter your confirm password',
+                              hintStyle: TextStyleShared.textStyle.bodyMedium.copyWith(
+                                color: CleanUpColor.greyMedium,
+                              ),
+                              errorStyle: TextStyleShared.textStyle.bodyMedium.copyWith(
+                                color: CleanUpColor.redLight,
+                              ),
+                              suffixIcon: GestureDetector(
+                                onTap: () =>
+                                    context.read<OnboardingCubit>().toggleConfirmPasswordVisible(),
+                                child: Icon(
+                                  onBoardingState.isConfirmPasswordVisible
+                                      ? Icons.visibility_outlined
+                                      : Icons.visibility_off_outlined,
+                                  color: CleanUpColor.primary,
+                                  size: 18,
+                                ),
+                              ),
+                              validator: (val) {
+                                if (val?.trim().isEmpty ?? true) {
+                                  return "Please enter your confirm password";
+                                } else if (val != pwdController.text) {
+                                  return "Password don't match!";
+                                }
+                                return null;
+                              },
+                              color: CleanUpColor.searchBarColor,
+                            ),
                         ],
                       ),
                     ),

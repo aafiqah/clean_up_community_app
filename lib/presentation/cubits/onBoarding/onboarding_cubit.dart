@@ -12,6 +12,10 @@ class OnboardingCubit extends Cubit<OnboardingState> {
     emit(state.copyWith(isPasswordVisible: !state.isPasswordVisible));
   }
 
+  void toggleConfirmPasswordVisible() {
+    emit(state.copyWith(isConfirmPasswordVisible: !state.isConfirmPasswordVisible));
+  }
+
   void toggleSwitchSignUp() {
     emit(state.copyWith(switchSignUp: !state.switchSignUp));
   }
