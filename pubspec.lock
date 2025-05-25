@@ -848,7 +848,7 @@ packages:
     source: hosted
     version: "3.16.0-dev.1"
   patrol_finders:
-    dependency: "direct dev"
+    dependency: transitive
     description:
       name: patrol_finders
       sha256: "95e4a8592c27c2cf39871f0c5f80d251a4347a3a61d117646089631459ce299b"
