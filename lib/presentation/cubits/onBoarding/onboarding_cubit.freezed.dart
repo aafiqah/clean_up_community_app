@@ -21,6 +21,7 @@ OnboardingState _$OnboardingStateFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$OnboardingState {
   bool get isPasswordVisible => throw _privateConstructorUsedError;
+  bool get isConfirmPasswordVisible => throw _privateConstructorUsedError;
   bool get switchSignUp => throw _privateConstructorUsedError;
 
   /// Serializes this OnboardingState to a JSON map.
@@ -39,7 +40,10 @@ abstract class $OnboardingStateCopyWith<$Res> {
           OnboardingState value, $Res Function(OnboardingState) then) =
       _$OnboardingStateCopyWithImpl<$Res, OnboardingState>;
   @useResult
-  $Res call({bool isPasswordVisible, bool switchSignUp});
+  $Res call(
+      {bool isPasswordVisible,
+      bool isConfirmPasswordVisible,
+      bool switchSignUp});
 }
 
 /// @nodoc
@@ -58,12 +62,17 @@ class _$OnboardingStateCopyWithImpl<$Res, $Val extends OnboardingState>
   @override
   $Res call({
     Object? isPasswordVisible = null,
+    Object? isConfirmPasswordVisible = null,
     Object? switchSignUp = null,
   }) {
     return _then(_value.copyWith(
       isPasswordVisible: null == isPasswordVisible
           ? _value.isPasswordVisible
           : isPasswordVisible // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isConfirmPasswordVisible: null == isConfirmPasswordVisible
+          ? _value.isConfirmPasswordVisible
+          : isConfirmPasswordVisible // ignore: cast_nullable_to_non_nullable
               as bool,
       switchSignUp: null == switchSignUp
           ? _value.switchSignUp
@@ -81,7 +90,10 @@ abstract class _$$OnboardingStateImplCopyWith<$Res>
       __$$OnboardingStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({bool isPasswordVisible, bool switchSignUp});
+  $Res call(
+      {bool isPasswordVisible,
+      bool isConfirmPasswordVisible,
+      bool switchSignUp});
 }
 
 /// @nodoc
@@ -98,12 +110,17 @@ class __$$OnboardingStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? isPasswordVisible = null,
+    Object? isConfirmPasswordVisible = null,
     Object? switchSignUp = null,
   }) {
     return _then(_$OnboardingStateImpl(
       isPasswordVisible: null == isPasswordVisible
           ? _value.isPasswordVisible
           : isPasswordVisible // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isConfirmPasswordVisible: null == isConfirmPasswordVisible
+          ? _value.isConfirmPasswordVisible
+          : isConfirmPasswordVisible // ignore: cast_nullable_to_non_nullable
               as bool,
       switchSignUp: null == switchSignUp
           ? _value.switchSignUp
@@ -117,7 +134,9 @@ class __$$OnboardingStateImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$OnboardingStateImpl implements _OnboardingState {
   _$OnboardingStateImpl(
-      {required this.isPasswordVisible, required this.switchSignUp});
+      {required this.isPasswordVisible,
+      required this.isConfirmPasswordVisible,
+      required this.switchSignUp});
 
   factory _$OnboardingStateImpl.fromJson(Map<String, dynamic> json) =>
       _$$OnboardingStateImplFromJson(json);
@@ -125,11 +144,13 @@ class _$OnboardingStateImpl implements _OnboardingState {
   @override
   final bool isPasswordVisible;
   @override
+  final bool isConfirmPasswordVisible;
+  @override
   final bool switchSignUp;
 
   @override
   String toString() {
-    return 'OnboardingState(isPasswordVisible: $isPasswordVisible, switchSignUp: $switchSignUp)';
+    return 'OnboardingState(isPasswordVisible: $isPasswordVisible, isConfirmPasswordVisible: $isConfirmPasswordVisible, switchSignUp: $switchSignUp)';
   }
 
   @override
@@ -139,13 +160,17 @@ class _$OnboardingStateImpl implements _OnboardingState {
             other is _$OnboardingStateImpl &&
             (identical(other.isPasswordVisible, isPasswordVisible) ||
                 other.isPasswordVisible == isPasswordVisible) &&
+            (identical(
+                    other.isConfirmPasswordVisible, isConfirmPasswordVisible) ||
+                other.isConfirmPasswordVisible == isConfirmPasswordVisible) &&
             (identical(other.switchSignUp, switchSignUp) ||
                 other.switchSignUp == switchSignUp));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, isPasswordVisible, switchSignUp);
+  int get hashCode => Object.hash(
+      runtimeType, isPasswordVisible, isConfirmPasswordVisible, switchSignUp);
 
   /// Create a copy of OnboardingState
   /// with the given fields replaced by the non-null parameter values.
@@ -167,6 +192,7 @@ class _$OnboardingStateImpl implements _OnboardingState {
 abstract class _OnboardingState implements OnboardingState {
   factory _OnboardingState(
       {required final bool isPasswordVisible,
+      required final bool isConfirmPasswordVisible,
       required final bool switchSignUp}) = _$OnboardingStateImpl;
 
   factory _OnboardingState.fromJson(Map<String, dynamic> json) =
@@ -174,6 +200,8 @@ abstract class _OnboardingState implements OnboardingState {
 
   @override
   bool get isPasswordVisible;
+  @override
+  bool get isConfirmPasswordVisible;
   @override
   bool get switchSignUp;
 

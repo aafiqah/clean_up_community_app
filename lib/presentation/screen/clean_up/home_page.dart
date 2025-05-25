@@ -1,4 +1,5 @@
 import 'package:clean_up_community_app/core/constant/index.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -15,6 +16,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final ScrollController _scrollController = ScrollController();
   final TextEditingController _searchController = TextEditingController();
+  final user = FirebaseAuth.instance.currentUser;
 
   String getGreeting() {
     final hour = DateTime.now().hour;
@@ -73,7 +75,7 @@ class _HomePageState extends State<HomePage> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    '${getGreeting()}, Lez',
+                                    '${getGreeting()}, ${user?.email ?? ''}',
                                     style: TextStyleShared.textStyle.bodyMedium,
                                   ),
                                   Row(

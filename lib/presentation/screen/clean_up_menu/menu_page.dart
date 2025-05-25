@@ -1,4 +1,5 @@
 import 'package:clean_up_community_app/core/constant/index.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -27,6 +28,12 @@ class _MenuPageState extends State<MenuPage> {
     _scrollController.dispose();
     _searchController.dispose();
     super.dispose();
+  }
+
+  void signUserOut() async {
+    await FirebaseAuth.instance.signOut();
+    if (!mounted) return;
+    context.goNamed("/onBoarding_page");
   }
 
   @override
@@ -121,7 +128,7 @@ class _MenuPageState extends State<MenuPage> {
                   child: Submitbutton(
                     key: const ValueKey('logOut_button'),
                     onPressed: () {
-                      context.goNamed("/onBoarding_page");
+                      signUserOut();
                     },
                     width: size.width,
                     widget: Text(

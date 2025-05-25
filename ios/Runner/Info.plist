@@ -56,5 +56,8 @@
 
 	<key>NSLocationUsageDescription</key>
 	<string>Your location is needed for map functionality.</string>
+
+	<key>NSLocalNetworkUsageDescription</key>
+	<string>This app uses the local network for debugging purposes.</string>
 </dict>
 </plist>

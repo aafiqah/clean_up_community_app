@@ -4,15 +4,15 @@ part of 'onboarding_cubit.dart';
 class OnboardingState with _$OnboardingState {
   factory OnboardingState({
     required bool isPasswordVisible,
+    required bool isConfirmPasswordVisible,
     required bool switchSignUp,
-
   }) = _OnboardingState;
 
   factory OnboardingState.initial() => OnboardingState(
-    isPasswordVisible: false,
-    switchSignUp: false,
-  );
+        isPasswordVisible: false,
+        isConfirmPasswordVisible: false,
+        switchSignUp: false,
+      );
 
-  factory OnboardingState.fromJson(Map<String, dynamic> json) =>
-      _$OnboardingStateFromJson(json);
+  factory OnboardingState.fromJson(Map<String, dynamic> json) => _$OnboardingStateFromJson(json);
 }
