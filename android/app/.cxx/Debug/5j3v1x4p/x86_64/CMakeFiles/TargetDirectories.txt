@@ -1,0 +1,2 @@
+/Users/aafiqah/development/projects/clean_up_community_app/android/app/.cxx/Debug/5j3v1x4p/x86_64/CMakeFiles/edit_cache.dir
+/Users/aafiqah/development/projects/clean_up_community_app/android/app/.cxx/Debug/5j3v1x4p/x86_64/CMakeFiles/rebuild_cache.dir
