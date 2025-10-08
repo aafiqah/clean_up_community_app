@@ -61,8 +61,6 @@ PODS:
   - GTMSessionFetcher/Core (4.4.0)
   - integration_test (0.0.1):
     - Flutter
-  - objective_c (0.0.1):
-    - Flutter
   - path_provider_foundation (0.0.1):
     - Flutter
     - FlutterMacOS
@@ -81,7 +79,6 @@ DEPENDENCIES:
   - geocoding_ios (from `.symlinks/plugins/geocoding_ios/ios`)
   - geolocator_apple (from `.symlinks/plugins/geolocator_apple/darwin`)
   - integration_test (from `.symlinks/plugins/integration_test/ios`)
-  - objective_c (from `.symlinks/plugins/objective_c/ios`)
   - path_provider_foundation (from `.symlinks/plugins/path_provider_foundation/darwin`)
   - patrol (from `.symlinks/plugins/patrol/darwin`)
   - permission_handler_apple (from `.symlinks/plugins/permission_handler_apple/ios`)
@@ -113,8 +110,6 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/geolocator_apple/darwin"
   integration_test:
     :path: ".symlinks/plugins/integration_test/ios"
-  objective_c:
-    :path: ".symlinks/plugins/objective_c/ios"
   path_provider_foundation:
     :path: ".symlinks/plugins/path_provider_foundation/darwin"
   patrol:
@@ -139,7 +134,6 @@ SPEC CHECKSUMS:
   GoogleUtilities: 00c88b9a86066ef77f0da2fab05f65d7768ed8e1
   GTMSessionFetcher: 75b671f9e551e4c49153d4c4f8659ef4f559b970
   integration_test: 4a889634ef21a45d28d50d622cf412dc6d9f586e
-  objective_c: 89e720c30d716b036faf9c9684022048eee1eee2
   path_provider_foundation: 080d55be775b7414fd5a5ef3ac137b97b097e564
   patrol: 51b76cc7c11a2933ee3e72482d930c75b9d4ec73
   permission_handler_apple: 4ed2196e43d0651e8ff7ca3483a069d469701f2d
