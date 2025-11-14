@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:clean_up_community_app/main.dart';
+import 'package:clean_up_community_app/app.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:patrol/patrol.dart';
 
@@ -10,7 +10,7 @@ void main() {
   patrolTest(
     'create account',
     ($) async {
-      await $.pumpWidgetAndSettle(const MyApp());
+      await $.pumpWidgetAndSettle(const CleanUpApp(environment: '',));
 
       await Future.delayed(const Duration(seconds: 3));
       await $(logInOnBoarding).tap();
@@ -44,7 +44,7 @@ void main() {
   patrolTest(
     'login account',
     ($) async {
-      await $.pumpWidgetAndSettle(const MyApp());
+      await $.pumpWidgetAndSettle(const CleanUpApp(environment: '',));
 
       await Future.delayed(const Duration(seconds: 3));
       await $(logInOnBoarding).tap();
@@ -74,7 +74,7 @@ void main() {
   patrolTest(
     'onTap search bar in home page',
     ($) async {
-      await $.pumpWidgetAndSettle(const MyApp());
+      await $.pumpWidgetAndSettle(const CleanUpApp(environment: '',));
 
       await Future.delayed(const Duration(seconds: 3));
       await $(homePage).tap();
@@ -89,7 +89,7 @@ void main() {
   patrolTest(
     'open map page and location permission request',
     ($) async {
-      await $.pumpWidgetAndSettle(const MyApp());
+      await $.pumpWidgetAndSettle(const CleanUpApp(environment: '',));
 
       await Future.delayed(const Duration(seconds: 3));
       await $(homePage).tap();
