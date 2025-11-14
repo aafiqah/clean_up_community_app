@@ -72,54 +72,62 @@ class _HomePageState extends State<HomePage> {
                                 child: const Icon(Icons.person, color: CleanUpColor.white),
                               ),
                               const SizedBox(width: 5), // Added spacing instead of `spacing`
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    '${getGreeting()}, ${user?.email ?? ''}',
-                                    style: TextStyleShared.textStyle.bodyMedium,
-                                  ),
-                                  Row(
-                                    children: [
-                                      const Icon(
-                                        Icons.location_on,
-                                        color: CleanUpColor.primary,
-                                      ),
-                                      Text(
-                                        'Johor, JB',
-                                        style: TextStyleShared.textStyle.bodyMedium,
-                                      ),
-                                    ],
-                                  ),
-                                ],
+                              Expanded(
+                                flex: 8,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      '${getGreeting()}, ${user?.email ?? ''}',
+                                      style: TextStyleShared.textStyle.bodyMedium,
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
+                                    Row(
+                                      children: [
+                                        const Icon(
+                                          Icons.location_on,
+                                          color: CleanUpColor.primary,
+                                        ),
+                                        Text(
+                                          'Johor, JB',
+                                          style: TextStyleShared.textStyle.bodyMedium,
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
                               ),
                               const Spacer(),
-                              GestureDetector(
-                                key: const ValueKey('search_bar_home_page'),
-                                onTap: () {
-                                  context.read<HomePageCubit>().onTapSeacrh(true);
-                                },
-                                child: Container(
-                                  padding: const EdgeInsets.all(10),
-                                  margin: const EdgeInsets.only(right: 5),
-                                  decoration: BoxDecoration(
-                                    color: CleanUpColor.primary,
-                                    borderRadius: BorderRadius.circular(20),
+                              Row(
+                                children: [
+                                  GestureDetector(
+                                    key: const ValueKey('search_bar_home_page'),
+                                    onTap: () {
+                                      context.read<HomePageCubit>().onTapSeacrh(true);
+                                    },
+                                    child: Container(
+                                      padding: const EdgeInsets.all(10),
+                                      margin: const EdgeInsets.only(right: 5),
+                                      decoration: BoxDecoration(
+                                        color: CleanUpColor.primary,
+                                        borderRadius: BorderRadius.circular(20),
+                                      ),
+                                      child: const Icon(Icons.search, color: CleanUpColor.white),
+                                    ),
                                   ),
-                                  child: const Icon(Icons.search, color: CleanUpColor.white),
-                                ),
-                              ),
-                              GestureDetector(
-                                onTap: () {},
-                                child: Container(
-                                  padding: const EdgeInsets.all(10),
-                                  decoration: BoxDecoration(
-                                    color: CleanUpColor.primary,
-                                    borderRadius: BorderRadius.circular(20),
+                                  GestureDetector(
+                                    onTap: () {},
+                                    child: Container(
+                                      padding: const EdgeInsets.all(10),
+                                      decoration: BoxDecoration(
+                                        color: CleanUpColor.primary,
+                                        borderRadius: BorderRadius.circular(20),
+                                      ),
+                                      child: const Icon(Icons.notifications_rounded,
+                                          color: CleanUpColor.white),
+                                    ),
                                   ),
-                                  child: const Icon(Icons.notifications_rounded,
-                                      color: CleanUpColor.white),
-                                ),
+                                ],
                               ),
                             ],
                           ),
