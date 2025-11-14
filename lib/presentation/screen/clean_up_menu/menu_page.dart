@@ -1,4 +1,4 @@
-import 'package:clean_up_community_app/core/constant/index.dart';
+import 'package:clean_up_community_app/core/theme/index.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import '../../core/constant/colors.dart';
+import '../../core/theme/colors.dart';
 
 class FormFieldWidget extends StatelessWidget {
   const FormFieldWidget({

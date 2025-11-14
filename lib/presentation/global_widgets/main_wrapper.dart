@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import '../constant/index.dart';
+import '../../core/theme/index.dart';
 
 class MainWrapper extends StatefulWidget {
   const MainWrapper({super.key, required this.navigationShell});

@@ -5,7 +5,7 @@ import 'core/config/index.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  AppEnvironment.init(Environment.production);
+  AppEnvironment.init(Environment.staging);
 
   runApp(CleanUpApp(environment: AppEnvironment.name));
 }

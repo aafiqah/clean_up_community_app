@@ -1,9 +1,10 @@
-import 'package:clean_up_community_app/core/constant/index.dart';
+import 'package:clean_up_community_app/core/theme/index.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../infrastructure/data_sources/index.dart';
+import '../../../application/index.dart';
+import '../../../domain/data_sources/index.dart';
 import '../../index.dart';
 
 class HomePage extends StatefulWidget {

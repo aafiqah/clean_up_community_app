@@ -1,4 +1,4 @@
-import '../../../domain/index.dart';
+import '../../index.dart';
 
 enum CleanupEventType {
   all,
