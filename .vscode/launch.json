@@ -5,21 +5,103 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "clean_up_community_app",
-            "request": "launch",
-            "type": "dart"
-        },
-        {
-            "name": "clean_up_community_app (profile mode)",
+            "name": "Clean Up Community (debug)",
             "request": "launch",
             "type": "dart",
-            "flutterMode": "profile"
+            "program": "lib/main.dart",
+            "flutterMode": "debug",
+            "args": [
+                "--flavor",
+                "production"
+            ]
         },
         {
-            "name": "clean_up_community_app (release mode)",
+            "name": "Clean Up Community Production (profile)",
             "request": "launch",
             "type": "dart",
-            "flutterMode": "release"
+            "program": "lib/main.dart",
+            "flutterMode": "profile",
+            "args": [
+                "--flavor",
+                "production"
+            ]
+        },
+        {
+            "name": "Clean Up Community Production (release)",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main.dart",
+            "flutterMode": "release",
+            "args": [
+                "--flavor",
+                "production"
+            ]
+        },
+        {
+            "name": "Clean Up Community Staging (debug)",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main_staging.dart",
+            "flutterMode": "debug",
+            "args": [
+                "--flavor",
+                "staging"
+            ]
+        },
+        {
+            "name": "Clean Up Community Staging (profile)",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main_staging.dart",
+            "flutterMode": "profile",
+            "args": [
+                "--flavor",
+                "staging"
+            ]
+        },
+        {
+            "name": "Clean Up Community Staging (release)",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main_staging.dart",
+            "flutterMode": "release",
+            "args": [
+                "--flavor",
+                "staging"
+            ]
+        },
+        {
+            "name": "Clean Up Community Development (debug)",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main_development.dart",
+            "flutterMode": "debug",
+            "args": [
+                "--flavor",
+                "development"
+            ]
+        },
+        {
+            "name": "Clean Up Community Development (profile)",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main_development.dart",
+            "flutterMode": "profile",
+            "args": [
+                "--flavor",
+                "development"
+            ]
+        },
+        {
+            "name": "Clean Up Community Development (release)",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main_development.dart",
+            "flutterMode": "release",
+            "args": [
+                "--flavor",
+                "development"
+            ]
         }
     ]
 }

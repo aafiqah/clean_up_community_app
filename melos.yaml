@@ -1,20 +1,125 @@
-name: CleanUpMonoRepo
-repository: https://github.com/aafiqah/clean_up_community_app
-packages:
-  - packages/**
+name: clean_up_community_melos
 
+packages:
+  - ./
+
+# 🧭 Flutter workspace configuration
+flutter:
+  assets:
+    - assets/fonts/
+    - assets/images/
+
+# ⚙️ Workspace Settings
+command:
+  bootstrap:
+    usePubspecOverrides: true
+    runPubGetInParallel: true
+
+# 🧩 Workspace Scripts
 scripts:
-  bs: |
-    melos bootstrap
-  analyze: |
-    melos run analyze
-  test: |
-    melos run test
+
+  # ───────────────────────────────
+  # 🧹 1️⃣ CLEANUP & MAINTENANCE
+  # ───────────────────────────────
+  clean:
+    run: melos exec -- flutter clean
+    description: "Clean build outputs for all packages"
+
+  format:
+    run: melos exec -- dart format .
+    description: "Format all Dart files"
+
+  analyze:
+    run: melos exec -- flutter analyze
+    description: "Analyze all packages"
+
+  # ───────────────────────────────
+  # 📦 2️⃣ DEPENDENCY MANAGEMENT
+  # ───────────────────────────────
   get:
     run: melos exec -- flutter pub get
-  gen-assets:
-    run: dart run build_runner build
-    description: Generate models
+    description: "Get dependencies for all packages"
 
-flutter:
-  sdkPath: /path/to/flutter/sdk
+  setup:
+    run: |
+      melos run clean &&
+      melos bootstrap --verbose --no-private &&
+      melos run get --no-select &&
+      melos run gen-l10n &&
+      melos run build_runner
+    description: "⚡ Full setup: clean, bootstrap, get deps, gen-l10n, and build_runner"
+
+  # ───────────────────────────────
+  # ⚙️ 3️⃣ CODE GENERATION
+  # ───────────────────────────────
+  build_runner:
+    run: melos exec -- dart run build_runner build --delete-conflicting-outputs
+    packageFilters:
+      dependsOn: build_runner
+    description: "Run build_runner for packages that depend on it, Generate FlutterGen assets (images, fonts, colors)"
+
+  gen-l10n:
+    run: melos exec -- flutter gen-l10n
+    description: "Generate localization files (intl translations)"
+
+  # ───────────────────────────────
+  # 🚀 4️⃣ APP LAUNCHERS (FLAVORS)
+  # ───────────────────────────────
+  run:staging:
+    run: flutter run --flavor staging -t lib/main_staging.dart
+    exec:
+      concurrency: 1
+    packageFilters:
+      scope: clean_up_community_app
+    description: "Run Clean Up Community App in staging mode"
+
+  run:production:
+    run: flutter run --flavor production -t lib/main_production.dart
+    exec:
+      concurrency: 1
+    packageFilters:
+      scope: clean_up_community_app
+    description: "Run Clean Up Community App in production mode"
+  
+  run:development:
+    run: flutter run --flavor development -t lib/main_development.dart
+    exec:
+      concurrency: 1
+    packageFilters:
+      scope: clean_up_community_app
+    description: "Run Clean Up Community App in development mode"
+
+  # ───────────────────────────────
+  # 🧱 5️⃣ BUILD & RELEASE
+  # ───────────────────────────────
+  clean:staging:
+    run: bash android/gradlew clean assembleStagingDebug -p android -Ptarget=lib/main_staging.dart
+    packageFilters:
+      scope: clean_up_community_app
+    description: "Clean + build Clean Up Community App staging flavor"
+
+  clean:production:
+    run: bash android/gradlew clean assembleRelease -p android -Ptarget=lib/main_production.dart
+    packageFilters:
+      scope: clean_up_community_app
+    description: "Clean + build Clean Up Community App production flavor"
+
+  clean:development:
+    run: bash android/gradlew clean assembleRelease -p android -Ptarget=lib/main_development.dart
+    packageFilters:
+      scope: clean_up_community_app
+    description: "Clean + build Clean Up Community App development flavor"
+
+  # ───────────────────────────────
+  # 🍏 6️⃣ iOS / POD UTILITIES
+  # ───────────────────────────────
+  gen-pod:
+    run: |
+      cd ios && \
+      rm -f Podfile.lock && \
+      rm -rf Pods/ && \
+      flutter precache --ios && \
+      pod install || pod install --repo-update
+    packageFilters:
+      scope: clean_up_community_app
+    description: "Reinstall CocoaPods for iOS Clean Up Community App"

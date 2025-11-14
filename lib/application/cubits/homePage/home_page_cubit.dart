@@ -1,8 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../../domain/entities/index.dart';
-import '../../../infrastructure/index.dart';
+import '../../../domain/index.dart';
 
 part 'home_page_cubit.freezed.dart';
 part 'home_page_cubit.g.dart';

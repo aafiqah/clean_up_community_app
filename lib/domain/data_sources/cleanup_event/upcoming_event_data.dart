@@ -1,5 +1,4 @@
-import '../../../domain/index.dart';
-import '../index.dart';
+import '../../index.dart';
 
 class UpcomingEventDataSource {
   static List<UpcomingEvent> getEvents() {

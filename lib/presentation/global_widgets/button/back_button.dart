@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../core/constant/index.dart';
+import '../../../core/theme/index.dart';
 
 class BackButtonGlobal extends StatelessWidget {
   const BackButtonGlobal({

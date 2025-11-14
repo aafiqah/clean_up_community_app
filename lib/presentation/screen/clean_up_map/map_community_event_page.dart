@@ -1,4 +1,4 @@
-import 'package:clean_up_community_app/core/constant/index.dart';
+import 'package:clean_up_community_app/core/theme/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_map/flutter_map.dart';
@@ -6,6 +6,7 @@ import 'package:latlong2/latlong.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:permission_handler/permission_handler.dart';
 
+import '../../../application/index.dart';
 import '../../index.dart';
 
 class MapEventPage extends StatefulWidget {

@@ -1,4 +1,4 @@
-import 'package:clean_up_community_app/core/constant/index.dart';
+import 'package:clean_up_community_app/core/theme/index.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
 

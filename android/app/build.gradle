@@ -35,6 +35,24 @@ android {
         testInstrumentationRunnerArguments["clearPackageData"] = "true"
     }
 
+    flavorDimensions "environment"
+
+    productFlavors {
+        development {
+            dimension "environment"
+            applicationIdSuffix ".dev"
+            versionNameSuffix "-development"
+        }
+        staging {
+            dimension "environment"
+            applicationIdSuffix ".staging"
+            versionNameSuffix "-staging"
+        }
+        production {
+            dimension "environment"
+        }
+    }
+
       testOptions {
     execution = "ANDROIDX_TEST_ORCHESTRATOR"
   }

@@ -16,7 +16,7 @@ Future<void> main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
-  AppEnvironment.init(Environment.production);
+  AppEnvironment.init(Environment.development);
 
   runApp(CleanUpApp(environment: AppEnvironment.name));
 }
