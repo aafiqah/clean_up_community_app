@@ -17,6 +17,7 @@ _$HomePageStateImpl _$$HomePageStateImplFromJson(Map<String, dynamic> json) =>
       filteredEvents: (json['filteredEvents'] as List<dynamic>)
           .map((e) => UpcomingEvent.fromJson(e as Map<String, dynamic>))
           .toList(),
+      offset: (json['offset'] as num).toDouble(),
     );
 
 Map<String, dynamic> _$$HomePageStateImplToJson(_$HomePageStateImpl instance) =>
@@ -25,4 +26,5 @@ Map<String, dynamic> _$$HomePageStateImplToJson(_$HomePageStateImpl instance) =>
       'onSelectedFilterTypeEvents': instance.onSelectedFilterTypeEvents,
       'allEvents': instance.allEvents,
       'filteredEvents': instance.filteredEvents,
+      'offset': instance.offset,
     };

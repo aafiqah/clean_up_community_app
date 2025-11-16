@@ -7,6 +7,7 @@ class HomePageState with _$HomePageState {
     required int onSelectedFilterTypeEvents,
     required List<UpcomingEvent> allEvents,
     required List<UpcomingEvent> filteredEvents,
+    required double offset,
   }) = _HomePageState;
 
   factory HomePageState.initial() => HomePageState(
@@ -14,6 +15,7 @@ class HomePageState with _$HomePageState {
         onSelectedFilterTypeEvents: 0,
         allEvents: UpcomingEventDataSource.getEvents(),
         filteredEvents: UpcomingEventDataSource.getEvents(),
+        offset: 0,
       );
 
   factory HomePageState.fromJson(Map<String, dynamic> json) => _$HomePageStateFromJson(json);

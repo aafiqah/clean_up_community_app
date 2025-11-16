@@ -25,4 +25,8 @@ class HomePageCubit extends Cubit<HomePageState> {
       filteredEvents: newFilteredEvents,
     ));
   }
+
+  void updateScroll(double offset) {
+    emit(state.copyWith(offset: offset));
+  }
 }

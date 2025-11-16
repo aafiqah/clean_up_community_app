@@ -1,4 +1,6 @@
+import 'package:clean_up_community_app/application/index.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../core/theme/index.dart';
@@ -13,12 +15,8 @@ class MainWrapper extends StatefulWidget {
 }
 
 class _MainWrapperState extends State<MainWrapper> {
-  int selectedIndex = 0;
-
   void goToBranch(int index) {
-    setState(() {
-      selectedIndex = index;
-    });
+    context.read<NavigationMenuCubit>().selectIndex(index);
     widget.navigationShell.goBranch(
       index,
       initialLocation: index == widget.navigationShell.currentIndex,
@@ -38,145 +36,122 @@ class _MainWrapperState extends State<MainWrapper> {
           child: Container(
             color: CleanUpColor.white,
             padding: const EdgeInsets.symmetric(vertical: 10),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                GestureDetector(
-                  key: const ValueKey('branch_Home'),
-                  onTap: () => goToBranch(0),
-                  child: Container(
-                    height: 55,
-                    width: 55,
-                    decoration: BoxDecoration(
-                      color: selectedIndex == 0
-                          ? CleanUpColor.buttonColor
-                          : CleanUpColor.white,
-                      border: Border.all(
-                        strokeAlign: 0.5,
-                        color: selectedIndex == 0
-                            ? CleanUpColor.buttonColor
-                            : CleanUpColor.greyMedium,
+            child: BlocBuilder<NavigationMenuCubit, NavigationMenuState>(
+              builder: (context, navigationMenuState) {
+                return Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    GestureDetector(
+                      key: const ValueKey('branch_Home'),
+                      onTap: () => goToBranch(0),
+                      child: Container(
+                        height: 55,
+                        width: 55,
+                        decoration: BoxDecoration(
+                          color: navigationMenuState.selectedIndex == 0
+                              ? CleanUpColor.buttonColor
+                              : CleanUpColor.white,
+                          border: Border.all(
+                            strokeAlign: 0.5,
+                            color: navigationMenuState.selectedIndex == 0
+                                ? CleanUpColor.buttonColor
+                                : CleanUpColor.greyMedium,
+                          ),
+                          borderRadius: BorderRadius.circular(5),
+                        ),
+                        child: Icon(
+                          Icons.home,
+                          size: 28,
+                          color: navigationMenuState.selectedIndex == 0
+                              ? CleanUpColor.white
+                              : CleanUpColor.buttonColor,
+                        ),
                       ),
-                      borderRadius: BorderRadius.circular(5),
                     ),
-                    child: Icon(
-                      Icons.home,
-                      size: 28,
-                      color: selectedIndex == 0
-                          ? CleanUpColor.white
-                          : CleanUpColor.buttonColor,
-                    ),
-                  ),
-                ),
-                GestureDetector(
-                  key: const ValueKey('branch_Map'),
-                  onTap: () => goToBranch(1),
-                  child: Container(
-                    height: 55,
-                    width: 55,
-                    decoration: BoxDecoration(
-                      color: selectedIndex == 1
-                          ? CleanUpColor.buttonColor
-                          : CleanUpColor.white,
-                      border: Border.all(
-                        strokeAlign: 0.5,
-                        color: selectedIndex == 1
-                            ? CleanUpColor.buttonColor
-                            : CleanUpColor.greyMedium,
+                    GestureDetector(
+                      key: const ValueKey('branch_Map'),
+                      onTap: () => goToBranch(1),
+                      child: Container(
+                        height: 55,
+                        width: 55,
+                        decoration: BoxDecoration(
+                          color: navigationMenuState.selectedIndex == 1
+                              ? CleanUpColor.buttonColor
+                              : CleanUpColor.white,
+                          border: Border.all(
+                            strokeAlign: 0.5,
+                            color: navigationMenuState.selectedIndex == 1
+                                ? CleanUpColor.buttonColor
+                                : CleanUpColor.greyMedium,
+                          ),
+                          borderRadius: BorderRadius.circular(5),
+                        ),
+                        child: Icon(
+                          Icons.my_location_rounded,
+                          size: 28,
+                          color: navigationMenuState.selectedIndex == 1
+                              ? CleanUpColor.white
+                              : CleanUpColor.buttonColor,
+                        ),
                       ),
-                      borderRadius: BorderRadius.circular(5),
                     ),
-                    child: Icon(
-                      Icons.my_location_rounded,
-                      size: 28,
-                      color: selectedIndex == 1
-                          ? CleanUpColor.white
-                          : CleanUpColor.buttonColor,
-                    ),
-                  ),
-                ),
-                GestureDetector(
-                  key: const ValueKey('branch_Message'),
-                  onTap: () => goToBranch(2),
-                  child: Container(
-                    height: 55,
-                    width: 55,
-                    decoration: BoxDecoration(
-                      color: selectedIndex == 2
-                          ? CleanUpColor.buttonColor
-                          : CleanUpColor.white,
-                      border: Border.all(
-                        strokeAlign: 0.5,
-                        color: selectedIndex == 2
-                            ? CleanUpColor.buttonColor
-                            : CleanUpColor.greyMedium,
+                    GestureDetector(
+                      key: const ValueKey('branch_Message'),
+                      onTap: () => goToBranch(2),
+                      child: Container(
+                        height: 55,
+                        width: 55,
+                        decoration: BoxDecoration(
+                          color: navigationMenuState.selectedIndex == 2
+                              ? CleanUpColor.buttonColor
+                              : CleanUpColor.white,
+                          border: Border.all(
+                            strokeAlign: 0.5,
+                            color: navigationMenuState.selectedIndex == 2
+                                ? CleanUpColor.buttonColor
+                                : CleanUpColor.greyMedium,
+                          ),
+                          borderRadius: BorderRadius.circular(5),
+                        ),
+                        child: Icon(
+                          Icons.message,
+                          size: 28,
+                          color: navigationMenuState.selectedIndex == 2
+                              ? CleanUpColor.white
+                              : CleanUpColor.buttonColor,
+                        ),
                       ),
-                      borderRadius: BorderRadius.circular(5),
                     ),
-                    child: Icon(
-                      Icons.message,
-                      size: 28,
-                      color: selectedIndex == 2
-                          ? CleanUpColor.white
-                          : CleanUpColor.buttonColor,
-                    ),
-                  ),
-                ),
-                GestureDetector(
-                  key: const ValueKey('branch_Saved'),
-                  onTap: () => goToBranch(3),
-                  child: Container(
-                    height: 55,
-                    width: 55,
-                    decoration: BoxDecoration(
-                      color: selectedIndex == 3
-                          ? CleanUpColor.buttonColor
-                          : CleanUpColor.white,
-                      border: Border.all(
-                        strokeAlign: 0.5,
-                        color: selectedIndex == 3
-                            ? CleanUpColor.buttonColor
-                            : CleanUpColor.greyMedium,
+                    GestureDetector(
+                      key: const ValueKey('branch_Menu'),
+                      onTap: () => goToBranch(4),
+                      child: Container(
+                        height: 55,
+                        width: 55,
+                        decoration: BoxDecoration(
+                          color: navigationMenuState.selectedIndex == 4
+                              ? CleanUpColor.buttonColor
+                              : CleanUpColor.white,
+                          border: Border.all(
+                            strokeAlign: 0.5,
+                            color: navigationMenuState.selectedIndex == 4
+                                ? CleanUpColor.buttonColor
+                                : CleanUpColor.greyMedium,
+                          ),
+                          borderRadius: BorderRadius.circular(5),
+                        ),
+                        child: Icon(
+                          Icons.menu,
+                          size: 28,
+                          color: navigationMenuState.selectedIndex == 4
+                              ? CleanUpColor.white
+                              : CleanUpColor.buttonColor,
+                        ),
                       ),
-                      borderRadius: BorderRadius.circular(5),
                     ),
-                    child: Icon(
-                      Icons.bookmark_outline,
-                      size: 28,
-                      color: selectedIndex == 3
-                          ? CleanUpColor.white
-                          : CleanUpColor.buttonColor,
-                    ),
-                  ),
-                ),
-                GestureDetector(
-                  key: const ValueKey('branch_Menu'),
-                  onTap: () => goToBranch(4),
-                  child: Container(
-                    height: 55,
-                    width: 55,
-                    decoration: BoxDecoration(
-                      color: selectedIndex == 4
-                          ? CleanUpColor.buttonColor
-                          : CleanUpColor.white,
-                      border: Border.all(
-                        strokeAlign: 0.5,
-                        color: selectedIndex == 4
-                            ? CleanUpColor.buttonColor
-                            : CleanUpColor.greyMedium,
-                      ),
-                      borderRadius: BorderRadius.circular(5),
-                    ),
-                    child: Icon(
-                      Icons.menu,
-                      size: 28,
-                      color: selectedIndex == 4
-                          ? CleanUpColor.white
-                          : CleanUpColor.buttonColor,
-                    ),
-                  ),
-                ),
-              ],
+                  ],
+                );
+              },
             ),
           ),
         ),

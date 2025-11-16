@@ -41,8 +41,11 @@ class AppNavigation {
       ),
       StatefulShellRoute.indexedStack(
         builder: (context, state, navigationShell) {
-          return MainWrapper(
-            navigationShell: navigationShell,
+          return BlocProvider(
+            create: (_) => NavigationMenuCubit(),
+            child: MainWrapper(
+              navigationShell: navigationShell,
+            ),
           );
         },
         branches: <StatefulShellBranch>[
@@ -94,8 +97,11 @@ class AppNavigation {
               name: '/chat_page',
               path: '/chat_page',
               builder: (context, state) {
-                return ChatPage(
-                  key: state.pageKey,
+                return BlocProvider(
+                  create: (_) => MessageNotificationCubit(),
+                  child: ChatPage(
+                    key: state.pageKey,
+                  ),
                 );
               },
               routes: const [

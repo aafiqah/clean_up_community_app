@@ -24,6 +24,7 @@ mixin _$HomePageState {
   int get onSelectedFilterTypeEvents => throw _privateConstructorUsedError;
   List<UpcomingEvent> get allEvents => throw _privateConstructorUsedError;
   List<UpcomingEvent> get filteredEvents => throw _privateConstructorUsedError;
+  double get offset => throw _privateConstructorUsedError;
 
   /// Serializes this HomePageState to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -45,7 +46,8 @@ abstract class $HomePageStateCopyWith<$Res> {
       {bool ontapSearch,
       int onSelectedFilterTypeEvents,
       List<UpcomingEvent> allEvents,
-      List<UpcomingEvent> filteredEvents});
+      List<UpcomingEvent> filteredEvents,
+      double offset});
 }
 
 /// @nodoc
@@ -67,6 +69,7 @@ class _$HomePageStateCopyWithImpl<$Res, $Val extends HomePageState>
     Object? onSelectedFilterTypeEvents = null,
     Object? allEvents = null,
     Object? filteredEvents = null,
+    Object? offset = null,
   }) {
     return _then(_value.copyWith(
       ontapSearch: null == ontapSearch
@@ -85,6 +88,10 @@ class _$HomePageStateCopyWithImpl<$Res, $Val extends HomePageState>
           ? _value.filteredEvents
           : filteredEvents // ignore: cast_nullable_to_non_nullable
               as List<UpcomingEvent>,
+      offset: null == offset
+          ? _value.offset
+          : offset // ignore: cast_nullable_to_non_nullable
+              as double,
     ) as $Val);
   }
 }
@@ -101,7 +108,8 @@ abstract class _$$HomePageStateImplCopyWith<$Res>
       {bool ontapSearch,
       int onSelectedFilterTypeEvents,
       List<UpcomingEvent> allEvents,
-      List<UpcomingEvent> filteredEvents});
+      List<UpcomingEvent> filteredEvents,
+      double offset});
 }
 
 /// @nodoc
@@ -121,6 +129,7 @@ class __$$HomePageStateImplCopyWithImpl<$Res>
     Object? onSelectedFilterTypeEvents = null,
     Object? allEvents = null,
     Object? filteredEvents = null,
+    Object? offset = null,
   }) {
     return _then(_$HomePageStateImpl(
       ontapSearch: null == ontapSearch
@@ -139,6 +148,10 @@ class __$$HomePageStateImplCopyWithImpl<$Res>
           ? _value._filteredEvents
           : filteredEvents // ignore: cast_nullable_to_non_nullable
               as List<UpcomingEvent>,
+      offset: null == offset
+          ? _value.offset
+          : offset // ignore: cast_nullable_to_non_nullable
+              as double,
     ));
   }
 }
@@ -150,7 +163,8 @@ class _$HomePageStateImpl implements _HomePageState {
       {required this.ontapSearch,
       required this.onSelectedFilterTypeEvents,
       required final List<UpcomingEvent> allEvents,
-      required final List<UpcomingEvent> filteredEvents})
+      required final List<UpcomingEvent> filteredEvents,
+      required this.offset})
       : _allEvents = allEvents,
         _filteredEvents = filteredEvents;
 
@@ -178,8 +192,11 @@ class _$HomePageStateImpl implements _HomePageState {
   }
 
   @override
+  final double offset;
+
+  @override
   String toString() {
-    return 'HomePageState(ontapSearch: $ontapSearch, onSelectedFilterTypeEvents: $onSelectedFilterTypeEvents, allEvents: $allEvents, filteredEvents: $filteredEvents)';
+    return 'HomePageState(ontapSearch: $ontapSearch, onSelectedFilterTypeEvents: $onSelectedFilterTypeEvents, allEvents: $allEvents, filteredEvents: $filteredEvents, offset: $offset)';
   }
 
   @override
@@ -196,7 +213,8 @@ class _$HomePageStateImpl implements _HomePageState {
             const DeepCollectionEquality()
                 .equals(other._allEvents, _allEvents) &&
             const DeepCollectionEquality()
-                .equals(other._filteredEvents, _filteredEvents));
+                .equals(other._filteredEvents, _filteredEvents) &&
+            (identical(other.offset, offset) || other.offset == offset));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -206,7 +224,8 @@ class _$HomePageStateImpl implements _HomePageState {
       ontapSearch,
       onSelectedFilterTypeEvents,
       const DeepCollectionEquality().hash(_allEvents),
-      const DeepCollectionEquality().hash(_filteredEvents));
+      const DeepCollectionEquality().hash(_filteredEvents),
+      offset);
 
   /// Create a copy of HomePageState
   /// with the given fields replaced by the non-null parameter values.
@@ -229,7 +248,8 @@ abstract class _HomePageState implements HomePageState {
       {required final bool ontapSearch,
       required final int onSelectedFilterTypeEvents,
       required final List<UpcomingEvent> allEvents,
-      required final List<UpcomingEvent> filteredEvents}) = _$HomePageStateImpl;
+      required final List<UpcomingEvent> filteredEvents,
+      required final double offset}) = _$HomePageStateImpl;
 
   factory _HomePageState.fromJson(Map<String, dynamic> json) =
       _$HomePageStateImpl.fromJson;
@@ -242,6 +262,8 @@ abstract class _HomePageState implements HomePageState {
   List<UpcomingEvent> get allEvents;
   @override
   List<UpcomingEvent> get filteredEvents;
+  @override
+  double get offset;
 
   /// Create a copy of HomePageState
   /// with the given fields replaced by the non-null parameter values.

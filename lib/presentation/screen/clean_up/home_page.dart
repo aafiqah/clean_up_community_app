@@ -33,6 +33,10 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
+
+    _scrollController.addListener(() {
+      context.read<HomePageCubit>().updateScroll(_scrollController.offset);
+    });
   }
 
   @override
@@ -40,6 +44,14 @@ class _HomePageState extends State<HomePage> {
     _searchController.dispose();
     _scrollController.dispose();
     super.dispose();
+  }
+
+  void scrollToTop() {
+    _scrollController.animateTo(
+      0,
+      duration: const Duration(milliseconds: 400),
+      curve: Curves.easeOut,
+    );
   }
 
   @override
@@ -54,6 +66,7 @@ class _HomePageState extends State<HomePage> {
               padding: const EdgeInsets.only(left: 15, right: 15, top: 10),
               child: !homePageState.ontapSearch
                   ? ListView(
+                      controller: _scrollController,
                       children: [
                         Container(
                           padding: const EdgeInsets.all(10),
@@ -71,7 +84,7 @@ class _HomePageState extends State<HomePage> {
                                 ),
                                 child: const Icon(Icons.person, color: CleanUpColor.white),
                               ),
-                              const SizedBox(width: 5), // Added spacing instead of `spacing`
+                              const SizedBox(width: 5),
                               Expanded(
                                 flex: 8,
                                 child: Column(
@@ -107,24 +120,11 @@ class _HomePageState extends State<HomePage> {
                                     },
                                     child: Container(
                                       padding: const EdgeInsets.all(10),
-                                      margin: const EdgeInsets.only(right: 5),
                                       decoration: BoxDecoration(
                                         color: CleanUpColor.primary,
                                         borderRadius: BorderRadius.circular(20),
                                       ),
                                       child: const Icon(Icons.search, color: CleanUpColor.white),
-                                    ),
-                                  ),
-                                  GestureDetector(
-                                    onTap: () {},
-                                    child: Container(
-                                      padding: const EdgeInsets.all(10),
-                                      decoration: BoxDecoration(
-                                        color: CleanUpColor.primary,
-                                        borderRadius: BorderRadius.circular(20),
-                                      ),
-                                      child: const Icon(Icons.notifications_rounded,
-                                          color: CleanUpColor.white),
                                     ),
                                   ),
                                 ],
@@ -136,7 +136,6 @@ class _HomePageState extends State<HomePage> {
                         SizedBox(
                           height: 35,
                           child: ListView.builder(
-                            controller: _scrollController,
                             scrollDirection: Axis.horizontal,
                             itemCount: CleanupEventDataSource.getEvents().length,
                             itemBuilder: (context, index) {
@@ -264,6 +263,7 @@ class _HomePageState extends State<HomePage> {
                       ],
                     )
                   : ListView(
+                      controller: _scrollController,
                       children: [
                         Container(
                           padding: const EdgeInsets.all(10),
@@ -321,6 +321,13 @@ class _HomePageState extends State<HomePage> {
                     ),
             ),
           ),
+          floatingActionButton: homePageState.offset > 150
+              ? FloatingActionButton(
+                  backgroundColor: CleanUpColor.primary,
+                  onPressed: scrollToTop,
+                  child: const Icon(Icons.arrow_upward, color: Colors.white),
+                )
+              : const SizedBox.shrink(),
         );
       },
     );
