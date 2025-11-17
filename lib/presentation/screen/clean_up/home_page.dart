@@ -322,10 +322,13 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           floatingActionButton: homePageState.offset > 150
-              ? FloatingActionButton(
-                  backgroundColor: CleanUpColor.primary,
-                  onPressed: scrollToTop,
-                  child: const Icon(Icons.arrow_upward, color: Colors.white),
+              ? Container(
+                  margin: const EdgeInsets.only(bottom: 90),
+                  child: FloatingActionButton(
+                    backgroundColor: CleanUpColor.primary,
+                    onPressed: scrollToTop,
+                    child: const Icon(Icons.arrow_upward, color: Colors.white),
+                  ),
                 )
               : const SizedBox.shrink(),
         );

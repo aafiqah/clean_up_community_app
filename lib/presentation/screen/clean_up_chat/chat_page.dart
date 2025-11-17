@@ -51,7 +51,7 @@ class _ChatPageState extends State<ChatPage> {
                 children: [
                   // ========== TAB SWITCH UI ==========
                   Container(
-                    padding: const EdgeInsets.all(6),
+                    padding: const EdgeInsets.all(10),
                     decoration: BoxDecoration(
                       color: CleanUpColor.primary.withValues(alpha: 0.2),
                       borderRadius: BorderRadius.circular(10),
@@ -119,7 +119,7 @@ class _ChatPageState extends State<ChatPage> {
                     ),
                   ),
 
-                  const SizedBox(height: 20),
+                  const SizedBox(height: 10),
 
                   // ========== CONTENT AREA ==========
                   messageState.isMessagePaged ? _buildMessagesView() : _buildNotificationsView(),
@@ -128,10 +128,13 @@ class _ChatPageState extends State<ChatPage> {
             ),
           ),
           floatingActionButton: messageState.offset > 150
-              ? FloatingActionButton(
-                  backgroundColor: CleanUpColor.primary,
-                  onPressed: scrollToTop,
-                  child: const Icon(Icons.arrow_upward, color: Colors.white),
+              ? Container(
+                  margin: const EdgeInsets.only(bottom: 90),
+                  child: FloatingActionButton(
+                    backgroundColor: CleanUpColor.primary,
+                    onPressed: scrollToTop,
+                    child: const Icon(Icons.arrow_upward, color: Colors.white),
+                  ),
                 )
               : const SizedBox.shrink(),
         );
