@@ -43,88 +43,86 @@ class _ChatPageState extends State<ChatPage> {
       builder: (context, messageState) {
         return Scaffold(
           backgroundColor: CleanUpColor.primary.withValues(alpha: 0.2),
-          body: SafeArea(
-            child: Padding(
-              padding: const EdgeInsets.only(left: 15, right: 15, top: 10),
-              child: ListView(
-                controller: _scrollController,
-                children: [
-                  // ========== TAB SWITCH UI ==========
-                  Container(
-                    padding: const EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                      color: CleanUpColor.primary.withValues(alpha: 0.2),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: Row(
-                      children: [
-                        // ========== MESSAGES TAB ==========
-                        Expanded(
-                          child: InkWell(
-                            borderRadius: BorderRadius.circular(8),
-                            onTap: () =>
-                                context.read<MessageNotificationCubit>().switchToMessages(),
-                            child: Container(
-                              padding: const EdgeInsets.symmetric(vertical: 10),
-                              decoration: BoxDecoration(
-                                color: messageState.isMessagePaged
-                                    ? CleanUpColor.primary
-                                    : CleanUpColor.primary.withValues(alpha: 0.2),
-                                borderRadius: BorderRadius.circular(8),
-                              ),
-                              alignment: Alignment.center,
-                              child: Text(
-                                "Messages",
-                                style: TextStyle(
-                                  color: messageState.isMessagePaged
-                                      ? Colors.white
-                                      : CleanUpColor.primary,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-
-                        const SizedBox(width: 10),
-
-                        // ========== NOTIFICATIONS TAB ==========
-                        Expanded(
-                          child: InkWell(
-                            borderRadius: BorderRadius.circular(8),
-                            onTap: () =>
-                                context.read<MessageNotificationCubit>().switchToNotifications(),
-                            child: Container(
-                              padding: const EdgeInsets.symmetric(vertical: 10),
-                              decoration: BoxDecoration(
-                                color: !messageState.isMessagePaged
-                                    ? CleanUpColor.primary
-                                    : CleanUpColor.primary.withValues(alpha: 0.2),
-                                borderRadius: BorderRadius.circular(8),
-                              ),
-                              alignment: Alignment.center,
-                              child: Text(
-                                "Notifications",
-                                style: TextStyle(
-                                  color: !messageState.isMessagePaged
-                                      ? Colors.white
-                                      : CleanUpColor.primary,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
+          body: Padding(
+            padding: const EdgeInsets.only(left: 15, right: 15, top: 10),
+            child: ListView(
+              controller: _scrollController,
+              children: [
+                // ========== TAB SWITCH UI ==========
+                Container(
+                  padding: const EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    color: CleanUpColor.primary.withValues(alpha: 0.2),
+                    borderRadius: BorderRadius.circular(10),
                   ),
-
-                  const SizedBox(height: 10),
-
-                  // ========== CONTENT AREA ==========
-                  messageState.isMessagePaged ? _buildMessagesView() : _buildNotificationsView(),
-                ],
-              ),
+                  child: Row(
+                    children: [
+                      // ========== MESSAGES TAB ==========
+                      Expanded(
+                        child: InkWell(
+                          borderRadius: BorderRadius.circular(8),
+                          onTap: () =>
+                              context.read<MessageNotificationCubit>().switchToMessages(),
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(vertical: 10),
+                            decoration: BoxDecoration(
+                              color: messageState.isMessagePaged
+                                  ? CleanUpColor.primary
+                                  : CleanUpColor.primary.withValues(alpha: 0.2),
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            alignment: Alignment.center,
+                            child: Text(
+                              "Messages",
+                              style: TextStyle(
+                                color: messageState.isMessagePaged
+                                    ? Colors.white
+                                    : CleanUpColor.primary,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+          
+                      const SizedBox(width: 10),
+          
+                      // ========== NOTIFICATIONS TAB ==========
+                      Expanded(
+                        child: InkWell(
+                          borderRadius: BorderRadius.circular(8),
+                          onTap: () =>
+                              context.read<MessageNotificationCubit>().switchToNotifications(),
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(vertical: 10),
+                            decoration: BoxDecoration(
+                              color: !messageState.isMessagePaged
+                                  ? CleanUpColor.primary
+                                  : CleanUpColor.primary.withValues(alpha: 0.2),
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            alignment: Alignment.center,
+                            child: Text(
+                              "Notifications",
+                              style: TextStyle(
+                                color: !messageState.isMessagePaged
+                                    ? Colors.white
+                                    : CleanUpColor.primary,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+          
+                const SizedBox(height: 10),
+          
+                // ========== CONTENT AREA ==========
+                messageState.isMessagePaged ? _buildMessagesView() : _buildNotificationsView(),
+              ],
             ),
           ),
           floatingActionButton: messageState.offset > 150

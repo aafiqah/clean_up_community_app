@@ -32,7 +32,7 @@ class AppNavigation {
             path: '/onBoarding_page',
             builder: (context, state) {
               return BlocProvider(
-                create: (context) => OnboardingCubit(),
+                create: (_) => OnboardingCubit(),
                 child: const OnBoardingPage(),
               );
             },
@@ -56,7 +56,7 @@ class AppNavigation {
               path: '/home_page',
               builder: (context, state) {
                 return BlocProvider(
-                  create: (context) => HomePageCubit(),
+                  create: (_) => HomePageCubit(),
                   child: HomePage(
                     key: state.pageKey,
                   ),
@@ -82,7 +82,7 @@ class AppNavigation {
               path: '/map_page',
               builder: (context, state) {
                 return BlocProvider(
-                  create: (context) => MapCommunityCubit(),
+                  create: (_) => MapCommunityCubit(),
                   child: MapEventPage(
                     key: state.pageKey,
                   ),
