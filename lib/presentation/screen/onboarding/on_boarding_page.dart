@@ -2,7 +2,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import '../../../application/index.dart';
 import '../../../core/index.dart';
@@ -114,7 +113,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                         color: CleanUpColor.white,
                         fontWeight: FontWeight.w800,
                         fontSize: 20,
-                        fontFamily: GoogleFonts.inter().fontFamily,
+                        fontFamily: 'inter',
                       ),
                       textAlign: TextAlign.center,
                     ),
@@ -126,7 +125,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                       style: TextStyle(
                         color: CleanUpColor.white,
                         fontSize: 14,
-                        fontFamily: GoogleFonts.inter().fontFamily,
+                        fontFamily: 'inter',
                       ),
                       textAlign: TextAlign.center,
                     ),
@@ -237,7 +236,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                             style: TextStyle(
                               color: CleanUpColor.greyLight,
                               fontSize: 12,
-                              fontFamily: GoogleFonts.inter().fontFamily,
+                              fontFamily: 'inter',
                             ),
                             textAlign: TextAlign.right,
                           ),
@@ -260,7 +259,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                         style: TextStyle(
                           color: CleanUpColor.white,
                           fontWeight: FontWeight.w600,
-                          fontFamily: GoogleFonts.inter().fontFamily,
+                          fontFamily: 'inter',
                         ),
                       ),
                       buttonColor: CleanUpColor.buttonColor,
@@ -278,7 +277,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                             style: TextStyle(
                               color: CleanUpColor.greyLight,
                               fontSize: 12,
-                              fontFamily: GoogleFonts.inter().fontFamily,
+                              fontFamily: 'inter',
                             ),
                           ),
                         ),

@@ -13,7 +13,6 @@ dependencies:
   cupertino_icons: ^1.0.8
   flutter_svg: ^2.1.0
   go_router: ^15.1.1
-  google_fonts: ^6.2.1
   toasty_box: ^1.0.4
   melos: ^6.3.2
   flutter_bloc: ^9.1.1
@@ -53,3 +52,5 @@ flutter:
     - assets/icons/
     - assets/images/
     - .env
+    - .env.development
+    - .env.staging

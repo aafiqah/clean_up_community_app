@@ -2,7 +2,7 @@ import 'package:clean_up_community_app/core/theme/index.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:google_fonts/google_fonts.dart';
+
 
 import '../../global_widgets/index.dart';
 
@@ -116,7 +116,7 @@ class _MenuPageState extends State<MenuPage> {
                       style: TextStyle(
                         color: CleanUpColor.black,
                         fontWeight: FontWeight.w600,
-                        fontFamily: GoogleFonts.inter().fontFamily,
+                        fontFamily: 'inter',
                       ),
                     ),
                     buttonColor: CleanUpColor.white,
@@ -137,7 +137,7 @@ class _MenuPageState extends State<MenuPage> {
                       style: TextStyle(
                         color: CleanUpColor.black,
                         fontWeight: FontWeight.w600,
-                        fontFamily: GoogleFonts.inter().fontFamily,
+                        fontFamily: 'inter',
                       ),
                     ),
                     buttonColor: CleanUpColor.white,

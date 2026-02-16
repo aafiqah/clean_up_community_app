@@ -1,6 +1,5 @@
 import 'package:clean_up_community_app/core/theme/index.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class CustomSearchBar extends StatefulWidget {
   const CustomSearchBar({
@@ -81,7 +80,7 @@ class _CustomSearchBarState extends State<CustomSearchBar> {
           color: CleanUpColor.greyMedium,
           fontWeight: FontWeight.w600,
           fontSize: 16,
-          fontFamily: GoogleFonts.inter().fontFamily,
+          fontFamily: 'inter',
         ),
         prefixIcon:
             widget.controller != null && widget.controller!.text.isNotEmpty

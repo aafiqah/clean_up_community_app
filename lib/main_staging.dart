@@ -1,20 +1,18 @@
 import 'package:clean_up_community_app/app.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 import 'core/config/index.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  
-  // Load .env
-  await dotenv.load(fileName: ".env");
 
-  // Initialize Firebase
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+  await dotenv.load(fileName: ".env.staging");
+
+  if (Firebase.apps.isEmpty) {
+    await Firebase.initializeApp();
+  }
 
   AppEnvironment.init(Environment.staging);
 
