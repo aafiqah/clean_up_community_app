@@ -1,43 +1,41 @@
 name: clean_up_community_melos
 
 packages:
-  - ./
+  - apps/clean_up
+  - packages/**
 
-# 🧭 Flutter workspace configuration
 flutter:
   assets:
-    - assets/fonts/
-    - assets/images/
+    - apps/clean_up/assets/icons/
+    - apps/clean_up/assets/images/
 
-# ⚙️ Workspace Settings
 command:
   bootstrap:
     usePubspecOverrides: true
     runPubGetInParallel: true
 
-# 🧩 Workspace Scripts
 scripts:
 
   # ───────────────────────────────
-  # 🧹 1️⃣ CLEANUP & MAINTENANCE
+  # 🧹 CLEANUP & MAINTENANCE
   # ───────────────────────────────
   clean:
-    run: melos exec -- flutter clean
+    run: melos exec -- fvm flutter clean
     description: "Clean build outputs for all packages"
 
   format:
-    run: melos exec -- dart format .
+    run: melos exec -- fvm dart format .
     description: "Format all Dart files"
 
   analyze:
-    run: melos exec -- flutter analyze
+    run: melos exec -- fvm flutter analyze
     description: "Analyze all packages"
 
   # ───────────────────────────────
-  # 📦 2️⃣ DEPENDENCY MANAGEMENT
+  # 📦 DEPENDENCY MANAGEMENT
   # ───────────────────────────────
   get:
-    run: melos exec -- flutter pub get
+    run: melos exec -- fvm flutter pub get
     description: "Get dependencies for all packages"
 
   setup:
@@ -47,79 +45,72 @@ scripts:
       melos run get --no-select &&
       melos run gen-l10n &&
       melos run build_runner
-    description: "⚡ Full setup: clean, bootstrap, get deps, gen-l10n, and build_runner"
+    description: "Full setup: clean, bootstrap, get deps, gen-l10n, build_runner"
 
   # ───────────────────────────────
-  # ⚙️ 3️⃣ CODE GENERATION
+  # ⚙️ CODE GENERATION
   # ───────────────────────────────
   build_runner:
-    run: melos exec -- dart run build_runner build --delete-conflicting-outputs
+    run: melos exec -- fvm dart run build_runner build --delete-conflicting-outputs
     packageFilters:
       dependsOn: build_runner
-    description: "Run build_runner for packages that depend on it, Generate FlutterGen assets (images, fonts, colors)"
+    description: "Run build_runner for all packages"
 
   gen-l10n:
-    run: melos exec -- flutter gen-l10n
-    description: "Generate localization files (intl translations)"
+    run: melos exec -- fvm flutter gen-l10n
+    description: "Generate localization files"
 
   # ───────────────────────────────
-  # 🚀 4️⃣ APP LAUNCHERS (FLAVORS)
+  # 🚀 RUN FLAVORS
   # ───────────────────────────────
   run:staging:
-    run: flutter run --flavor staging -t lib/main_staging.dart
+    run: fvm flutter run --flavor staging -t lib/main_staging.dart
     exec:
       concurrency: 1
     packageFilters:
-      scope: clean_up_community_app
-    description: "Run Clean Up Community App in staging mode"
+      scope: clean_up
 
   run:production:
-    run: flutter run --flavor production -t lib/main_production.dart
+    run: fvm flutter run --flavor production -t lib/main_production.dart
     exec:
       concurrency: 1
     packageFilters:
-      scope: clean_up_community_app
-    description: "Run Clean Up Community App in production mode"
-  
+      scope: clean_up
+
   run:development:
-    run: flutter run --flavor development -t lib/main_development.dart
+    run: fvm flutter run --flavor development -t lib/main_development.dart
     exec:
       concurrency: 1
     packageFilters:
-      scope: clean_up_community_app
-    description: "Run Clean Up Community App in development mode"
+      scope: clean_up
 
   # ───────────────────────────────
-  # 🧱 5️⃣ BUILD & RELEASE
+  # 🧱 BUILD
   # ───────────────────────────────
   clean:staging:
-    run: bash android/gradlew clean assembleStagingDebug -p android -Ptarget=lib/main_staging.dart
+    run: fvm flutter clean && bash android/gradlew clean assembleStagingDebug -p android -Ptarget=lib/main_staging.dart
     packageFilters:
-      scope: clean_up_community_app
-    description: "Clean + build Clean Up Community App staging flavor"
+      scope: clean_up
 
   clean:production:
-    run: bash android/gradlew clean assembleRelease -p android -Ptarget=lib/main_production.dart
+    run: fvm flutter clean && bash android/gradlew clean assembleRelease -p android -Ptarget=lib/main_production.dart
     packageFilters:
-      scope: clean_up_community_app
-    description: "Clean + build Clean Up Community App production flavor"
+      scope: clean_up
 
   clean:development:
-    run: bash android/gradlew clean assembleRelease -p android -Ptarget=lib/main_development.dart
+    run: fvm flutter clean && bash android/gradlew clean assembleRelease -p android -Ptarget=lib/main_development.dart
     packageFilters:
-      scope: clean_up_community_app
-    description: "Clean + build Clean Up Community App development flavor"
+      scope: clean_up
 
   # ───────────────────────────────
-  # 🍏 6️⃣ iOS / POD UTILITIES
+  # 🍏 iOS
   # ───────────────────────────────
   gen-pod:
     run: |
-      cd ios && \
+      cd apps/clean_up/ios && \
       rm -f Podfile.lock && \
       rm -rf Pods/ && \
       flutter precache --ios && \
-      pod install || pod install --repo-update
+      pod install --repo-update
     packageFilters:
-      scope: clean_up_community_app
-    description: "Reinstall CocoaPods for iOS Clean Up Community App"
+      scope: clean_up

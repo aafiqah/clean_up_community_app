@@ -1,0 +1,7 @@
+{
+  "@@locale": "en",
+  "appTitle": "Clean Up Community",
+  "welcome": "Welcome",
+  "login": "Login",
+  "authenticationFailed": "Authentication Failed"
+}
