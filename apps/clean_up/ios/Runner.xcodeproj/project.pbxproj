@@ -247,6 +247,7 @@
 				3B06AD1E1E4923F5004D2608 /* Thin Binary */,
 				1B140D0DE46EC9BF9BFDACFF /* [CP] Embed Pods Frameworks */,
 				E2800F1E2428D7977BBA5CE3 /* [CP] Copy Pods Resources */,
+				D0E9A8AA2F961D9F001D9054 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -411,7 +412,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/bin/sh \"$FLUTTER_ROOT/packages/flutter_tools/bin/xcode_backend.sh\" build";
+			shellScript = "/bin/sh \"$FLUTTER_ROOT/packages/flutter_tools/bin/xcode_backend.sh\" build\n";
+		};
+		D0E9A8AA2F961D9F001D9054 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Copy correct Firebase plist based on build configuration\n\nif [ \"${CONFIGURATION}\" == \"Debug-development\" ]; then\n  cp \"${PROJECT_DIR}/Runner/GoogleService-Info-Development.plist\" \\\n     \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app/GoogleService-Info.plist\"\n\nelif [ \"${CONFIGURATION}\" == \"Debug-staging\" ]; then\n  cp \"${PROJECT_DIR}/Runner/GoogleService-Info-Staging.plist\" \\\n     \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app/GoogleService-Info.plist\"\n     \nelif [ \"${CONFIGURATION}\" == \"Debug-production\" ]; then\n  cp \"${PROJECT_DIR}/Runner/GoogleService-Info.plist\" \\\n     \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app/GoogleService-Info.plist\"\n\n\nelif [ \"${CONFIGURATION}\" == \"Release\" ]; then\n  cp \"${PROJECT_DIR}/Runner/GoogleService-Info.plist\" \\\n     \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app/GoogleService-Info.plist\"\nfi\n";
 		};
 		E2800F1E2428D7977BBA5CE3 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
