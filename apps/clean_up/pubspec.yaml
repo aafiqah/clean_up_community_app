@@ -45,7 +45,7 @@ patrol:
   android:
     package_name: com.example.clean_up_community_app
   ios:
-    bundle_id: com.example.cleanUpCommunityApp
+    bundle_id: com.example.cleanUpCommunity
 
 flutter:
   uses-material-design: true
