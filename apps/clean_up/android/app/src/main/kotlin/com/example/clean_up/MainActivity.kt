@@ -1,4 +1,4 @@
-package com.example.clean_up
+package com.example.clean_up_community
 
 import io.flutter.embedding.android.FlutterActivity
 

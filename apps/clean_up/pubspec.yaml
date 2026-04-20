@@ -43,7 +43,7 @@ dev_dependencies:
 patrol:
   app_name: Clean Up Community App
   android:
-    package_name: com.example.clean_up_community_app
+    package_name: com.example.clean_up_community
   ios:
     bundle_id: com.example.cleanUpCommunity
 
