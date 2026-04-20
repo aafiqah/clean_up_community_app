@@ -10,9 +10,9 @@ Future<void> main() async {
 
   await dotenv.load(fileName: ".env");
 
-  if (Firebase.apps.isEmpty) {
-    await Firebase.initializeApp();
-  }
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
 
   AppEnvironment.init(Environment.production);
 
