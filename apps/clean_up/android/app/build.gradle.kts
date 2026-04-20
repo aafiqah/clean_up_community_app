@@ -25,20 +25,50 @@ android {
     }
 
     defaultConfig {
-        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId = "com.example.clean_up_community"
-        // You can update the following values to match your application needs.
-        // For more information, see: https://flutter.dev/to/review-gradle-config.
         minSdk = flutter.minSdkVersion
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
         versionName = flutter.versionName
     }
 
+    flavorDimensions += "default"
+
+    productFlavors {
+        create("development") {
+            dimension = "default"
+            applicationIdSuffix = ".development"
+        }
+
+        create("staging") {
+            dimension = "default"
+            applicationIdSuffix = ".staging"
+        }
+
+        create("production") {
+            dimension = "default"
+        }
+    }
+
+    sourceSets {
+        development {
+            manifest.srcFile 'src/development/AndroidManifest.xml'
+            res.srcDirs = ['src/development/res']
+        }
+
+        staging {
+            manifest.srcFile 'src/staging/AndroidManifest.xml'
+            res.srcDirs = ['src/staging/res']
+        }
+
+        production {
+            manifest.srcFile 'src/production/AndroidManifest.xml'
+            res.srcDirs = ['src/production/res']
+        }
+    }
+
     buildTypes {
         release {
-            // TODO: Add your own signing config for the release build.
-            // Signing with the debug keys for now, so `flutter run --release` works.
             signingConfig = signingConfigs.getByName("debug")
         }
     }
