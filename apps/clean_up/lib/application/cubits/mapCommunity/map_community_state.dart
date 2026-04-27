@@ -1,7 +1,7 @@
 part of 'map_community_cubit.dart';
 
 @freezed
-class MapCommunityState with _$MapCommunityState {
+abstract class MapCommunityState with _$MapCommunityState {
   factory MapCommunityState({
     required double latitude,
     required double longitude,
