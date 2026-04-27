@@ -50,31 +50,19 @@ melos:
 
     run:staging:
       run: cd apps/clean_up && flutter run --flavor staging -t lib/main_staging.dart
-      exec:
-        concurrency: 1
-      packageFilters:
-        scope: clean_up
 
     run:production:
       run: cd apps/clean_up && flutter run --flavor production -t lib/main_production.dart
-      exec:
-        concurrency: 1
-      packageFilters:
-        scope: clean_up
 
     run:development:
       run: cd apps/clean_up && flutter run --flavor development -t lib/main_development.dart
-      exec:
-        concurrency: 1
-      packageFilters:
-        scope: clean_up
 
-    gen-pod:
+    pods:
       run: |
         cd apps/clean_up/ios && \
-        rm -f Podfile.lock && \
-        rm -rf Pods && \
+        pod deintegrate && \
+        rm -rf Pods Podfile.lock && \
+        pod cache clean --all && \
+        pod repo update && \
         flutter precache --ios && \
         pod install --repo-update
-      packageFilters:
-        scope: clean_up

@@ -134,10 +134,10 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: fc75fc972958dceedee61cb662ae1da7a83a91cf
   integration_test: 4a889634ef21a45d28d50d622cf412dc6d9f586e
   package_info_plus: af8e2ca6888548050f16fa2f1938db7b5a5df499
-  patrol: 51b76cc7c11a2933ee3e72482d930c75b9d4ec73
+  patrol: cea8074f183a2a4232d0ebd10569ae05149ada42
   permission_handler_apple: 4ed2196e43d0651e8ff7ca3483a069d469701f2d
   RecaptchaInterop: 11e0b637842dfb48308d242afc3f448062325aba
 
-PODFILE CHECKSUM: 251cb053df7158f337c0712f2ab29f4e0fa474ce
+PODFILE CHECKSUM: 1e4775c27fc23ead3e6071886f3c93d781c4ff97
 
 COCOAPODS: 1.16.2
