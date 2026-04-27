@@ -1,13 +1,80 @@
 name: clean_up_community_app
 description: "Clean Up Community Mobile Root"
 publish_to: 'none'
-version: 1.1.0+6
+version: 1.0.0+1
 
 environment:
-  sdk: ^3.9.2
+  sdk: ">=3.11.0 <4.0.0"
 
 workspace:
   - apps/clean_up
 
 dev_dependencies:
-  melos: ^6.3.2
+  melos: ^7.5.1
+
+melos:
+  scripts:
+
+    clean:
+      run: melos exec -- flutter clean
+      description: "Clean build outputs for all packages"
+
+    format:
+      run: melos exec -- dart format .
+      description: "Format all Dart files"
+
+    analyze:
+      run: melos exec -- flutter analyze
+      description: "Analyze all packages"
+
+    get:
+      run: melos exec -- flutter pub get
+      description: "Get dependencies for all packages"
+
+    setup:
+      run: |
+        melos run clean &&
+        melos bootstrap --verbose --no-private &&
+        melos run get --no-select &&
+        melos run gen-l10n &&
+        melos run build_runner
+      description: "Full setup"
+
+    build_runner:
+      run: melos exec -- dart run build_runner build --delete-conflicting-outputs
+      packageFilters:
+        dependsOn: build_runner
+
+    gen-l10n:
+      run: melos exec -- flutter gen-l10n
+
+    run:staging:
+      run: cd apps/clean_up && flutter run --flavor staging -t lib/main_staging.dart
+      exec:
+        concurrency: 1
+      packageFilters:
+        scope: clean_up
+
+    run:production:
+      run: cd apps/clean_up && flutter run --flavor production -t lib/main_production.dart
+      exec:
+        concurrency: 1
+      packageFilters:
+        scope: clean_up
+
+    run:development:
+      run: cd apps/clean_up && flutter run --flavor development -t lib/main_development.dart
+      exec:
+        concurrency: 1
+      packageFilters:
+        scope: clean_up
+
+    gen-pod:
+      run: |
+        cd apps/clean_up/ios && \
+        rm -f Podfile.lock && \
+        rm -rf Pods && \
+        flutter precache --ios && \
+        pod install --repo-update
+      packageFilters:
+        scope: clean_up
