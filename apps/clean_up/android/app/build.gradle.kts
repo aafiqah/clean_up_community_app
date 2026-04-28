@@ -37,33 +37,14 @@ android {
     productFlavors {
         create("development") {
             dimension = "default"
-            applicationIdSuffix = ".development"
         }
 
         create("staging") {
             dimension = "default"
-            applicationIdSuffix = ".staging"
         }
 
         create("production") {
             dimension = "default"
-        }
-    }
-
-    sourceSets {
-        development {
-            manifest.srcFile 'src/development/AndroidManifest.xml'
-            res.srcDirs = ['src/development/res']
-        }
-
-        staging {
-            manifest.srcFile 'src/staging/AndroidManifest.xml'
-            res.srcDirs = ['src/staging/res']
-        }
-
-        production {
-            manifest.srcFile 'src/production/AndroidManifest.xml'
-            res.srcDirs = ['src/production/res']
         }
     }
 
