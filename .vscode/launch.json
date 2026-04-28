@@ -6,6 +6,7 @@
     "configurations": [
         {
             "name": "Clean Up Community (debug)",
+            "cwd": "apps/clean_up",
             "request": "launch",
             "type": "dart",
             "program": "lib/main.dart",
@@ -17,6 +18,7 @@
         },
         {
             "name": "Clean Up Community Production (profile)",
+            "cwd": "apps/clean_up",
             "request": "launch",
             "type": "dart",
             "program": "lib/main.dart",
@@ -28,6 +30,7 @@
         },
         {
             "name": "Clean Up Community Production (release)",
+            "cwd": "apps/clean_up",
             "request": "launch",
             "type": "dart",
             "program": "lib/main.dart",
@@ -39,6 +42,7 @@
         },
         {
             "name": "Clean Up Community Staging (debug)",
+            "cwd": "apps/clean_up",
             "request": "launch",
             "type": "dart",
             "program": "lib/main_staging.dart",
@@ -50,6 +54,7 @@
         },
         {
             "name": "Clean Up Community Staging (profile)",
+            "cwd": "apps/clean_up",
             "request": "launch",
             "type": "dart",
             "program": "lib/main_staging.dart",
@@ -61,6 +66,7 @@
         },
         {
             "name": "Clean Up Community Staging (release)",
+            "cwd": "apps/clean_up",
             "request": "launch",
             "type": "dart",
             "program": "lib/main_staging.dart",
@@ -72,6 +78,7 @@
         },
         {
             "name": "Clean Up Community Development (debug)",
+            "cwd": "apps/clean_up",
             "request": "launch",
             "type": "dart",
             "program": "lib/main_development.dart",
@@ -83,6 +90,7 @@
         },
         {
             "name": "Clean Up Community Development (profile)",
+            "cwd": "apps/clean_up",
             "request": "launch",
             "type": "dart",
             "program": "lib/main_development.dart",
@@ -94,6 +102,7 @@
         },
         {
             "name": "Clean Up Community Development (release)",
+            "cwd": "apps/clean_up",
             "request": "launch",
             "type": "dart",
             "program": "lib/main_development.dart",
