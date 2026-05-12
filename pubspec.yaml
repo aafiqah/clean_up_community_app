@@ -10,7 +10,7 @@ workspace:
   - apps/clean_up
 
 dev_dependencies:
-  melos: ^7.5.1
+  melos: ^7.6.0
 
 melos:
   scripts:
@@ -64,5 +64,17 @@ melos:
         rm -rf Pods Podfile.lock && \
         pod cache clean --all && \
         pod repo update && \
+        flutter precache --ios && \
+        pod install --repo-update
+
+    fix:ios:
+      description: "Deep clean iOS to fix Privacy Manifest issues"
+      run: |
+        melos run clean
+        melos run get
+        cd apps/clean_up/ios && \
+        rm -rf Pods && \
+        rm -f Podfile.lock && \
+        rm -rf ~/Library/Developer/Xcode/DerivedData/* && \
         flutter precache --ios && \
         pod install --repo-update
