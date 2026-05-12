@@ -66,3 +66,15 @@ melos:
         pod repo update && \
         flutter precache --ios && \
         pod install --repo-update
+
+    fix:ios:
+      description: "Deep clean iOS to fix Privacy Manifest issues"
+      run: |
+        melos run clean
+        melos run get
+        cd apps/clean_up/ios && \
+        rm -rf Pods && \
+        rm -f Podfile.lock && \
+        rm -rf ~/Library/Developer/Xcode/DerivedData/* && \
+        flutter precache --ios && \
+        pod install --repo-update
