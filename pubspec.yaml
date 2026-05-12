@@ -1,55 +1,80 @@
 name: clean_up_community_app
-description: "A new Flutter project."
-publish_to: 'none' 
+description: "Clean Up Community Mobile Root"
+publish_to: 'none'
 version: 1.0.0+1
 
 environment:
-  sdk: ^3.5.0
+  sdk: ">=3.11.0 <4.0.0"
 
-dependencies:
-  flutter:
-    sdk: flutter
-  flutter_dotenv: ^5.2.1
-  cupertino_icons: ^1.0.8
-  flutter_svg: ^2.1.0
-  go_router: ^15.1.1
-  google_fonts: ^6.2.1
-  toasty_box: ^1.0.4
-  melos: ^6.3.2
-  flutter_bloc: ^9.1.1
-  freezed_annotation: ^2.4.1
-  json_annotation: ^4.8.1
-  flutter_map: ^8.1.1
-  latlong2: ^0.9.1
-  geocoding: ^3.0.0
-  geolocator: ^14.0.0
-  permission_handler: ^12.0.0+1
-  firebase_auth: ^5.5.3
-  firebase_core: ^3.13.0
+workspace:
+  - apps/clean_up
 
 dev_dependencies:
-  flutter_test:
-    sdk: flutter
-  integration_test:
-    sdk: flutter
-  test:
-  flutter_lints: ^5.0.0
-  build_runner: ^2.4.6
-  freezed: ^2.4.6
-  json_serializable: ^6.7.1
-  patrol: 3.15.2
+  melos: ^7.6.0
 
-patrol:
-  app_name: Clean Up Community App
-  android:
-    package_name: com.example.clean_up_community_app
-  ios:
-    bundle_id: com.example.cleanUpCommunityApp
+melos:
+  scripts:
 
-flutter:
-  uses-material-design: true
+    clean:
+      run: melos exec -- flutter clean
+      description: "Clean build outputs for all packages"
 
-  assets:
-    - assets/icons/
-    - assets/images/
-    - .env
+    format:
+      run: melos exec -- dart format .
+      description: "Format all Dart files"
+
+    analyze:
+      run: melos exec -- flutter analyze
+      description: "Analyze all packages"
+
+    get:
+      run: melos exec -- flutter pub get
+      description: "Get dependencies for all packages"
+
+    setup:
+      run: |
+        melos run clean &&
+        melos bootstrap --verbose --no-private &&
+        melos run get --no-select &&
+        melos run gen-l10n &&
+        melos run build_runner
+      description: "Full setup"
+
+    build_runner:
+      run: melos exec -- dart run build_runner build --delete-conflicting-outputs
+      packageFilters:
+        dependsOn: build_runner
+
+    gen-l10n:
+      run: melos exec -- flutter gen-l10n
+
+    run:staging:
+      run: cd apps/clean_up && flutter run --flavor staging -t lib/main_staging.dart
+
+    run:production:
+      run: cd apps/clean_up && flutter run --flavor production -t lib/main_production.dart
+
+    run:development:
+      run: cd apps/clean_up && flutter run --flavor development -t lib/main_development.dart
+
+    pods:
+      run: |
+        cd apps/clean_up/ios && \
+        pod deintegrate && \
+        rm -rf Pods Podfile.lock && \
+        pod cache clean --all && \
+        pod repo update && \
+        flutter precache --ios && \
+        pod install --repo-update
+
+    fix:ios:
+      description: "Deep clean iOS to fix Privacy Manifest issues"
+      run: |
+        melos run clean
+        melos run get
+        cd apps/clean_up/ios && \
+        rm -rf Pods && \
+        rm -f Podfile.lock && \
+        rm -rf ~/Library/Developer/Xcode/DerivedData/* && \
+        flutter precache --ios && \
+        pod install --repo-update
