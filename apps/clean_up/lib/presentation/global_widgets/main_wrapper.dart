@@ -49,13 +49,13 @@ class _MainWrapperState extends State<MainWrapper> {
                     width: 55,
                     decoration: BoxDecoration(
                       color: selectedIndex == 0
-                          ? CleanUpColor.buttonColor
+                          ? CleanUpColor.buttonEnabled
                           : CleanUpColor.white,
                       border: Border.all(
                         strokeAlign: 0.5,
                         color: selectedIndex == 0
-                            ? CleanUpColor.buttonColor
-                            : CleanUpColor.greyMedium,
+                            ? CleanUpColor.buttonEnabled
+                            : CleanUpColor.buttonDisabled,
                       ),
                       borderRadius: BorderRadius.circular(5),
                     ),
@@ -64,7 +64,7 @@ class _MainWrapperState extends State<MainWrapper> {
                       size: 28,
                       color: selectedIndex == 0
                           ? CleanUpColor.white
-                          : CleanUpColor.buttonColor,
+                          : CleanUpColor.buttonEnabled,
                     ),
                   ),
                 ),
@@ -76,13 +76,13 @@ class _MainWrapperState extends State<MainWrapper> {
                     width: 55,
                     decoration: BoxDecoration(
                       color: selectedIndex == 1
-                          ? CleanUpColor.buttonColor
+                          ? CleanUpColor.buttonEnabled
                           : CleanUpColor.white,
                       border: Border.all(
                         strokeAlign: 0.5,
                         color: selectedIndex == 1
-                            ? CleanUpColor.buttonColor
-                            : CleanUpColor.greyMedium,
+                            ? CleanUpColor.buttonEnabled
+                            : CleanUpColor.buttonDisabled,
                       ),
                       borderRadius: BorderRadius.circular(5),
                     ),
@@ -91,7 +91,7 @@ class _MainWrapperState extends State<MainWrapper> {
                       size: 28,
                       color: selectedIndex == 1
                           ? CleanUpColor.white
-                          : CleanUpColor.buttonColor,
+                          : CleanUpColor.buttonEnabled,
                     ),
                   ),
                 ),
@@ -103,13 +103,13 @@ class _MainWrapperState extends State<MainWrapper> {
                     width: 55,
                     decoration: BoxDecoration(
                       color: selectedIndex == 2
-                          ? CleanUpColor.buttonColor
+                          ? CleanUpColor.buttonEnabled
                           : CleanUpColor.white,
                       border: Border.all(
                         strokeAlign: 0.5,
                         color: selectedIndex == 2
-                            ? CleanUpColor.buttonColor
-                            : CleanUpColor.greyMedium,
+                            ? CleanUpColor.buttonEnabled
+                            : CleanUpColor.buttonDisabled,
                       ),
                       borderRadius: BorderRadius.circular(5),
                     ),
@@ -118,7 +118,7 @@ class _MainWrapperState extends State<MainWrapper> {
                       size: 28,
                       color: selectedIndex == 2
                           ? CleanUpColor.white
-                          : CleanUpColor.buttonColor,
+                          : CleanUpColor.buttonEnabled,
                     ),
                   ),
                 ),
@@ -130,13 +130,13 @@ class _MainWrapperState extends State<MainWrapper> {
                     width: 55,
                     decoration: BoxDecoration(
                       color: selectedIndex == 3
-                          ? CleanUpColor.buttonColor
+                          ? CleanUpColor.buttonEnabled
                           : CleanUpColor.white,
                       border: Border.all(
                         strokeAlign: 0.5,
                         color: selectedIndex == 3
-                            ? CleanUpColor.buttonColor
-                            : CleanUpColor.greyMedium,
+                            ? CleanUpColor.buttonEnabled
+                            : CleanUpColor.buttonDisabled,
                       ),
                       borderRadius: BorderRadius.circular(5),
                     ),
@@ -145,7 +145,7 @@ class _MainWrapperState extends State<MainWrapper> {
                       size: 28,
                       color: selectedIndex == 3
                           ? CleanUpColor.white
-                          : CleanUpColor.buttonColor,
+                          : CleanUpColor.buttonEnabled,
                     ),
                   ),
                 ),
@@ -157,13 +157,13 @@ class _MainWrapperState extends State<MainWrapper> {
                     width: 55,
                     decoration: BoxDecoration(
                       color: selectedIndex == 4
-                          ? CleanUpColor.buttonColor
+                          ? CleanUpColor.buttonEnabled
                           : CleanUpColor.white,
                       border: Border.all(
                         strokeAlign: 0.5,
                         color: selectedIndex == 4
-                            ? CleanUpColor.buttonColor
-                            : CleanUpColor.greyMedium,
+                            ? CleanUpColor.buttonEnabled
+                            : CleanUpColor.buttonDisabled,
                       ),
                       borderRadius: BorderRadius.circular(5),
                     ),
@@ -172,7 +172,7 @@ class _MainWrapperState extends State<MainWrapper> {
                       size: 28,
                       color: selectedIndex == 4
                           ? CleanUpColor.white
-                          : CleanUpColor.buttonColor,
+                          : CleanUpColor.buttonEnabled,
                     ),
                   ),
                 ),

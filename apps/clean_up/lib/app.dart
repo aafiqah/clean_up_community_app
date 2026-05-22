@@ -25,11 +25,11 @@ class _CleanUpAppView extends StatelessWidget {
     return MaterialApp.router(
       title: 'Clean Up ($environment)',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: CleanUpColor.buttonColor),
+        colorScheme: ColorScheme.fromSeed(seedColor: CleanUpColor.buttonEnabled),
         useMaterial3: true,
         bottomNavigationBarTheme: const BottomNavigationBarThemeData(
           backgroundColor: CleanUpColor.white,
-          selectedItemColor: CleanUpColor.buttonColor,
+          selectedItemColor: CleanUpColor.buttonEnabled,
           unselectedItemColor: CleanUpColor.white,
         ),
       ),

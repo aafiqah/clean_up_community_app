@@ -77,7 +77,7 @@ class _CustomSearchBarState extends State<CustomSearchBar> {
         filled: true,
         hintText: widget.hintText,
         hintStyle: TextStyle(
-          color: CleanUpColor.greyMedium,
+          color: CleanUpColor.buttonDisabled,
           fontWeight: FontWeight.w600,
           fontSize: 16,
           fontFamily: 'inter',
@@ -95,17 +95,17 @@ class _CustomSearchBarState extends State<CustomSearchBar> {
         disabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(widget.borderRadius),
           borderSide:
-              const BorderSide(color: CleanUpColor.greyLight, width: 1.5),
+              const BorderSide(color: CleanUpColor.buttonDisabled, width: 1.5),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(widget.borderRadius),
           borderSide:
-              const BorderSide(color: CleanUpColor.greyLight, width: 1.5),
+              const BorderSide(color: CleanUpColor.buttonDisabled, width: 1.5),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(widget.borderRadius),
           borderSide: const BorderSide(
-            color: CleanUpColor.greyLight,
+            color: CleanUpColor.buttonDisabled,
             width: 1.5,
           ),
         ),

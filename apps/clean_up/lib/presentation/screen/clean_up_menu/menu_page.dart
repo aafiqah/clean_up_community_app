@@ -79,7 +79,7 @@ class _MenuPageState extends State<MenuPage> {
                     height: 180,
                     padding: EdgeInsets.all(SizeSpacing().doubleSpacing10),
                     decoration: BoxDecoration(
-                      color: CleanUpColor.icognitoBg,
+                      color: CleanUpColor.neutral30,
                       borderRadius: BorderRadius.circular(
                         SizeSpacing().doubleSpacing15,
                       ),

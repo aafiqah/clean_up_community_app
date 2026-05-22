@@ -33,10 +33,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
     if (!mounted) return;
     showDialog(
       context: context,
-      builder: (_) => AlertDialog(
-        title: Text(local.authenticationFailed),
-        content: Text(message),
-      ),
+      builder: (_) => AlertDialog(title: Text(local.authenticationFailed), content: Text(message)),
     );
   }
 
@@ -105,10 +102,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     SizedBox(height: SizeSpacing().doubleSpacing20),
-                    const Image(
-                      width: 200,
-                      image: AssetImage(CleanUpImages.logoCleanUp),
-                    ),
+                    const Image(width: 200, image: AssetImage(CleanUpImages.logoCleanUp)),
                     Text(
                       onBoardingState.switchSignUp ? 'Create an Account' : 'Welcome Back!',
                       style: TextStyle(
@@ -148,10 +142,10 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                             ),
                             hintText: 'me@gmail.com',
                             hintStyle: TextStyleShared.textStyle.bodyMedium.copyWith(
-                              color: CleanUpColor.greyMedium,
+                              color: CleanUpColor.neutral50,
                             ),
                             errorStyle: TextStyleShared.textStyle.bodyMedium.copyWith(
-                              color: CleanUpColor.redLight,
+                              color: CleanUpColor.error,
                             ),
                             validator: ValidatorUtils.validateEmail,
                             color: CleanUpColor.searchBarColor,
@@ -168,10 +162,10 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                             ),
                             hintText: 'Enter your password',
                             hintStyle: TextStyleShared.textStyle.bodyMedium.copyWith(
-                              color: CleanUpColor.greyMedium,
+                              color: CleanUpColor.neutral50,
                             ),
                             errorStyle: TextStyleShared.textStyle.bodyMedium.copyWith(
-                              color: CleanUpColor.redLight,
+                              color: CleanUpColor.error,
                             ),
                             suffixIcon: GestureDetector(
                               onTap: () => context.read<OnboardingCubit>().togglePasswordVisible(),
@@ -199,10 +193,10 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                               ),
                               hintText: 'Enter your confirm password',
                               hintStyle: TextStyleShared.textStyle.bodyMedium.copyWith(
-                                color: CleanUpColor.greyMedium,
+                                color: CleanUpColor.neutral50,
                               ),
                               errorStyle: TextStyleShared.textStyle.bodyMedium.copyWith(
-                                color: CleanUpColor.redLight,
+                                color: CleanUpColor.error,
                               ),
                               suffixIcon: GestureDetector(
                                 onTap: () =>
@@ -236,7 +230,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                           child: Text(
                             'Forgot Password?',
                             style: TextStyle(
-                              color: CleanUpColor.greyLight,
+                              color: CleanUpColor.neutral90,
                               fontSize: 12,
                               fontFamily: 'inter',
                             ),
@@ -264,27 +258,29 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                           fontFamily: 'inter',
                         ),
                       ),
-                      buttonColor: CleanUpColor.buttonColor,
+                      buttonColor: CleanUpColor.buttonEnabled,
                       borderRadius: SizeSpacing().doubleSpacing20,
                     ),
                     SizedBox(height: SizeSpacing().doubleSpacing20),
                     Row(
                       children: [
                         const Expanded(
-                            child: Divider(thickness: 0.5, color: CleanUpColor.greyMedium)),
+                          child: Divider(thickness: 0.5, color: CleanUpColor.neutral50),
+                        ),
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 10),
                           child: Text(
                             'Or continue with',
                             style: TextStyle(
-                              color: CleanUpColor.greyLight,
+                              color: CleanUpColor.neutral90,
                               fontSize: 12,
                               fontFamily: 'inter',
                             ),
                           ),
                         ),
                         const Expanded(
-                            child: Divider(thickness: 0.5, color: CleanUpColor.greyMedium)),
+                          child: Divider(thickness: 0.5, color: CleanUpColor.neutral50),
+                        ),
                       ],
                     ),
                     SizedBox(height: SizeSpacing().doubleSpacing20),
@@ -331,7 +327,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                           child: Text(
                             onBoardingState.switchSignUp ? 'Login' : 'Register Now',
                             style: TextStyleShared.textStyle.bodyMedium.copyWith(
-                              color: CleanUpColor.greenLight,
+                              color: CleanUpColor.primary90,
                             ),
                           ),
                         ),

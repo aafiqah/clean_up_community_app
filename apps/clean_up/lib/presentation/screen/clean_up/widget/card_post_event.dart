@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import '../../../../core/theme/index.dart';
 
 final List<Color> colors = [
-  CleanUpColor.redMedium,
-  CleanUpColor.blueMedium,
-  CleanUpColor.greenMedium,
-  CleanUpColor.orangeMedium,
-  CleanUpColor.purpleMedium,
+  CleanUpColor.error,
+  CleanUpColor.secondary,
+  CleanUpColor.primary,
+  CleanUpColor.warning,
+  CleanUpColor.tertiary,
 ];
 
 class CardPostEvent extends StatelessWidget {
@@ -50,7 +50,7 @@ class CardPostEvent extends StatelessWidget {
                         fit: BoxFit.cover,
                       )
                     : null,
-                color: CleanUpColor.greyLight,
+                color: CleanUpColor.neutral90,
                 borderRadius: BorderRadius.circular(10),
               ),
             ),
@@ -88,7 +88,7 @@ class CardPostEvent extends StatelessWidget {
                                       height: 20,
                                       decoration: BoxDecoration(
                                         shape: BoxShape.circle,
-                                        color: CleanUpColor.greyLight,
+                                        color: CleanUpColor.neutral90,
                                         border: Border.all(
                                           color: CleanUpColor.transparent,
                                         ),
@@ -129,7 +129,7 @@ class CardPostEvent extends StatelessWidget {
                           Text(
                             '$spotsLeft spots left',
                             style: TextStyleShared.textStyle.bodyMedium.copyWith(
-                              color: CleanUpColor.redMedium,
+                              color: CleanUpColor.error,
                               fontSize: 10,
                             ),
                           ),

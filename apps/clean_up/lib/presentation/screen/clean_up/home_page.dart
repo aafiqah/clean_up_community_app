@@ -297,7 +297,7 @@ class _HomePageState extends State<HomePage> {
                                   fillColor: CleanUpColor.white,
                                   prefixIcon: const Icon(
                                     Icons.search_rounded,
-                                    color: CleanUpColor.greyMedium,
+                                    color: CleanUpColor.neutral50,
                                   ),
                                 ),
                               ),

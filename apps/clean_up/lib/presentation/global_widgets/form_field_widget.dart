@@ -65,7 +65,7 @@ class FormFieldWidget extends StatelessWidget {
                 Text(
                   marked,
                   style: titleStyleTitle?.copyWith(
-                    color: CleanUpColor.redMedium,
+                    color: CleanUpColor.error,
                   ),
                 ),
               const Spacer(),
@@ -103,7 +103,7 @@ class FormFieldWidget extends StatelessWidget {
               suffix: suffixIcon,
               hintStyle: hintStyle ??
                   Theme.of(context).textTheme.bodyMedium?.copyWith(
-                        color: CleanUpColor.greyMedium,
+                        color: CleanUpColor.neutral50,
                       ),
               hintText: hintText,
               isDense: true,
@@ -111,25 +111,25 @@ class FormFieldWidget extends StatelessWidget {
                 borderRadius: const BorderRadius.all(Radius.circular(10)),
                 borderSide: borderSide ??
                     const BorderSide(
-                      color: CleanUpColor.greyMedium,
+                      color: CleanUpColor.neutral50,
                     ),
               ),
               errorBorder: const OutlineInputBorder(
                 borderRadius: BorderRadius.all(Radius.circular(10)),
                 borderSide: BorderSide(
-                  color: CleanUpColor.redMedium,
+                  color: CleanUpColor.error,
                 ),
               ),
               focusedErrorBorder: const OutlineInputBorder(
                 borderRadius: BorderRadius.all(Radius.circular(10)),
                 borderSide: BorderSide(
-                  color: CleanUpColor.redMedium,
+                  color: CleanUpColor.error,
                 ),
               ),
               focusedBorder: const OutlineInputBorder(
                 borderRadius: BorderRadius.all(Radius.circular(10)),
                 borderSide: BorderSide(
-                  color: CleanUpColor.blueMedium,
+                  color: CleanUpColor.secondary50,
                 ),
               ),
               errorStyle: errorStyle,

@@ -42,7 +42,7 @@ class Submitbutton extends StatelessWidget {
           style: OutlinedButton.styleFrom(
             shadowColor: shadowColor,
             backgroundColor: (isLoading || onPressed == null)
-                ? CleanUpColor.greyMedium
+                ? CleanUpColor.buttonDisabled
                 : (fullColor ? buttonColor : CleanUpColor.white),
             padding: padding ??
                 const EdgeInsets.symmetric(horizontal: 15, vertical: 2),
@@ -51,7 +51,7 @@ class Submitbutton extends StatelessWidget {
             ),
             side: BorderSide(
               color: (isLoading || onPressed == null)
-                  ? CleanUpColor.greyMedium
+                  ? CleanUpColor.buttonDisabled
                   : buttonColor,
             ),
           ),

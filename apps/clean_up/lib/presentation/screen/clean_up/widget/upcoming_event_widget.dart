@@ -29,11 +29,7 @@ class UpcomingEventWidget extends StatelessWidget {
         color: CleanUpColor.white,
         borderRadius: BorderRadius.circular(5),
         boxShadow: const [
-          BoxShadow(
-            color: CleanUpColor.greyMedium,
-            offset: Offset(0.5, 0.5),
-            blurRadius: 2,
-          ),
+          BoxShadow(color: CleanUpColor.neutral50, offset: Offset(0.5, 0.5), blurRadius: 2),
         ],
       ),
       child: Row(
@@ -42,12 +38,9 @@ class UpcomingEventWidget extends StatelessWidget {
             width: MediaQuery.sizeOf(context).width / 5,
             decoration: BoxDecoration(
               image: imagePath != null
-                  ? DecorationImage(
-                      image: AssetImage(imagePath!),
-                      fit: BoxFit.cover,
-                    )
+                  ? DecorationImage(image: AssetImage(imagePath!), fit: BoxFit.cover)
                   : null,
-              color: CleanUpColor.greyLight,
+              color: CleanUpColor.neutral90,
               borderRadius: BorderRadius.circular(10),
             ),
           ),
@@ -61,14 +54,8 @@ class UpcomingEventWidget extends StatelessWidget {
                   overflow: TextOverflow.ellipsis,
                   style: TextStyleShared.textStyle.subtitle,
                 ),
-                Text(
-                  '🗓️ $eventDate, $eventTimeStart',
-                  style: TextStyleShared.textStyle.bodySmall,
-                ),
-                Text(
-                  eventType,
-                  style: TextStyleShared.textStyle.bodySmall,
-                ),
+                Text('🗓️ $eventDate, $eventTimeStart', style: TextStyleShared.textStyle.bodySmall),
+                Text(eventType, style: TextStyleShared.textStyle.bodySmall),
                 const Spacer(),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.end,
@@ -81,9 +68,7 @@ class UpcomingEventWidget extends StatelessWidget {
                         maxLines: 2,
                       ),
                     ),
-                    const SizedBox(
-                      width: 5,
-                    ),
+                    const SizedBox(width: 5),
                     Submitbutton(
                       height: MediaQuery.sizeOf(context).height / 25,
                       onPressed: () {},

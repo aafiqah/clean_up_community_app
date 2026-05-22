@@ -41,8 +41,7 @@ class _MapEventPageState extends State<MapEventPage> {
       bool hasPermission = await _checkLocationPermission();
       if (!hasPermission) {
         cubit.hasLocationPermission(false);
-        mapController?.move(
-            LatLng(cubit.state.latitude, cubit.state.longitude), 14);
+        mapController?.move(LatLng(cubit.state.latitude, cubit.state.longitude), 14);
         return null;
       }
 
@@ -53,16 +52,16 @@ class _MapEventPageState extends State<MapEventPage> {
 
       if (hasPermission && isGpsEnabled) {
         Position position = await Geolocator.getCurrentPosition(
-            locationSettings:
-                const LocationSettings(accuracy: LocationAccuracy.high));
+          locationSettings: const LocationSettings(accuracy: LocationAccuracy.high),
+        );
         cubit.setCurrentLocation(position.latitude, position.longitude);
         cubit.hasLocationPermission(true);
         mapController?.move(LatLng(position.latitude, position.longitude), 14);
       }
 
       return await Geolocator.getCurrentPosition(
-          locationSettings:
-              const LocationSettings(accuracy: LocationAccuracy.high));
+        locationSettings: const LocationSettings(accuracy: LocationAccuracy.high),
+      );
     } catch (e) {
       return null;
     }
@@ -84,8 +83,7 @@ class _MapEventPageState extends State<MapEventPage> {
       await _showLocationPermissionDialog();
     }
 
-    return permission == LocationPermission.whileInUse ||
-        permission == LocationPermission.always;
+    return permission == LocationPermission.whileInUse || permission == LocationPermission.always;
   }
 
   Future<void> _showEnableLocationDialog() async {
@@ -129,9 +127,7 @@ class _MapEventPageState extends State<MapEventPage> {
               if (Navigator.canPop(dialogContext)) {
                 Navigator.pop(dialogContext);
               }
-              context
-                  .read<MapCommunityCubit>()
-                  .setCurrentLocation(3.1319197, 101.6840589);
+              context.read<MapCommunityCubit>().setCurrentLocation(3.1319197, 101.6840589);
             },
             child: const Text('Close'),
           ),
@@ -163,34 +159,28 @@ class _MapEventPageState extends State<MapEventPage> {
                 padding: const EdgeInsets.symmetric(horizontal: 10),
                 child: GestureDetector(
                   onTap: () {
-                    if (context.read<MapCommunityCubit>().state.isFilterPage ==
-                        true) {
+                    if (context.read<MapCommunityCubit>().state.isFilterPage == true) {
                       context.read<MapCommunityCubit>().changeFilterPage(false);
                     }
 
                     context.read<MapCommunityCubit>().changeSearchPage(true);
                   },
-                  child: const Icon(Icons.search_rounded,
-                      color: CleanUpColor.white),
+                  child: const Icon(Icons.search_rounded, color: CleanUpColor.white),
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 10),
                 child: GestureDetector(
                   onTap: () {
-                    if (context.read<MapCommunityCubit>().state.isSearchPage ==
-                        true) {
+                    if (context.read<MapCommunityCubit>().state.isSearchPage == true) {
                       context.read<MapCommunityCubit>().changeSearchPage(false);
                     }
 
                     context.read<MapCommunityCubit>().changeFilterPage(true);
                   },
-                  child: const Icon(
-                    Icons.filter_list_rounded,
-                    color: CleanUpColor.white,
-                  ),
+                  child: const Icon(Icons.filter_list_rounded, color: CleanUpColor.white),
                 ),
-              )
+              ),
             ],
           ),
           body: Stack(
@@ -199,8 +189,7 @@ class _MapEventPageState extends State<MapEventPage> {
                 key: const ValueKey('location_map'),
                 mapController: mapController,
                 options: MapOptions(
-                  initialCenter: LatLng(
-                      mapCommunityState.latitude, mapCommunityState.longitude),
+                  initialCenter: LatLng(mapCommunityState.latitude, mapCommunityState.longitude),
                   initialZoom: 10,
                   // onTap: (tapPosition, latLng) {
                   //   setState(() {
@@ -223,8 +212,7 @@ class _MapEventPageState extends State<MapEventPage> {
                 children: [
                   TileLayer(
                     key: const ValueKey('tile_layer_map'),
-                    urlTemplate:
-                        'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+                    urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
                     userAgentPackageName: 'com.example.app',
                   ),
                   // MarkerLayer(
@@ -243,8 +231,7 @@ class _MapEventPageState extends State<MapEventPage> {
                   //     ...markers, // Ensures dynamically added markers are shown
                   //   ],
                   // ),
-                  if (LatLng(mapCommunityState.latitude,
-                          mapCommunityState.longitude) !=
+                  if (LatLng(mapCommunityState.latitude, mapCommunityState.longitude) !=
                       const LatLng(0, 0))
                     MarkerLayer(
                       markers: [
@@ -252,8 +239,7 @@ class _MapEventPageState extends State<MapEventPage> {
                           key: const ValueKey('pin_marker_location'),
                           width: 50,
                           height: 50,
-                          point: LatLng(mapCommunityState.latitude,
-                              mapCommunityState.longitude),
+                          point: LatLng(mapCommunityState.latitude, mapCommunityState.longitude),
                           child: const Icon(
                             Icons.location_pin,
                             color: CleanUpColor.primary,
@@ -280,15 +266,12 @@ class _MapEventPageState extends State<MapEventPage> {
                       color: CleanUpColor.primary,
                       boxShadow: const [
                         BoxShadow(
-                          color: CleanUpColor.greyMedium,
+                          color: CleanUpColor.neutral50,
                           offset: Offset(0.5, 0.5),
                           blurRadius: 2,
                         ),
                       ],
-                      border: Border.all(
-                        color: CleanUpColor.primary,
-                        width: 1.5,
-                      ),
+                      border: Border.all(color: CleanUpColor.primary, width: 1.5),
                     ),
                     child: const Icon(
                       Icons.my_location_rounded,
@@ -336,9 +319,7 @@ class _MapEventPageState extends State<MapEventPage> {
                 Container(
                   width: size.width,
                   height: size.height,
-                  decoration: const BoxDecoration(
-                    color: CleanUpColor.white,
-                  ),
+                  decoration: const BoxDecoration(color: CleanUpColor.white),
                   child: Padding(
                     padding: const EdgeInsets.all(15),
                     child: Row(
@@ -346,9 +327,7 @@ class _MapEventPageState extends State<MapEventPage> {
                       children: [
                         GestureDetector(
                           onTap: () {
-                            context
-                                .read<MapCommunityCubit>()
-                                .changeSearchPage(false);
+                            context.read<MapCommunityCubit>().changeSearchPage(false);
                             _searchController.clear();
                           },
                           child: Container(
@@ -358,26 +337,18 @@ class _MapEventPageState extends State<MapEventPage> {
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
                               color: CleanUpColor.white,
-                              border: Border.all(
-                                color: CleanUpColor.greyLight,
-                                width: 1.5,
-                              ),
+                              border: Border.all(color: CleanUpColor.neutral90, width: 1.5),
                             ),
                             child: const Icon(
                               Icons.close_rounded,
                               size: 30,
-                              color: CleanUpColor.greyMedium,
+                              color: CleanUpColor.neutral50,
                             ),
                           ),
                         ),
-                        const SizedBox(
-                          width: 10,
-                        ),
+                        const SizedBox(width: 10),
                         Expanded(
-                          child: CustomSearchBar(
-                            borderRadius: 10,
-                            controller: _searchController,
-                          ),
+                          child: CustomSearchBar(borderRadius: 10, controller: _searchController),
                         ),
                       ],
                     ),
@@ -387,11 +358,8 @@ class _MapEventPageState extends State<MapEventPage> {
                 Container(
                   width: size.width,
                   height: size.height,
-                  decoration: const BoxDecoration(
-                    color: CleanUpColor.white,
-                  ),
-                  child: const Padding(
-                      padding: EdgeInsets.all(15), child: Text('data')),
+                  decoration: const BoxDecoration(color: CleanUpColor.white),
+                  child: const Padding(padding: EdgeInsets.all(15), child: Text('data')),
                 ),
             ],
           ),
