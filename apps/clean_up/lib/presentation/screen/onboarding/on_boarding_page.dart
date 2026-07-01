@@ -141,14 +141,10 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                               color: CleanUpColor.white,
                             ),
                             hintText: 'me@gmail.com',
-                            hintStyle: TextStyleShared.textStyle.bodyMedium.copyWith(
-                              color: CleanUpColor.neutral50,
-                            ),
                             errorStyle: TextStyleShared.textStyle.bodyMedium.copyWith(
                               color: CleanUpColor.error,
                             ),
                             validator: ValidatorUtils.validateEmail,
-                            color: CleanUpColor.searchBarColor,
                           ),
                           FormFieldWidget(
                             key: const ValueKey('password_field'),
@@ -161,9 +157,6 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                               color: CleanUpColor.white,
                             ),
                             hintText: 'Enter your password',
-                            hintStyle: TextStyleShared.textStyle.bodyMedium.copyWith(
-                              color: CleanUpColor.neutral50,
-                            ),
                             errorStyle: TextStyleShared.textStyle.bodyMedium.copyWith(
                               color: CleanUpColor.error,
                             ),
@@ -178,7 +171,6 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                               ),
                             ),
                             validator: ValidatorUtils.validatePassword,
-                            color: CleanUpColor.searchBarColor,
                           ),
                           if (onBoardingState.switchSignUp)
                             FormFieldWidget(
@@ -192,9 +184,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                                 color: CleanUpColor.white,
                               ),
                               hintText: 'Enter your confirm password',
-                              hintStyle: TextStyleShared.textStyle.bodyMedium.copyWith(
-                                color: CleanUpColor.neutral50,
-                              ),
+
                               errorStyle: TextStyleShared.textStyle.bodyMedium.copyWith(
                                 color: CleanUpColor.error,
                               ),
@@ -217,7 +207,6 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                                 }
                                 return null;
                               },
-                              color: CleanUpColor.searchBarColor,
                             ),
                         ],
                       ),

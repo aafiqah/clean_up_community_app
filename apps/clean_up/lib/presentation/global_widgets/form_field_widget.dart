@@ -24,7 +24,7 @@ class FormFieldWidget extends StatelessWidget {
     this.prefixIcon,
     this.suffixIcon,
     this.onChanged,
-    this.color,
+    this.fillColor,
     this.borderSide,
     this.obscureText,
   });
@@ -47,7 +47,7 @@ class FormFieldWidget extends StatelessWidget {
   final Widget? prefixIcon;
   final Widget? suffixIcon;
   final void Function(String)? onChanged;
-  final Color? color;
+  final Color? fillColor;
   final BorderSide? borderSide;
   final bool? obscureText;
 
@@ -62,12 +62,7 @@ class FormFieldWidget extends StatelessWidget {
             children: [
               Text(title, style: titleStyleTitle),
               if (marked != '')
-                Text(
-                  marked,
-                  style: titleStyleTitle?.copyWith(
-                    color: CleanUpColor.error,
-                  ),
-                ),
+                Text(marked, style: titleStyleTitle?.copyWith(color: CleanUpColor.error)),
               const Spacer(),
               trailingChild ?? const SizedBox.shrink(),
             ],
@@ -88,7 +83,8 @@ class FormFieldWidget extends StatelessWidget {
             onTapOutside: (event) {
               FocusScope.of(context).unfocus();
             },
-            validator: validator ??
+            validator:
+                validator ??
                 (String? val) {
                   if (val == null || val.trim().isEmpty) {
                     return '$title cannot be empty';
@@ -98,39 +94,31 @@ class FormFieldWidget extends StatelessWidget {
                 },
             decoration: InputDecoration(
               filled: true,
-              fillColor: color ?? CleanUpColor.white,
+              fillColor: fillColor ?? CleanUpColor.primary99,
               prefix: prefixIcon,
               suffix: suffixIcon,
-              hintStyle: hintStyle ??
-                  Theme.of(context).textTheme.bodyMedium?.copyWith(
-                        color: CleanUpColor.neutral50,
-                      ),
+              hintStyle:
+                  hintStyle ??
+                  Theme.of(
+                    context,
+                  ).textTheme.bodyMedium?.copyWith(color: CleanUpColor.textSecondary),
               hintText: hintText,
               isDense: true,
               enabledBorder: OutlineInputBorder(
-                borderRadius: const BorderRadius.all(Radius.circular(10)),
-                borderSide: borderSide ??
-                    const BorderSide(
-                      color: CleanUpColor.neutral50,
-                    ),
+                borderRadius: const BorderRadius.all(Radius.circular(32)),
+                borderSide: borderSide ?? const BorderSide(color: CleanUpColor.primary99),
               ),
               errorBorder: const OutlineInputBorder(
-                borderRadius: BorderRadius.all(Radius.circular(10)),
-                borderSide: BorderSide(
-                  color: CleanUpColor.error,
-                ),
+                borderRadius: BorderRadius.all(Radius.circular(32)),
+                borderSide: BorderSide(color: CleanUpColor.error),
               ),
               focusedErrorBorder: const OutlineInputBorder(
-                borderRadius: BorderRadius.all(Radius.circular(10)),
-                borderSide: BorderSide(
-                  color: CleanUpColor.error,
-                ),
+                borderRadius: BorderRadius.all(Radius.circular(32)),
+                borderSide: BorderSide(color: CleanUpColor.error),
               ),
               focusedBorder: const OutlineInputBorder(
-                borderRadius: BorderRadius.all(Radius.circular(10)),
-                borderSide: BorderSide(
-                  color: CleanUpColor.secondary50,
-                ),
+                borderRadius: BorderRadius.all(Radius.circular(32)),
+                borderSide: BorderSide(color: CleanUpColor.secondary50),
               ),
               errorStyle: errorStyle,
             ),
